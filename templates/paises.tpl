@@ -15,8 +15,8 @@
                     <h3 class="card-text">{$pais->continente}</h3>
                     <h3> Clasificación {$pais->clasificacion}</h3>
                     <button class="btn btn-outline-primary"><a href="{$BASE_URL}jugadores/{$pais->nombre}">Ver más</a></button>
-                    <button class="btn btn-outline-primary"><a href="{$BASE_URL}formPais/editar/{$jugador->id}">Editar</a></button>
-                    <button class="btn btn-outline-primary"><a href="{$BASE_URL}paises/borrar/{$jugador->id}">Borrar</a></button>                   
+                    <button class="btn btn-outline-primary"><a href="{$BASE_URL}formPais/editar/{$pais->id}">Editar</a></button>
+                    <button class="btn btn-outline-primary"><a href="{$BASE_URL}paises/borrar/{$pais->id}">Borrar</a></button>                   
                 </div>
             </section>
         {/foreach}

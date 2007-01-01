@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-01 04:41:28
+/* Smarty version 4.3.0, created on 2007-01-01 05:00:28
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\paises.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_647805583bdd04_54734926',
+  'unifunc' => 'content_4598875c4d7108_67636068',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '47c1724f7776251335c50b281898a1176d0d89b2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\paises.tpl',
-      1 => 1685587200,
+      1 => 1167624026,
       2 => 'file',
     ),
   ),
@@ -22,9 +22,16 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_647805583bdd04_54734926 (Smarty_Internal_Template $_smarty_tpl) {
+function content_4598875c4d7108_67636068 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
+
+<!--BOTÓN PARA REDIRIGIR AL FORMULARIO DE AGREGAR PAIS -->
+<button class="btn btn-outline-primary">
+    <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+formPais/add">Agregar Nuevo</a>
+</button>
+
 <div class="container mt-5">
     <section class="paises">
         <?php
@@ -47,6 +54,12 @@ $_smarty_tpl->tpl_vars['pais']->do_else = false;
                     <button class="btn btn-outline-primary"><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 jugadores/<?php echo $_smarty_tpl->tpl_vars['pais']->value->nombre;?>
 ">Ver más</a></button>
+                    <button class="btn btn-outline-primary"><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+formPais/editar/<?php echo $_smarty_tpl->tpl_vars['pais']->value->id;?>
+">Editar</a></button>
+                    <button class="btn btn-outline-primary"><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+paises/borrar/<?php echo $_smarty_tpl->tpl_vars['pais']->value->id;?>
+">Borrar</a></button>                   
                 </div>
             </section>
         <?php
