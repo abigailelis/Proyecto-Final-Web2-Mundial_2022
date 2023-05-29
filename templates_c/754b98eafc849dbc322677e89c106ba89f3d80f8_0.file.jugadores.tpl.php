@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-05-29 22:36:45
+/* Smarty version 4.3.0, created on 2023-05-29 23:03:38
   from 'C:\xampp\htdocs\TPE_WEB2\templates\jugadores.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_64750cdd9acd57_17424409',
+  'unifunc' => 'content_6475132a43ba45_40956102',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '754b98eafc849dbc322677e89c106ba89f3d80f8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE_WEB2\\templates\\jugadores.tpl',
-      1 => 1685392598,
+      1 => 1685394194,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_64750cdd9acd57_17424409 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6475132a43ba45_40956102 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -51,6 +51,8 @@ $_smarty_tpl->tpl_vars['jugador']->do_else = false;
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['jugador']->value->id_pais;?>
 </td>
+                <td><a href="jugador/<?php echo $_smarty_tpl->tpl_vars['jugador']->value->id;?>
+">Ver más</a></td>
             </tr>
         <?php
 }

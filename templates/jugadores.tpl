@@ -16,6 +16,7 @@
                 <td>{$jugador->apellido}</td>
                 <td>{$jugador->posicion}</td>
                 <td>{$jugador->id_pais}</td>
+                <td><a href="jugador/{$jugador->id}">Ver más</a></td>
             </tr>
         {/foreach}
 

@@ -6,8 +6,8 @@ require_once './mundial_app/controllers/paises.controller.php';
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
 if (!empty($_GET['action'])){
-    $param = explode('/',$_GET['action']);
-    $action = $param[0];
+    $params = explode('/',$_GET['action']);
+    $action = $params[0];
 }
 
 else{
@@ -24,6 +24,12 @@ switch($action){
         $jugadoresController= new jugadoresController();
         $jugadoresController -> showJugadores();
     break;
+    case 'jugador':
+        $jugadorController= new jugadoresController();
+        $jugadorController ->showDataJugador($params[1]); 
+    break;
+            
+
         
         
 }
