@@ -1,4 +1,5 @@
 <?php
+require_once './libs/smarty/Smarty.class.php';
 
 Class jugadoresView{
     private $smarty;
