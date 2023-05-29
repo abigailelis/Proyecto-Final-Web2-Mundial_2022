@@ -24,6 +24,20 @@ switch($action){
         $jugadoresController= new jugadoresController();
         $jugadoresController -> showJugadores();
     break;
+    case 'jugador':
+        $jugadorController= new jugadoresController();
+        $jugadorController ->showDataJugador($params[1]); 
+    break;
+<<<<<<< HEAD
+    
+=======
+    case 'jugador':
+        $jugadorController= new jugadoresController();
+        $jugadorController ->showDataJugador($params[1]); 
+    break;
+            
+
         
+>>>>>>> adca2fb44674f74a741ad3d101568b3350f72c0e
         
 }
