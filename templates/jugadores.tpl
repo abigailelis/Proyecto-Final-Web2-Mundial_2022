@@ -1,4 +1,4 @@
-{include file = 'header.tpl'};
+{include file = 'header.tpl'}
 
 <table>
     <thead>
@@ -16,6 +16,7 @@
                 <td>{$jugador->apellido}</td>
                 <td>{$jugador->posicion}</td>
                 <td>{$jugador->id_pais}</td>
+                <td><a href="jugador/{$jugador->id}">Ver más</a></td>
             </tr>
         {/foreach}
 
@@ -23,4 +24,4 @@
 
 
 
-{include file = 'footer.tpl'};
+{include file = 'footer.tpl'}
