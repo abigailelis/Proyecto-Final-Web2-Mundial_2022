@@ -8,7 +8,13 @@ Class jugadoresModel{
         //Creó un grupo de BBDD y lo guardo en ese mismo grupo.
     }
 
-    //función para obtener todos los jugadores
+    function getJugadores(){//función para obtener todos los jugadores
+        $sentencia = $this->db->prepare("SELECT * FROM jugadores");
+        $sentencia->execute();
+        $jugadores= $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $jugadores;
+    }
+    
 
     //función para obtener un jugador ($jugador->id)
 
