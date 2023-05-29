@@ -7,4 +7,6 @@ Class paisesView{
     public function __construct(){
         $this->smarty = new Smarty();
     }
+
+    //función para mostrar todos los paises ($paises)
 }
