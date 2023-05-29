@@ -1,18 +1,12 @@
 {include file = 'header.tpl'}
+
     <section>
-        
-       
-       <p>  {$jugador->nombre}</p>
-       <p>  {$jugador->apellido}</p>
-       <p>  {$jugador->descripcion}</p>
-       <p>  {$jugador->posicion}</p>
-       <p>  {$jugador->id_pais}</p>
-       <img src=" {$jugador->foto} ">
-        
+       <h1>{$jugador->nombre}</h1>
+       <h2>{$jugador->apellido}</h2>
+       <p>{$jugador->descripcion}</p>
+       <h3>{$jugador->posicion}</h3>
+       <p>{$jugador->id_pais}</p>
+       <img src="{$jugador->foto}">
     </section>
-
-   
-
-
-
+    
 {include file = 'footer.tpl'}

@@ -15,14 +15,12 @@ Class jugadoresModel{
         return $jugadores;
     }
     
-
     function getJugador ($id) {//función para obtener un jugador ($jugador->id)
         $sentencia = $this->db->prepare("SELECT * FROM jugadores WHERE (id)=:id");
         $sentencia->execute(array(":id"=>$id));
         $jugador= $sentencia->fetch(PDO::FETCH_OBJ);
         return $jugador;
     }
-    
 
     //función para obtener los jugadores segun pais ($pais->id)
 }
