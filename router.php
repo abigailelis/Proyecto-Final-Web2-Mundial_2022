@@ -1,6 +1,6 @@
 <?php
-require_once('mundial_app/controllers/jugadores.controller.php');
-require_once('mundial_app/controllers/paises.controller.php');
+require_once './mundial_app/controllers/jugadores.controller.php';
+require_once './mundial_app/controllers/paises.controller.php';
 
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -21,7 +21,7 @@ switch($action){
         //crear funcion home
     break;
     case 'jugadores':
-        $jugadoresControler= new jugadoresController();
+        $jugadoresController= new jugadoresController();
         $jugadoresController -> showJugadores();
     break;
         

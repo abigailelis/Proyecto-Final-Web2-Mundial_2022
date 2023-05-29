@@ -12,10 +12,10 @@
     <tbody>
         {foreach from=$jugadores item=jugador}
             <tr>
-                <td>{jugador->nombre}</td>
-                <td>{jugador->apellido}</td>
-                <td>{jugador->posicion}</td>
-                <td>{jugador->id_pais}</td>
+                <td>{$jugador->nombre}</td>
+                <td>{$jugador->apellido}</td>
+                <td>{$jugador->posicion}</td>
+                <td>{$jugador->id_pais}</td>
             </tr>
         {/foreach}
 

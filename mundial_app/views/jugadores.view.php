@@ -10,7 +10,7 @@ Class jugadoresView{
 
     function showJugadores($jugadores){//función para mostrar todos los jugadores
         $this -> smarty -> assign ('jugadores', $jugadores);
-        $this -> smarty -> display('../../templates/jugadores.tpl');
+        $this -> smarty -> display('./templates/jugadores.tpl');
     }
     //función para mostrar el detalle de un jugador($jugador->id)
 
