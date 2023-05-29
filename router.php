@@ -24,6 +24,6 @@ switch($action){
         $jugadoresController= new jugadoresController();
         $jugadoresController -> showJugadores();
     break;
-        
+    
         
 }
