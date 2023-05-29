@@ -1,4 +1,4 @@
-{include file = 'header.tpl'};
+{include file = 'header.tpl'}
 
 <table>
     <thead>
@@ -23,4 +23,4 @@
 
 
 
-{include file = 'footer.tpl'};
+{include file = 'footer.tpl'}
