@@ -12,10 +12,18 @@ Class jugadoresController{
         $this->view = new jugadoresView();
     }
 
-    //función para obtener todos los jugadores 
+    function showJugadores(){//función para obtener todos los jugadores
+        $jugadores= $this-> model -> getJugadores();
+        $this-> view -> showJugadores($jugadores);
+    }
 
-    //función para obtener detalle de un solo jugador 
-
-    //función para obtener todos los jugadores de un solo pais
+    function showDataJugador($id){//función para obtener detalle de un solo jugador 
+        $jugador= $this -> model -> getJugador($id);//necesita un id del jugador para traerlo
+        $this -> view -> showJugador($jugador);
+    }
     
+    function showJugadoresByPais($id){ //función para obtener todos los jugadores de un solo pais
+    $jugadores= $this -> model -> getJugadoresByPais($id);//el id debe ser del pais al que pertenecen
+    $this -> view -> showJugadoresByID($jugadores);
+    }
 }
