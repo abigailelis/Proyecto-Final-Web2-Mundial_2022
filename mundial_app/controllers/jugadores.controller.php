@@ -11,5 +11,11 @@ Class jugadoresController{
         $this->model = new jugadoresModel();
         $this->view = new jugadoresView();
     }
+
+    //función para obtener todos los jugadores 
+
+    //función para obtener detalle de un solo jugador 
+
+    //función para obtener todos los jugadores de un solo pais
     
 }

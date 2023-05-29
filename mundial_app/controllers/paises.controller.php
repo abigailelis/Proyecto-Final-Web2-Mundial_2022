@@ -11,4 +11,7 @@ Class paisesController{
         $this->model = new paisesModel();
         $this->view = new paisesView();
     }
+
+    //función para obtener todos los paises
+
 }
