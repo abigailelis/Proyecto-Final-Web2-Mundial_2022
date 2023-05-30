@@ -12,9 +12,9 @@ Class jugadoresController{
         $this->view = new jugadoresView();
     }
 
-    function showJugadores(){//función para obtener todos los jugadores
+    function showJugadores($paises){//función para obtener todos los jugadores
         $jugadores= $this-> model -> getJugadores();
-        $this-> view -> showJugadores($jugadores);
+        $this-> view -> showJugadores($jugadores, $paises);
         //$paises = $this -> model -> getPais() por si requerimos cambiar el idPais por el nombre
     }
 

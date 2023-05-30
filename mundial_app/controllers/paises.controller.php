@@ -20,4 +20,8 @@ Class paisesController{
     function showHome(){
         $this->view->showHomePage();
     }
+    function getPaises(){
+        $paises= $this-> model -> getPaises();
+        return $paises;
+    }
 }

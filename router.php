@@ -17,8 +17,10 @@ switch($action){
         $paisesController ->showHome();
         break;
     case 'jugadores':
+        $paisesController= new paisesController();
+        $paises = $paisesController ->getPaises();
         $jugadoresController= new jugadoresController();
-        $jugadoresController -> showJugadores();
+        $jugadoresController -> showJugadores($paises);
         break;
     case 'jugador':
         $jugadorController= new jugadoresController();
