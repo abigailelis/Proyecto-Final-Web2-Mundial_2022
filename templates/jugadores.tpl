@@ -23,7 +23,7 @@
                         <td>{$pais->nombre}</td>
                     {/if}
                 {/foreach}
-                <td><a href="jugador/{$jugador->id}">Ver más</a></td>
+                <td><a href="jugador/ver/{$jugador->id}">Ver más</a></td>
                 <td><a href="jugador/editar/{$jugador->id}">Editar</a></td>
                 <td><a href="jugador/borrar/{$jugador->id}">Borrar</a></td>
             </tr>

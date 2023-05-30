@@ -18,9 +18,9 @@ Class jugadoresController{
         //$paises = $this -> model -> getPais() por si requerimos cambiar el idPais por el nombre
     }
 
-    function showDataJugador($id){//función para obtener detalle de un solo jugador 
+    function showDataJugador($id, $paises){//función para obtener detalle de un solo jugador 
         $jugador= $this -> model -> getJugador($id);//necesita un id del jugador para traerlo
-        $this -> view -> showJugador($jugador);
+        $this -> view -> showJugador($jugador, $paises);
     }
     
     function showJugadoresByPais($id){ //función para obtener todos los jugadores de un solo pais

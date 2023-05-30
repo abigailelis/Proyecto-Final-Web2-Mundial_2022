@@ -15,9 +15,10 @@ Class jugadoresView{
         $this -> smarty -> display('./templates/jugadores.tpl');
     }
       
-    function showJugador($jugador){//función para mostrar el detalle de un jugador($jugador->id)
+    function showJugador($jugador, $paises){//función para mostrar el detalle de un jugador($jugador->id)
         $this -> smarty -> assign ('titulo', 'Descripción del jugador');
         $this -> smarty -> assign ('jugador', $jugador);
+        $this -> smarty -> assign ('paises', $paises);
         $this -> smarty -> display('./templates/jugador.tpl');
     }
     //función para mostrar el listado de jugadores de un solo pais($arreglo de jugadores)

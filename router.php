@@ -23,8 +23,29 @@ switch($action){
         $jugadoresController -> showJugadores($paises);
         break;
     case 'jugador':
-        $jugadorController= new jugadoresController();
-        $jugadorController ->showDataJugador($params[1]); 
+        $paisesController= new paisesController();
+        $paises = $paisesController ->getPaises();
+        switch ($params[1]){
+            case 'editar':
+                /*funcion editar con $params[2] que seria el id del jugador;
+                *jugadores/editar/id precarga los datos en el formulario
+                *el boton enviar del formulario es el que lo edita en la bbdd 
+                *y luego hay que mostrarlo en la descripcion del jugador
+                */
+                break;
+            case 'borrar':
+                //funcion de borrar con $params[2];
+            case 'add':
+                //funcion agregar con $params[2];
+                break;
+            case 'ver':
+                $jugadorController= new jugadoresController();
+                $jugadorController ->showDataJugador($params[2], $paises);
+                break;
+            default:
+                //hacer template de error;
+                break;
+        }
         break;
     case 'paises':
         $paisesController= new paisesController();
