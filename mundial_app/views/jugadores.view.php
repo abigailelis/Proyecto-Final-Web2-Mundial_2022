@@ -22,7 +22,12 @@ Class jugadoresView{
         $this -> smarty -> display('./templates/jugador.tpl');
     }
     //función para mostrar el listado de jugadores de un solo pais($arreglo de jugadores)
-
+    function showJugadoresByPais($jugadores, $pais){
+        $this -> smarty -> assign ('titulo', $pais->nombre);
+        $this -> smarty -> assign ('jugadores', $jugadores);
+        $this -> smarty -> assign ('pais', $pais);
+        $this -> smarty -> display('./templates/jugadoresByPais.tpl');
+    }
     function AgregarJugador(){
         
     }

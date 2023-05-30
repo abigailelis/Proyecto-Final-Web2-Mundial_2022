@@ -23,8 +23,8 @@ Class jugadoresController{
         $this -> view -> showJugador($jugador, $paises);
     }
     
-    function showJugadoresByPais($id){ //función para obtener todos los jugadores de un solo pais
-        $jugadores= $this -> model -> getJugadoresByPais($id);//el id debe ser del pais al que pertenecen
-        $this -> view -> showJugadoresByID($jugadores);
+    function showJugadoresByPais($pais){ //función para obtener todos los jugadores de un solo pais
+        $jugadores= $this -> model -> getJugadoresByPais($pais);//pais es el objeto pais de la bbdd
+        $this -> view -> showJugadoresByPais($jugadores, $pais);
     }
 }

@@ -1,23 +1,17 @@
 {include file='header.tpl'}
-
-<table class="table table-dark">
-    <thead>
-        <tr>
-            <th>nombre</th>
-            <th>continente</th>
-            <th>clasificacion</th>
-            <th>foto</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="container mt-5">
+    <section class="paises">
         {foreach from=$paises item=pais}
-            <tr>
-                <td>{$pais->nombre}</td>
-                <td>{$pais->continente}</td>
-                <td>{$pais->clasificacion}</td>
-                <td><img src="{$pais->foto}"></td>
-            </tr>
+            <section class="card">
+                <img src="{$pais->bandera}"  class="card-img-top" alt="Bandera de {$pais->nombre}">
+                <div class="card-body">
+                    <h2 class="card-title">{$pais->nombre}</h2>
+                    <h3 class="card-text">{$pais->continente}</h3>
+                    <h3> Clasificación {$pais->clasificacion}</h3>
+                    <button type="submit" class="btn btn-outline-primary"><a href="jugadores/{$pais->nombre}">Ver más</a></button>
+                </div>
+            </section>
         {/foreach}
-    </tbody>
-
+    </section>
+</div>
 {include file='footer.tpl'}

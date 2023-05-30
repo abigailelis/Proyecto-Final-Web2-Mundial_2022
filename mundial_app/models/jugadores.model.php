@@ -32,7 +32,11 @@ Class jugadoresModel{
 
     }
 
-
-
-
+    function getJugadoresByPais($pais){
+        $id_pais = $pais->id;
+        $sentencia = $this->db->prepare("SELECT * FROM jugadores WHERE (id_pais)=:id_pais");
+        $sentencia->execute(array(":id_pais"=>$id_pais));
+        $jugadores= $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $jugadores;
+    }
 }

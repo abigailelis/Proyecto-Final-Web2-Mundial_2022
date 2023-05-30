@@ -14,4 +14,11 @@ Class paisesModel{
         $paises= $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $paises;
     }
+
+    function getPais($nombre_pais){
+        $sentencia = $this->db->prepare("SELECT * FROM paises WHERE (nombre) = :nombre");
+        $sentencia->execute(array(":nombre"=>$nombre_pais));
+        $pais= $sentencia->fetch(PDO::FETCH_OBJ);
+        return $pais;
+    }
 }
