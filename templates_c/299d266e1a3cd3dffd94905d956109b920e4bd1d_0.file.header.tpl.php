@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-05-29 22:33:55
+/* Smarty version 4.3.0, created on 2023-05-30 15:48:33
   from 'C:\xampp\htdocs\TPE_WEB2\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_64750c33af49f6_82709606',
+  'unifunc' => 'content_6475feb1b92389_29035164',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '299d266e1a3cd3dffd94905d956109b920e4bd1d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE_WEB2\\templates\\header.tpl',
-      1 => 1685386445,
+      1 => 1685418838,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64750c33af49f6_82709606 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6475feb1b92389_29035164 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,5 +32,6 @@ function content_64750c33af49f6_82709606 (Smarty_Internal_Template $_smarty_tpl)
     <!-- podriamos agregar css si es necesario -->
     <title>Mundial 2022</title>
 </head>
-<body><?php }
+<body>
+<?php }
 }

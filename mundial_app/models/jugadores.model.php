@@ -23,4 +23,16 @@ Class jugadoresModel{
     }
 
     //función para obtener los jugadores segun pais ($pais->id)
+
+    function cargarJugadorNuevo($nombre, $apellido, $descripcion, $posicion, $foto, $id_pais){
+        $sentencia = $this->db->prepare("INSERT INTO `jugadores` (`id`, `nombre`, `apellido`, `descripcion`, `posicion`, `foto`, `id_pais`) VALUES (NULL, '$nombre', '$apellido', '$descripcion', '$posicion', '$foto', '$id_pais'"); 
+        $sentencia->execute();
+        $jugadores= $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $jugadores;
+
+    }
+
+
+
+
 }
