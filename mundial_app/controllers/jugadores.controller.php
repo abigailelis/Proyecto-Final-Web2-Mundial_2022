@@ -24,7 +24,7 @@ Class jugadoresController{
     }
     
     function showJugadoresByPais($id){ //función para obtener todos los jugadores de un solo pais
-    $jugadores= $this -> model -> getJugadoresByPais($id);//el id debe ser del pais al que pertenecen
-    $this -> view -> showJugadoresByID($jugadores);
+        $jugadores= $this -> model -> getJugadoresByPais($id);//el id debe ser del pais al que pertenecen
+        $this -> view -> showJugadoresByID($jugadores);
     }
 }
