@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 4.3.0, created on 2023-05-30 08:08:06
+  from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\header.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.3.0',
+  'unifunc' => 'content_647592c63e4e08_10298179',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '5764e9bc9c3137de40df94854f2e7e1fcd85d4d2' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\header.tpl',
+      1 => 1685426881,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_647592c63e4e08_10298179 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,3 +48,5 @@
     </div>
   </nav>
 </header>
+<?php }
+}

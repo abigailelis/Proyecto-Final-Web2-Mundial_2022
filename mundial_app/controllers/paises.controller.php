@@ -16,5 +16,4 @@ Class paisesController{
         $paises= $this-> model -> getPaises();
         $this-> view -> showPaises($paises);
     }
-
 }

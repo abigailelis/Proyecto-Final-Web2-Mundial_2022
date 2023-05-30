@@ -26,8 +26,7 @@ switch($action){
     case 'paises':
         $paisesController= new paisesController();
         $paisesController ->showPaises(); 
-    break;
-
+        break;
     default:
         echo "error";
         break;

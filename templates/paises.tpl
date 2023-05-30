@@ -1,6 +1,6 @@
-{include file = 'header.tpl'}
+{include file='header.tpl'}
 
-<table>
+<table class="table table-dark">
     <thead>
         <tr>
             <th>nombre</th>
@@ -15,12 +15,9 @@
                 <td>{$pais->nombre}</td>
                 <td>{$pais->continente}</td>
                 <td>{$pais->clasificacion}</td>
-                <td><img src=" {$pais->foto} "></td>
+                <td><img src="{$pais->foto}"></td>
             </tr>
         {/foreach}
-
     </tbody>
 
-
-
-{include file = 'footer.tpl'}
+{include file='footer.tpl'}
