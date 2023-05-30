@@ -4,7 +4,7 @@ Class jugadoresModel{
     private $db; 
 
     public function __construct(){
-        $this->db = new PDO ('mysql:host=localhost;'.'dbname=db_mundial;charset=utf8', 'root', ''); 
+        $this->db = new PDO ('mysql:host=localhost:4306;'.'dbname=db_mundial;charset=utf8', 'root', ''); 
         //Creó un grupo de BBDD y lo guardo en ese mismo grupo.
     }
 
@@ -39,4 +39,11 @@ Class jugadoresModel{
         $jugadores= $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $jugadores;
     }
+
+    function deleteJugador($id){
+        $sentencia = $this->db->prepare("DELETE FROM jugadores WHERE (id)=:id");
+        $sentencia->execute(array(":id"=>$id));
+        header("Location:".jugadores);
+    }
+
 }

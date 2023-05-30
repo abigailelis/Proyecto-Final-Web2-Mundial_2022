@@ -13,6 +13,8 @@
                         <textarea class="form-control" name="descripcion"></textarea>
                     <label for="posicion">Posición</label> 
                         <input class="form-control" type="text" name="posicion">
+                    <label for="foto">Foto</label> 
+                        <input class="form-control" type="text" name="foto" placeholder="Ingrese la url de la imágen">
                     <label for="pais">Pais</label> 
                         <select name="pais">
                             {foreach from=$paises item=pais}

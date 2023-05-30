@@ -12,7 +12,7 @@ Class jugadoresController{
         $this->view = new jugadoresView();
     }
 
-    function showJugadores($paises){//función para obtener todos los jugadores
+    function showJugadores($paises, $action){//función para obtener todos los jugadores
         $jugadores= $this-> model -> getJugadores();
         $this-> view -> showJugadores($jugadores, $paises);
         //$paises = $this -> model -> getPais() por si requerimos cambiar el idPais por el nombre
@@ -26,5 +26,9 @@ Class jugadoresController{
     function showJugadoresByPais($pais){ //función para obtener todos los jugadores de un solo pais
         $jugadores= $this -> model -> getJugadoresByPais($pais);//pais es el objeto pais de la bbdd
         $this -> view -> showJugadoresByPais($jugadores, $pais);
+    }
+    function deleteJugador($id){
+        $this-> model-> deleteJugador($id);
+        header("Location:".jugadores);
     }
 }
