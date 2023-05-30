@@ -12,4 +12,9 @@ Class paisesView{
         $this -> smarty -> assign ('paises', $paises);
         $this -> smarty -> display('./templates/paises.tpl');
     }
+
+    function showHomePage(){
+        $this -> smarty -> assign('titulo', 'Mundial 2022');
+        $this -> smarty -> display('./templates/home.tpl');
+    }
 }

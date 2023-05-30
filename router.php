@@ -13,7 +13,8 @@ if (!empty($_GET['action'])){
 
 switch($action){
     case 'home':
-        //crear funcion home
+        $paisesController= new paisesController();
+        $paisesController ->showHome();
         break;
     case 'jugadores':
         $jugadoresController= new jugadoresController();
