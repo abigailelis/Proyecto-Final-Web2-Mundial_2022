@@ -28,6 +28,11 @@ switch($action){
         $jugadorController= new jugadoresController();
         $jugadorController ->showDataJugador($params[1]); 
     break;
+    case 'paises':
+        $paisesController= new paisesController();
+        $paisesController ->showPaises(); 
+    break;
+
             
 
         

@@ -8,5 +8,8 @@ Class paisesView{
         $this->smarty = new Smarty();
     }
 
-    //función para mostrar todos los paises ($paises)
+    function showPaises($paises){//función para mostrar todos los paises
+        $this -> smarty -> assign ('paises', $paises);
+        $this -> smarty -> display('./templates/paises.tpl');
+    }
 }
