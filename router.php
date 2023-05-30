@@ -35,6 +35,7 @@ switch($action){
                 break;
             case 'borrar':
                 //funcion de borrar con $params[2];
+                break;
             case 'add':
                 //funcion agregar con $params[2];
                 break;
@@ -48,12 +49,11 @@ switch($action){
         }
         break;
     case 'paises': 
-        if($params[1]){
+        if(!empty($params[1])){
             $paisesController= new paisesController();
             $pais = $paisesController ->getPais($params[1]);
             $jugadoresController= new jugadoresController();
-            $jugadoresController -> showJugadoresByPais($pais);
-                
+            $jugadoresController -> showJugadoresByPais($pais);   
         }else{
             $paisesController= new paisesController();
             $paisesController ->showPaises();

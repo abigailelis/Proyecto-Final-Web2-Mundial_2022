@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-05-30 10:25:01
+/* Smarty version 4.3.0, created on 2023-05-30 14:13:02
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_6475b2dd761d89_29341141',
+  'unifunc' => 'content_6475e84e78c089_19719808',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5764e9bc9c3137de40df94854f2e7e1fcd85d4d2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\header.tpl',
-      1 => 1685435025,
+      1 => 1685439781,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6475b2dd761d89_29341141 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6475e84e78c089_19719808 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +37,7 @@ function content_6475b2dd761d89_29341141 (Smarty_Internal_Template $_smarty_tpl)
 <header>
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="home">Mundial 2022</a>
+      <a class="navbar-brand" href="home">Home</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="paises">Paises</a></li>
