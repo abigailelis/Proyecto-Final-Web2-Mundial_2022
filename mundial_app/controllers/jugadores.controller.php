@@ -30,5 +30,48 @@ Class jugadoresController{
     function deleteJugador($id){
         $this-> model-> deleteJugador($id);
         header("Location:".jugadores);
+        die();
+    }
+    function showFormulario($action, $paises, $id){
+        switch($action){
+            case 'editar':
+                $datosJugador = $this->model->getJugador($id);
+                $nombre = $datosJugador->nombre;
+                $apellido = $datosJugador->apellido;
+                $descripcion = $datosJugador->descripcion;
+                $posicion = $datosJugador->posicion;
+                $foto = $datosJugador->foto;
+                $this->view->showFormulario($action, $paises,$nombre, $apellido, $descripcion, $foto, $posicion, $id);      
+                break;
+            case 'add':
+                $this->view->showFormulario($action, $paises, null, null, null, null, null, null);
+                break;
+        }
+    }
+    function getDatosFormulario(){
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $posicion = $_POST['posicion'];
+            $descripcion = $_POST['descripcion'];
+            $foto = $_POST['foto'];
+            $pais = $_POST['pais'];
+        if(!empty($nombre) && !empty($apellido) && !empty($posicion) && !empty($descripcion) && !empty($foto) && !empty($pais)){
+            return array("nombre"=>$nombre,
+                        "apellido"=>$apellido,
+                        "posicion"=>$posicion,
+                        "descripcion"=>$descripcion,
+                        "foto"=>$foto,
+                        "pais"=>$pais); 
+        }        
+    }
+    function addJugador(){
+        $jugador = $this->getDatosFormulario();
+        $id =$this->model->addJugador($jugador['nombre'], $jugador['apellido'], $jugador['descripcion'], $jugador['posicion'], $jugador['foto'], $jugador['pais']);
+        header("Location:".jugador."ver/".$id);
+    }
+    function editarJugador($id){
+        $jugador = $this->getDatosFormulario(); 
+        $jugador =$this->model->editarJugador($jugador['nombre'], $jugador['apellido'], $jugador['descripcion'], $jugador['posicion'], $jugador['foto'], $jugador['pais'], $id);
+        print_r($jugador);
     }
 }

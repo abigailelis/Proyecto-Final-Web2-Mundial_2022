@@ -33,18 +33,25 @@ switch($action){
         $paises = $paisesController ->getPaises();
         switch ($params[1]){
             case 'editar':
-                /*funcion editar con $params[2] que seria el id del jugador;
-                *jugadores/editar/id precarga los datos en el formulario
-                *el boton enviar del formulario es el que lo edita en la bbdd 
-                *y luego hay que mostrarlo en la descripcion del jugador
-                */
-                break;
+                $jugadorController= new jugadoresController();
+                $jugadorController ->showFormulario($params[1], $paises, $params[2]);
+                if(!empty($params[3]) && $params[3] == 'ok'){ 
+                        $jugadorController= new jugadoresController();
+                        $jugadorController ->editarJugador($params[2]);
+                }
+                break;                
             case 'borrar':
                 $jugadorController= new jugadoresController();
                 $jugadorController ->deleteJugador($params[2]);
             case 'add':
-                //funcion agregar con $params[2];
+                $jugadorController= new jugadoresController();
+                $jugadorController ->showFormulario($params[1], $paises, null);
+                if($params[2] == 'ok'){
+                        $jugadorController= new jugadoresController();
+                        $jugadorController ->addJugador();
+                }
                 break;
+            
             case 'ver':
                 if(($params[2]=="home")||($params[2]=="paises")||($params[2]=="jugadores")||($params[2]=="login")||($params[2]=="logout")){//tal vez hacer un arreglo que contenga los objetos del nav
                     header("Location:".BASE_URL.$params[2]); 

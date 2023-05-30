@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-05-30 09:08:16
+/* Smarty version 4.3.0, created on 2023-05-30 15:17:53
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\formulario-add.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_6475a0e0638f84_55619610',
+  'unifunc' => 'content_6475f781de2b09_57211710',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '18a6183c863d15cac954db0af9ab760a5b35ff9c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\formulario-add.tpl',
-      1 => 1685430266,
+      1 => 1685452340,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6475a0e0638f84_55619610 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6475f781de2b09_57211710 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="conteiner">
         <div class="card">
             <div class="card-header">
@@ -36,6 +36,8 @@ function content_6475a0e0638f84_55619610 (Smarty_Internal_Template $_smarty_tpl)
                         <textarea class="form-control" name="descripcion"></textarea>
                     <label for="posicion">Posición</label> 
                         <input class="form-control" type="text" name="posicion">
+                    <label for="foto">Foto</label> 
+                        <input class="form-control" type="text" name="foto" placeholder="Ingrese la url de la imágen">
                     <label for="pais">Pais</label> 
                         <select name="pais">
                             <?php

@@ -1,29 +1,28 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-05-30 09:27:56
+/* Smarty version 4.3.0, created on 2023-05-30 17:24:32
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\jugadores.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_6475a57cbb6701_80032110',
+  'unifunc' => 'content_64761530a39303_26528803',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c8eaa05133d1225dc5589da9819c4ff632fd5a3a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\jugadores.tpl',
-      1 => 1685431676,
+      1 => 1685455629,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:header.tpl' => 1,
-    'file:formulario-add.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6475a57cbb6701_80032110 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64761530a39303_26528803 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -79,7 +78,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </tbody>
 </table>
 
-<?php $_smarty_tpl->_subTemplateRender('file:formulario-add.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-$_smarty_tpl->_subTemplateRender('file:footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+<button><a href="jugador/add">Agregar Nuevo</a></button>
+<?php $_smarty_tpl->_subTemplateRender('file:footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 }
 }

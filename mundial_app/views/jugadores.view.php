@@ -28,7 +28,26 @@ Class jugadoresView{
         $this -> smarty -> assign ('pais', $pais);
         $this -> smarty -> display('./templates/jugadoresByPais.tpl');
     }
-    function AgregarJugador(){
+    function showFormulario($action, $paises, $nombre, $apellido, $descripcion, $foto, $posicion, $id){
+        switch($action){
+            case 'add':
+                $this -> smarty -> assign ('titulo', 'Agregar jugador');
+                break;
+            case 'editar':
+                $this -> smarty -> assign ('titulo', 'Editar jugador');
+                $this -> smarty -> assign ('nombre', $nombre);
+                $this -> smarty -> assign ('apellido', $apellido);
+                $this -> smarty -> assign ('posicion', $posicion);
+                $this -> smarty -> assign ('foto', $foto);
+                $this -> smarty -> assign ('descripcion', $descripcion);
+                $this -> smarty -> assign ('id',$id);
+                break;
+                
+        }
+        $this -> smarty -> assign ('action', $action);
+        $this -> smarty -> assign ('status','ok');
+        $this -> smarty -> assign ('paises', $paises);
+        $this -> smarty -> display('./templates/formulario.tpl');
         
     }
 }

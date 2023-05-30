@@ -31,5 +31,5 @@
     </tbody>
 </table>
 
-{include file='formulario-add.tpl'}
+<button><a href="jugador/add">Agregar Nuevo</a></button>
 {include file='footer.tpl'}
