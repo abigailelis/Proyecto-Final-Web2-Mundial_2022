@@ -47,19 +47,17 @@ switch($action){
                 break;
         }
         break;
-    case 'paises': 
+    case 'paises':
+        $paisesController= new paisesController();
+        $paisesController ->showPaises();
         switch($params[1]){
-            case (!empty($params[1])):
+            case ($params[1]):
                 $paisesController= new paisesController();
                 $pais = $paisesController ->getPais($params[1]);
                 $jugadoresController= new jugadoresController();
                 $jugadoresController -> showJugadoresByPais($pais);
                 break;
-            default:
-                $paisesController= new paisesController();
-                $paisesController ->showPaises();
-                break;
-        }        
+            }
         break;
     default:
         echo "error";
