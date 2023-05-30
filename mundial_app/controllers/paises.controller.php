@@ -24,4 +24,8 @@ Class paisesController{
         $paises= $this-> model -> getPaises();
         return $paises;
     }
+    function getPais($nombre_pais){
+        $pais= $this-> model -> getPais($nombre_pais);
+        return $pais;
+    }
 }
