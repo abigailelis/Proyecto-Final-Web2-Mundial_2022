@@ -27,4 +27,8 @@ Class jugadoresController{
         $jugadores= $this -> model -> getJugadoresByPais($pais);//pais es el objeto pais de la bbdd
         $this -> view -> showJugadoresByPais($jugadores, $pais);
     }
+    function deleteJugador($id){
+        $this-> model-> deleteJugador($id);
+        header("Location:".jugadores);
+    }
 }

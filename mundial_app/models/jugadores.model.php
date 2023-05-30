@@ -39,4 +39,11 @@ Class jugadoresModel{
         $jugadores= $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $jugadores;
     }
+
+    function deleteJugador($id){
+        $sentencia = $this->db->prepare("DELETE FROM jugadores WHERE (id)=:id");
+        $sentencia->execute(array(":id"=>$id));
+        header("Location:".jugadores);
+    }
+
 }
