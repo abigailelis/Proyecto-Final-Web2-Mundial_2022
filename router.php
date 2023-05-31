@@ -43,7 +43,8 @@ switch($action){
                 $jugadorController= new jugadoresController();
                 $jugadorController ->deleteJugador($params[2]);
             case 'add':
-                //funcion agregar con $params[2];
+                $jugadorController= new jugadoresController();
+                $jugadorController ->addJugador();
                 break;
             case 'ver':
                 if(($params[2]=="home")||($params[2]=="paises")||($params[2]=="jugadores")||($params[2]=="login")||($params[2]=="logout")){//tal vez hacer un arreglo que contenga los objetos del nav
