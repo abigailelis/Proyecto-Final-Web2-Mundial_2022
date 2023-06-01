@@ -24,7 +24,7 @@ switch($action){
             $jugadoresController= new jugadoresController();
             $jugadoresController -> showJugadores(); //listado de items
         }    
-        break;
+        break;//hacer template de error
     case 'formulario':
         switch ($params[1]){
             case 'editar':
@@ -64,10 +64,49 @@ switch($action){
         }
         break;
     case 'paises': 
-        $paisesController= new paisesController();
-        $paisesController ->showPaises(); //listado de categorias
+        switch ($params[1]){
+            case 'msgBorrar':
+                $paisesController= new paisesController();
+                $paisesController ->showMsgBorrar($params[2]);
+                break;
+            case 'borrar':
+                $paisesController= new paisesController();
+                $paisesController ->borrarPais($params[2]);
+                break;
+            case 'editar':
+                $paisesController= new paisesController();
+                $paisesController ->editarPais($params[2]);
+                break;
+            case 'add':
+                $paisesController= new paisesController();
+                $paisesController ->addPais();
+                break;
+            case 'ver':
+                $paisesController= new paisesController();
+                $paisesController ->showPaises(); //listado de categorias
+                break;
+            default:
+                //hacer template error;
+                break;
+        }
+        break;
+    case 'formPais':
+        switch ($params[1]){
+            case 'add':
+                $paisesController= new paisesController();
+                $paisesController ->showFormularioAdd();
+                break;
+            case 'editar':
+                $paisesController= new paisesController();
+                $paisesController ->showFormularioEdit($params[2]);
+                break;
+            default:
+             //hacer template error;
+             break;
+        }
         break;
     default:
-        echo "error";
+        $paisesController= new paisesController();
+        $paisesController ->showError('Url not found');
         break;
 }

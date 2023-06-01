@@ -60,4 +60,12 @@ Class jugadoresView{
         $this -> smarty -> assign ('paises', $paises);
         $this -> smarty -> display('./templates/formularioEditar.tpl');
     }
+
+    //Muestra el template error
+    function showError($msg){
+        $this -> smarty -> assign ('BASE_URL', BASE_URL);
+        $this -> smarty -> assign ('titulo', 'Not found');
+        $this -> smarty -> assign ('msg', $msg);
+        $this -> smarty -> display('./templates/error.tpl');
+    }
 }

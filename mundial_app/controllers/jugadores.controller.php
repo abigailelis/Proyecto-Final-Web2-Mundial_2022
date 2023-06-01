@@ -15,7 +15,7 @@ Class jugadoresController{
     }
     //función para obtener todos los jugadores de un solo pais (listado de items x categoria)
     function showJugadoresByPais($paisSelected){ 
-        $pais = $this ->modelPaises ->getPais($paisSelected);
+        $pais = $this -> modelPaises ->getPaisByName($paisSelected);
         $jugadores = $this -> model -> getJugadoresByPais($pais);
         $this -> view -> showJugadoresByPais($jugadores, $pais);
     }
@@ -30,7 +30,7 @@ Class jugadoresController{
     //función para obtener detalle de un solo jugador (detalle de item)
     function showDataJugador($id){ 
         $jugador = $this -> model -> getJugador($id);
-        $pais = $this -> modelPaises -> getPaisJugador($jugador->id_pais);
+        $pais = $this -> modelPaises -> getPais($jugador->id_pais);
         $this -> view -> showJugador($jugador, $pais);
     }
 
@@ -102,11 +102,14 @@ Class jugadoresController{
                         "posicion"=>$posicion,
                         "foto"=>$foto,
                         "pais"=>$pais]; 
-            var_dump($jugador);
             return $jugador;
         }else{
-            //header('Location:'.BASE_URL.'error');
-            echo "error no se pueden dejar campos vacios";
+            $this->showError("Los campos no pueden estar vacíos");
         }        
+    }
+
+    //Muestra el template error
+    function showError($msg){
+        $this -> view -> showError($msg);
     }
 }

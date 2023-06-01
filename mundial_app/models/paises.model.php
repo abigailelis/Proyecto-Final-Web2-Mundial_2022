@@ -16,16 +16,55 @@ Class paisesModel{
     }
 
     //función que devuelve el id del pais según el nombre de pais solicitado para el listado de items x categoria
-    function getPais($nombre_pais){
+    function getPaisByName($nombre_pais){
         $sentencia = $this -> db ->prepare("SELECT * FROM paises WHERE (nombre) = :nombre");
         $sentencia -> execute([":nombre"=>$nombre_pais]);
         $pais = $sentencia -> fetch(PDO::FETCH_OBJ);
         return $pais;
     }
-    function getPaisJugador($id){
+    function getPais($id){
         $sentencia = $this -> db -> prepare("SELECT * FROM paises WHERE (id) = :id");
         $sentencia -> execute([":id"=>$id]);
         $pais = $sentencia -> fetch(PDO::FETCH_OBJ);
         return $pais;
+    }
+
+    function  borrarPais($id){
+        $sentencia = $this -> db ->prepare("DELETE FROM paises WHERE (id)=:id");
+        $sentencia -> execute([":id"=>$id]);
+    }
+
+    function addPais($nombre, $continente, $clasificacion, $bandera){
+        $sentencia = $this -> db ->prepare("INSERT INTO paises 
+                                                  (nombre, continente, clasificacion, bandera) 
+                                           VALUES (:nombre, :continente, :clasificacion, :bandera)");
+        $sentencia->execute([":nombre"=>$nombre,
+                             ":continente"=>$continente,
+                             ":clasificacion"=>$clasificacion,
+                             ":bandera"=>$bandera]);
+        $last_id = $this -> db ->lastInsertId();
+        return $last_id;
+    }
+
+
+    function editarPais($nombre, $continente, $clasificacion, $bandera, $id){
+        $sentencia = $this -> db ->prepare("UPDATE paises 
+                                            SET nombre = :nombre,
+                                                continente = :continente,
+                                                clasificacion = :clasificacion,
+                                                bandera = :bandera
+                                                WHERE id = :id");
+        $sentencia -> execute([":nombre" => $nombre, 
+                               ":continente"=> $continente, 
+                               ":clasificacion"=>$clasificacion,
+                               ":bandera"=>$bandera,
+                               ":id" => $id]);
+    }
+
+    function getClasificacion($clasificacion){
+        $sentencia = $this -> db -> prepare("SELECT clasificacion FROM paises WHERE (clasificacion) = :clasificacion");
+        $sentencia -> execute([":clasificacion" => $clasificacion]);
+        $clasificacion = $sentencia->fetch(PDO::FETCH_ASSOC);
+        return $clasificacion;
     }
 }

@@ -38,7 +38,6 @@ Class jugadoresModel{
     }
 
     function addJugador($nombre, $apellido, $descripcion, $posicion, $foto, $pais){
-        echo $nombre, $apellido, $descripcion, $posicion, $foto, $pais;
         $sentencia = $this -> db ->prepare("INSERT INTO jugadores 
                                                   (nombre, apellido, descripcion, posicion, foto, id_pais) 
                                            VALUES (:nombre, :apellido, :descripcion, :posicion, :foto, :id_pais)");
@@ -66,9 +65,7 @@ Class jugadoresModel{
                                ":posicion"=>$posicion,
                                ":foto"=>$foto, 
                                ":id_pais"=>$pais,
-                               ":id" => $id
-                            ]);
-        echo "Lleguè hasta aca!";
+                               ":id" => $id]);
     }
 
 }

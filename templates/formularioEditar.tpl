@@ -12,7 +12,7 @@
                 <label for="apellido">Apellido</label>
                     <input class="form-control" type="text" name="apellido" value="{$apellido}">
                 <label for="descripcion">Descripción</label>
-                    <textarea class="form-control" name="descripcion" value="{$descripcion}"></textarea>
+                    <textarea class="form-control" name="descripcion" value="{$descripcion}">{$descripcion}</textarea>
                 <label for="posicion">Posición</label>
                     <input class="form-control" type="text" name="posicion" value="{$posicion}">
                 <label for="foto">Foto</label>
