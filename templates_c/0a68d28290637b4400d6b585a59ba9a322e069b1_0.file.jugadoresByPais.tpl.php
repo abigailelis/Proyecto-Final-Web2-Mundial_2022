@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-05-30 10:39:47
+/* Smarty version 4.3.0, created on 2023-05-31 19:24:29
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\jugadoresByPais.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_6475b6536c4d02_66745278',
+  'unifunc' => 'content_647782cddc8202_72844621',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0a68d28290637b4400d6b585a59ba9a322e069b1' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\jugadoresByPais.tpl',
-      1 => 1685433512,
+      1 => 1685553862,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6475b6536c4d02_66745278 (Smarty_Internal_Template $_smarty_tpl) {
+function content_647782cddc8202_72844621 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 

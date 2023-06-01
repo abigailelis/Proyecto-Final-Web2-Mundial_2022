@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-05-31 20:03:48
-  from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\formulario.tpl' */
+/* Smarty version 4.3.0, created on 2023-06-01 05:06:10
+  from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\formularioAdd.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_64778c04582282_91985465',
+  'unifunc' => 'content_64780b22317689_87676331',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'fb590786dcacd6d5ad218ee9513ccb9f3a1ee5f8' => 
+    '13cdaae78be2e59038eb4c3a3abb149b63659ef7' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\formulario.tpl',
-      1 => 1685556206,
+      0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\formularioAdd.tpl',
+      1 => 1685588081,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_64778c04582282_91985465 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64780b22317689_87676331 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="conteiner">
@@ -33,23 +33,19 @@ $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_sm
             </div>
             <div class="card-body">
             
-                <form action="<?php echo $_smarty_tpl->tpl_vars['ruta']->value;?>
+                <form action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;
+echo $_smarty_tpl->tpl_vars['action']->value;?>
 " method="POST">
                     <label for="nombre">Nombre</label> 
-                        <input class="form-control" type="text" name="nombre" value="<?php echo $_smarty_tpl->tpl_vars['nombre']->value;?>
-">
+                        <input class="form-control" type="text" name="nombre" value="">
                     <label for="apellido">Apellido</label> 
-                        <input class="form-control" type="text" name="apellido" value="<?php echo $_smarty_tpl->tpl_vars['apellido']->value;?>
-">
+                        <input class="form-control" type="text" name="apellido" value="">
                     <label for="descripcion">Descripción</label> 
-                        <textarea class="form-control" name="descripcion" value="<?php echo $_smarty_tpl->tpl_vars['descripcion']->value;?>
-"></textarea>
+                        <textarea class="form-control" name="descripcion" value=""></textarea>
                     <label for="posicion">Posición</label> 
-                        <input class="form-control" type="text" name="posicion" value="<?php echo $_smarty_tpl->tpl_vars['posicion']->value;?>
-">
+                        <input class="form-control" type="text" name="posicion" value="">
                     <label for="foto">Foto</label> 
-                        <input class="form-control" type="text" name="foto"value="<?php echo $_smarty_tpl->tpl_vars['foto']->value;?>
-"  placeholder="Ingrese la url de la imágen">
+                        <input class="form-control" type="text" name="foto"value="">
                     <label for="pais">Pais</label> 
                         <select name="pais">
                             <?php
@@ -65,7 +61,6 @@ $_smarty_tpl->tpl_vars['pais']->do_else = false;
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         </select>
-
                     <button class="btn bten-success" type="submit">Enviar</button>
                 </form>
             </div>

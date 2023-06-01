@@ -5,55 +5,70 @@ Class jugadoresModel{
 
     public function __construct(){
         $this->db = new PDO ('mysql:host=localhost;'.'dbname=db_mundial;charset=utf8', 'root', ''); 
-        //Creó un grupo de BBDD y lo guardo en ese mismo grupo.
     }
 
-    function getJugadores(){//función para obtener todos los jugadores
-        $sentencia = $this->db->prepare("SELECT * FROM jugadores");
-        $sentencia->execute();
-        $jugadores= $sentencia->fetchAll(PDO::FETCH_OBJ);
+    //función para obtener los jugadores segun pais (items x categoria)
+    function getJugadoresByPais($pais){
+        $sentencia = $this -> db ->prepare("SELECT * FROM jugadores WHERE (id_pais)=:id_pais");
+        $sentencia -> execute([":id_pais" => $pais->id]);
+        $jugadores = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $jugadores;
     }
-    
-    function getJugador ($id) {//función para obtener un jugador ($jugador->id)
-        $sentencia = $this->db->prepare("SELECT * FROM jugadores WHERE (id)=:id");
-        $sentencia->execute(array(":id"=>$id));
-        $jugador= $sentencia->fetch(PDO::FETCH_OBJ);
+
+    //función para obtener todos los jugadores
+    function getJugadores(){
+        $sentencia = $this -> db -> prepare("SELECT * FROM jugadores");
+        $sentencia -> execute();
+        $jugadores = $sentencia -> fetchAll(PDO::FETCH_OBJ);
+        return $jugadores;
+    }
+
+    //función para obtener un jugador ($jugador->id)
+    function getJugador ($id) {
+        $sentencia = $this -> db ->prepare("SELECT * FROM jugadores WHERE (id)=:id");
+        $sentencia -> execute([":id"=>$id]);
+        $jugador = $sentencia -> fetch(PDO::FETCH_OBJ);
         return $jugador;
     }
 
-    //función para obtener los jugadores segun pais ($pais->id)
-    function getJugadoresByPais($pais){
-        $id_pais = $pais->id;
-        $sentencia = $this->db->prepare("SELECT * FROM jugadores WHERE (id_pais)=:id_pais");
-        $sentencia->execute(array(":id_pais"=>$id_pais));
-        $jugadores= $sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $jugadores;
+    //Borrar jugador según id
+    function deleteJugador($id){
+        $sentencia = $this -> db ->prepare("DELETE FROM jugadores WHERE (id)=:id");
+        $sentencia -> execute([":id"=>$id]);
     }
 
-    function deleteJugador($id){
-        $sentencia = $this->db->prepare("DELETE FROM jugadores WHERE (id)=:id");
-        $sentencia->execute(array(":id"=>$id));
-        header("Location:".jugadores);
-    }
     function addJugador($nombre, $apellido, $descripcion, $posicion, $foto, $pais){
-        $sentencia = $this->db->prepare("INSERT INTO jugadores (nombre, apellido, posicion, descripcion, foto, id_pais) 
-                                        VALUES (:nombre, :apellido, :posicion, :descripcion, :foto, :id_pais)");
-        $sentencia->execute(array(":nombre"=>$nombre,
-                                  ":apellido"=>$apellido,
-                                  ":posicion"=>$posicion,
-                                  ":descripcion"=>$descripcion,
-                                  ":foto"=>$foto,
-                                  ":id_pais"=>$pais)
-                            );
-        $last_id =$this->db->lastInsertId();
+        echo $nombre, $apellido, $descripcion, $posicion, $foto, $pais;
+        $sentencia = $this -> db ->prepare("INSERT INTO jugadores 
+                                                  (nombre, apellido, descripcion, posicion, foto, id_pais) 
+                                           VALUES (:nombre, :apellido, :descripcion, :posicion, :foto, :id_pais)");
+        $sentencia->execute([":nombre"=>$nombre,
+                             ":apellido"=>$apellido,
+                             ":descripcion"=>$descripcion,
+                             ":posicion"=>$posicion,
+                             ":foto"=>$foto,
+                             ":id_pais"=>$pais]);
+        $last_id = $this -> db ->lastInsertId();
         return $last_id;
     }
     function editarJugador($nombre, $apellido, $descripcion, $posicion, $foto, $pais, $id){
-        $sentencia = $this->db->prepare("UPDATE jugadores SET (nombre) = :nombre, (apellido) = :apellido, (posicion)= :posicion, (descripcion)= :descripcion, (foto)=:foto, (id_pais)=:id_pais WHERE (id)=:id");
-        $sentencia->execute([":id"=>$id,":nombre"=>$nombre, ":apellido"=>$apellido, ":posicion"=>$posicion,":descripcion"=>$descripcion, ":foto"=>$foto, ":id_pais"=>$pais]);
-        $jugador = fetch(PDO::FETCH_OBJ);
-        return $jugador;
+        $sentencia = $this -> db ->prepare("UPDATE jugadores 
+                                            SET nombre = :nombre,
+                                                apellido = :apellido,
+                                                descripcion = :descripcion,
+                                                posicion = :posicion,
+                                                foto = :foto,
+                                                id_pais = :id_pais
+                                                WHERE id = :id");
+        $sentencia -> execute([":nombre" => $nombre, 
+                               ":apellido"=> $apellido, 
+                               ":descripcion"=>$descripcion,
+                               ":posicion"=>$posicion,
+                               ":foto"=>$foto, 
+                               ":id_pais"=>$pais,
+                               ":id" => $id
+                            ]);
+        echo "Lleguè hasta aca!";
     }
 
 }

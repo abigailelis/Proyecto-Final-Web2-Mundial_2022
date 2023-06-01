@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-05-30 11:05:47
+/* Smarty version 4.3.0, created on 2023-06-01 04:41:28
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\paises.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_6475bc6bbb5a81_70669942',
+  'unifunc' => 'content_647805583bdd04_54734926',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '47c1724f7776251335c50b281898a1176d0d89b2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\paises.tpl',
-      1 => 1685437380,
+      1 => 1685587200,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6475bc6bbb5a81_70669942 (Smarty_Internal_Template $_smarty_tpl) {
+function content_647805583bdd04_54734926 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container mt-5">
@@ -44,7 +44,8 @@ $_smarty_tpl->tpl_vars['pais']->do_else = false;
 </h3>
                     <h3> Clasificación <?php echo $_smarty_tpl->tpl_vars['pais']->value->clasificacion;?>
 </h3>
-                    <button class="btn btn-outline-primary"><a href="paises/<?php echo $_smarty_tpl->tpl_vars['pais']->value->nombre;?>
+                    <button class="btn btn-outline-primary"><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+jugadores/<?php echo $_smarty_tpl->tpl_vars['pais']->value->nombre;?>
 ">Ver más</a></button>
                 </div>
             </section>
