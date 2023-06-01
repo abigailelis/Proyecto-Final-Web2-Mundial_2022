@@ -13,13 +13,13 @@
 <header>
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="home">Home</a>
+      <a class="navbar-brand" href="{$BASE_URL}home">Home</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="{$BASE_URL}paises/ver",paises>Paises</a></li>
-          <li class="nav-item"><a class="nav-link" href="{$BASE_URL}jugadores",jugadores>Jugadores</a></li>
-          <li class="nav-item"><a class="nav-link" href="{$BASE_URL}login",login>Log in</a></li>
-          <li class="nav-item"><a class="nav-link" href="{$BASE_URL}logout",logout>Log out</a></li>
+          <li class="nav-item"><a class="nav-link" href="{$BASE_URL}paises/ver">Paises</a></li>
+          <li class="nav-item"><a class="nav-link" href="{$BASE_URL}jugadores">Jugadores</a></li>
+          <li class="nav-item"><a class="nav-link" href="{$BASE_URL}login">Log in</a></li>
+          <li class="nav-item"><a class="nav-link" href="{$BASE_URL}logout">Log out</a></li>
         </ul>
       </div>
     </div>

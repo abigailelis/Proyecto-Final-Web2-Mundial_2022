@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-01 19:32:57
+/* Smarty version 4.3.0, created on 2023-06-02 01:10:27
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_6478d649428106_75825755',
+  'unifunc' => 'content_64792563a45b04_05910004',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5764e9bc9c3137de40df94854f2e7e1fcd85d4d2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\header.tpl',
-      1 => 1685640534,
+      1 => 1685661027,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6478d649428106_75825755 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64792563a45b04_05910004 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,17 +38,18 @@ function content_6478d649428106_75825755 (Smarty_Internal_Template $_smarty_tpl)
 <header>
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="home">Home</a>
+      <a class="navbar-brand" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+home">Home</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-paises/ver",paises>Paises</a></li>
+paises/ver">Paises</a></li>
           <li class="nav-item"><a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-jugadores",jugadores>Jugadores</a></li>
+jugadores">Jugadores</a></li>
           <li class="nav-item"><a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-login",login>Log in</a></li>
+login">Log in</a></li>
           <li class="nav-item"><a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-logout",logout>Log out</a></li>
+logout">Log out</a></li>
         </ul>
       </div>
     </div>

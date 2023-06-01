@@ -1,6 +1,7 @@
 <?php
 require_once './mundial_app/controllers/jugadores.controller.php';
 require_once './mundial_app/controllers/paises.controller.php';
+require_once './mundial_app/controllers/usuarios.controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -104,6 +105,10 @@ switch($action){
              //hacer template error;
              break;
         }
+        break;
+    case 'login':
+        $usuariosController = new usuariosController();
+        $usuariosController ->showLogin();
         break;
     default:
         $paisesController= new paisesController();
