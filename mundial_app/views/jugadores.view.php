@@ -49,5 +49,5 @@ Class jugadoresView{
         $this -> smarty -> assign ('paises', $paises);
         $this -> smarty -> display('./templates/formulario.tpl');
         
-    }
+    }//
 }

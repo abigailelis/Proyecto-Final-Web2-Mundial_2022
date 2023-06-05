@@ -1,5 +1,5 @@
 <?php
-
+//agregar otro modelo de paises
 require_once './mundial_app/models/jugadores.model.php';
 require_once './mundial_app/views/jugadores.view.php';
 
