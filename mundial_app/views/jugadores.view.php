@@ -43,22 +43,22 @@ Class jugadoresView{
         $this -> smarty -> assign ('action','jugador/add');
         $this -> smarty -> assign ('titulo', 'Agregar jugador');
         $this -> smarty -> assign ('paises', $paises);
-        $this -> smarty -> display('./templates/formularioAdd.tpl');
+        $this -> smarty -> display('./templates/formularioJugador.tpl');
     }
 
     //renderiza el formulario editar con los datos del jugador seleccionado
     function showFormularioEdit($id, $nombre, $apellido, $descripcion, $posicion, $foto, $paises){
+        $action = 'jugador/editar/'.$id;
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
-        $this -> smarty -> assign ('action','jugador/editar/');
+        $this -> smarty -> assign ('action',$action);
         $this -> smarty -> assign ('titulo', 'Editar jugador');
-        $this -> smarty -> assign ('id', $id);
         $this -> smarty -> assign ('nombre', $nombre);
         $this -> smarty -> assign ('apellido', $apellido);
         $this -> smarty -> assign ('descripcion', $descripcion);
         $this -> smarty -> assign ('posicion', $posicion);
         $this -> smarty -> assign ('foto', $foto);
         $this -> smarty -> assign ('paises', $paises);
-        $this -> smarty -> display('./templates/formularioEditar.tpl');
+        $this -> smarty -> display('./templates/formularioJugador.tpl');
     }
 
     //Muestra el template error

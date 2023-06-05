@@ -6,15 +6,15 @@
             <h3>{$titulo}</h3>
         </div>
         <div class="card-body">
-            <form action="{$BASE_URL|cat:$action|cat:$id}" method="POST">
+            <form action="{$BASE_URL|cat:$action}" method="POST">
                 <label for="nombre">Nombre</label>
-                    <input class="form-control" type="text" name="nombre" value="{$nombre}">
+                    <input class="form-control" type="text" name="nombre" value="{$nombre|default: ""}">
                 <label for="continente">Continente</label>
-                    <input class="form-control" type="text" name="continente" value="{$continente}">
+                    <input class="form-control" type="text" name="continente" value="{$continente|default: ""}">
                 <label for="clasificacion">Clasificación</label>
-                    <input class="form-control" name="clasificacion" type="number" value="{$clasificacion}">
+                    <input class="form-control" name="clasificacion" type="number" value="{$clasificacion|default: ""}">
                 <label for="bandera">Bandera (url)</label>
-                    <input class="form-control" type="text" name="bandera" value="{$bandera}" placeholder="Ingrese la url de la imágen">
+                    <input class="form-control" type="text" name="bandera" value="{$bandera|default: ""}" placeholder="Ingrese la url de la imágen">
                 <button class="btn bten-success" type="submit">Enviar</button>
             </form>
         </div>

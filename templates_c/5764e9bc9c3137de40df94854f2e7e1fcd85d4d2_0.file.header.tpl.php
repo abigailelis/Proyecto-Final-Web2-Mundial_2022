@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-02 01:10:27
+/* Smarty version 4.3.0, created on 2023-06-05 20:44:54
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_64792563a45b04_05910004',
+  'unifunc' => 'content_647e2d269ad582_96719937',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64792563a45b04_05910004 (Smarty_Internal_Template $_smarty_tpl) {
+function content_647e2d269ad582_96719937 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>

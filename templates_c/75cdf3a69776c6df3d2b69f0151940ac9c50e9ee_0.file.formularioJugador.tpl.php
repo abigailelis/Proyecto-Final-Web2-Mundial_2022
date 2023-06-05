@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-05 20:49:09
-  from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\formularioEditar.tpl' */
+/* Smarty version 4.3.0, created on 2023-06-05 20:50:09
+  from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\formularioJugador.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_647e2e2529b307_19710747',
+  'unifunc' => 'content_647e2e6193c104_67940577',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'eda8f8db2e1d8b134f916b28d51b61783dee0eda' => 
+    '75cdf3a69776c6df3d2b69f0151940ac9c50e9ee' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\formularioEditar.tpl',
-      1 => 1685990937,
+      0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\formularioJugador.tpl',
+      1 => 1685990973,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_647e2e2529b307_19710747 (Smarty_Internal_Template $_smarty_tpl) {
+function content_647e2e6193c104_67940577 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 

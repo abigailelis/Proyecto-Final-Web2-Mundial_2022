@@ -6,17 +6,17 @@
             <h3>{$titulo}</h3>
         </div>
         <div class="card-body">
-            <form action="{$BASE_URL}{$action}{$id}" method="POST">
+            <form action="{$BASE_URL|cat:$action}" method="POST">
                 <label for="nombre">Nombre</label>
-                    <input class="form-control" type="text" name="nombre" value="{$nombre}">
+                    <input class="form-control" type="text" name="nombre" value="{$nombre|default:""}">
                 <label for="apellido">Apellido</label>
-                    <input class="form-control" type="text" name="apellido" value="{$apellido}">
+                    <input class="form-control" type="text" name="apellido" value="{$apellido|default:""}">
                 <label for="descripcion">Descripción</label>
-                    <textarea class="form-control" name="descripcion" value="{$descripcion}">{$descripcion}</textarea>
+                    <textarea class="form-control" name="descripcion" value="{$descripcion|default:""}">{$descripcion|default:""}</textarea>
                 <label for="posicion">Posición</label>
-                    <input class="form-control" type="text" name="posicion" value="{$posicion}">
+                    <input class="form-control" type="text" name="posicion" value="{$posicion|default:""}">
                 <label for="foto">Foto</label>
-                    <input class="form-control" type="text" name="foto" value="{$foto}">
+                    <input class="form-control" type="text" name="foto" value="{$foto|default:""}">
                 <label for="pais">Pais</label>
                 <select name="pais">
                     {foreach from=$paises item=pais}

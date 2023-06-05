@@ -16,22 +16,22 @@ Class paisesView{
     }
 
     function showFormularioEdit($id, $nombre, $continente, $clasificacion, $bandera){
+        $action = "paises/editar/".$id;
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
-        $this -> smarty -> assign ('action','paises/editar/');
+        $this -> smarty -> assign ('action', $action);
         $this -> smarty -> assign ('titulo', 'Editar pais');
-        $this -> smarty -> assign ('id', $id);
         $this -> smarty -> assign ('nombre', $nombre);
         $this -> smarty -> assign ('continente', $continente);
         $this -> smarty -> assign ('clasificacion', $clasificacion);
         $this -> smarty -> assign ('bandera', $bandera);
-        $this -> smarty -> display('./templates/formPaisEdit.tpl');
+        $this -> smarty -> display('./templates/formularioPais.tpl');
     }
 
     function showFormularioAdd(){
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
         $this -> smarty -> assign ('action','paises/add');
         $this -> smarty -> assign ('titulo', 'Agregar pais');
-        $this -> smarty -> display('./templates/formPaisAdd.tpl');
+        $this -> smarty -> display('./templates/formularioPais.tpl');
     }
     //Muestra la pagina Home
     function showHomePage(){
