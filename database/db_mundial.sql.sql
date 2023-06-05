@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:4306
--- Tiempo de generación: 31-05-2023 a las 14:53:04
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 05-06-2023 a las 21:00:44
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE `jugadores` (
   `posicion` varchar(250) NOT NULL,
   `foto` varchar(1000) NOT NULL,
   `id_pais` int(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `jugadores`
@@ -88,6 +88,50 @@ INSERT INTO `jugadores` (`id`, `nombre`, `apellido`, `descripcion`, `posicion`, 
 (49, ' Amine', 'Harit', ' Amine Harit es un futbolista marroquí. Juega de centrocampista y su equipo es el Olympique de Marsella de la Ligue 1.', 'Medio campista', ' https://e00-marca.uecdn.es/assets/multimedia/imagenes/2018/07/03/15306228524449.jpg', 4),
 (50, ' Hakim', 'Ziyech', ' Hakim Ziyech es un futbolista Marroquí, que juega como delantero en el Chelsea F. C. de la Premier League de Inglaterra.', 'Delantero', ' https://www.calciomercatonews.com/wp-content/uploads/2023/04/Hakim-Ziyech-calciomercatonews.com-24423.jpg', 4);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `paises`
+--
+
+CREATE TABLE `paises` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(250) NOT NULL,
+  `continente` varchar(250) NOT NULL,
+  `clasificacion` int(45) NOT NULL,
+  `bandera` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `paises`
+--
+
+INSERT INTO `paises` (`id`, `nombre`, `continente`, `clasificacion`, `bandera`) VALUES
+(1, 'Argentina', 'America', 1, 'https://c.files.bbci.co.uk/D348/production/_95588045_178392703.jpg'),
+(2, 'Francia', 'Europa', 2, 'https://banderas.top/wp-content/uploads/2022/09/Bandera-de-Napoleon.jpg'),
+(3, 'Croacia', 'Europa', 3, 'https://c4.wallpaperflare.com/wallpaper/703/478/458/bandera-croacia-europa-wallpaper-preview.jpg'),
+(4, 'Marruecos', 'Africa', 4, 'https://touringinmorocco.com/es/wp-content/uploads/2022/04/morocco-flag.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(500) NOT NULL,
+  `password` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `usuario`, `password`) VALUES
+(1, 'Mariano', '12345'),
+(2, 'Martin', '12345');
+
 --
 -- Índices para tablas volcadas
 --
@@ -96,7 +140,22 @@ INSERT INTO `jugadores` (`id`, `nombre`, `apellido`, `descripcion`, `posicion`, 
 -- Indices de la tabla `jugadores`
 --
 ALTER TABLE `jugadores`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_pais` (`id_pais`);
+
+--
+-- Indices de la tabla `paises`
+--
+ALTER TABLE `paises`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `clasificacion` (`clasificacion`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `usuario` (`usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -107,6 +166,28 @@ ALTER TABLE `jugadores`
 --
 ALTER TABLE `jugadores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT de la tabla `paises`
+--
+ALTER TABLE `paises`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `jugadores`
+--
+ALTER TABLE `jugadores`
+  ADD CONSTRAINT `jugadores_ibfk_1` FOREIGN KEY (`id_pais`) REFERENCES `paises` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
