@@ -1,77 +1,115 @@
 <?php
-//agregar otro modelo de paises
+require_once './mundial_app/models/paises.model.php';
 require_once './mundial_app/models/jugadores.model.php';
 require_once './mundial_app/views/jugadores.view.php';
 
 Class jugadoresController{
     private $model;
     private $view;
+    private $modelPaises;
 
     public function __construct(){
         $this->model = new jugadoresModel();
         $this->view = new jugadoresView();
+        $this->modelPaises = new paisesModel();
     }
-
-    function showJugadores($paises){//función para obtener todos los jugadores
-        $jugadores= $this-> model -> getJugadores();
-        $this-> view -> showJugadores($jugadores, $paises);
-        //$paises = $this -> model -> getPais() por si requerimos cambiar el idPais por el nombre
-    }
-
-    function showDataJugador($id, $paises){//función para obtener detalle de un solo jugador 
-        $jugador= $this -> model -> getJugador($id);//necesita un id del jugador para traerlo
-        $this -> view -> showJugador($jugador, $paises);
-    }
-    
-    function showJugadoresByPais($pais){ //función para obtener todos los jugadores de un solo pais
-        $jugadores= $this -> model -> getJugadoresByPais($pais);//pais es el objeto pais de la bbdd
+    //función para obtener todos los jugadores de un solo pais (listado de items x categoria)
+    function showJugadoresByPais($paisSelected){ 
+        $pais = $this -> modelPaises ->getPaisByName($paisSelected);
+        $jugadores = $this -> model -> getJugadoresByPais($pais);
         $this -> view -> showJugadoresByPais($jugadores, $pais);
     }
+
+    //función para obtener todos los jugadores (listado de items)
+    function showJugadores(){
+        $paises = $this -> modelPaises -> getPaises();
+        $jugadores = $this-> model -> getJugadores();
+        $this-> view -> showJugadores($jugadores, $paises);
+    }
+
+    //función para obtener detalle de un solo jugador (detalle de item)
+    function showDataJugador($id){ 
+        $jugador = $this -> model -> getJugador($id);
+        $pais = $this -> modelPaises -> getPais($jugador->id_pais);
+        $this -> view -> showJugador($jugador, $pais);
+    }
+
+    //función para renderizar el formulario con los datos precargados para editar
+    function showFormularioEdit($id){
+        $paises = $this -> modelPaises -> getPaises();
+        $jugador = $this -> model -> getJugador($id);
+        $nombre = $jugador->nombre;
+        $apellido = $jugador->apellido;
+        $descripcion = $jugador->descripcion;
+        $posicion = $jugador->posicion;
+        $foto = $jugador->foto;
+        $this -> view -> showFormularioEdit($id,$nombre, $apellido, $descripcion,$posicion, $foto, $paises);
+    }
+
+    //función para renderizar el formulario agregar nuevo jugador
+    function showFormularioAdd(){
+        $paises = $this -> modelPaises -> getPaises();
+        $this -> view -> showFormularioAdd($paises);
+    } 
+    
+    //Borra un jugador según id
     function deleteJugador($id){
-        $this-> model-> deleteJugador($id);
-        header("Location:".jugadores);
+        $this-> model -> deleteJugador($id);
+        header("Location:".BASE_URL."jugadores");
         die();
     }
-    function showFormulario($action, $paises, $id){
-        switch($action){
-            case 'editar':
-                $datosJugador = $this->model->getJugador($id);
-                $nombre = $datosJugador->nombre;
-                $apellido = $datosJugador->apellido;
-                $descripcion = $datosJugador->descripcion;
-                $posicion = $datosJugador->posicion;
-                $foto = $datosJugador->foto;
-                $this->view->showFormulario($action, $paises,$nombre, $apellido, $descripcion, $foto, $posicion, $id);      
-                break;
-            case 'add':
-                $this->view->showFormulario($action, $paises, null, null, null, null, null, null);
-                break;
-        }
+
+    //Agrega un nuevo jugador
+    function addJugador(){
+        $jugador = $this -> getDatosFormulario(); 
+        $id = $this -> model -> addJugador($jugador['nombre'], 
+                                           $jugador['apellido'], 
+                                           $jugador['descripcion'], 
+                                           $jugador['posicion'], 
+                                           $jugador['foto'], 
+                                           $jugador['pais']);
+        header('Location:'.BASE_URL.'jugador/ver/'.$id);
+        die();
     }
-    function getDatosFormulario(){
-            $nombre = $_POST['nombre'];
-            $apellido = $_POST['apellido'];
-            $posicion = $_POST['posicion'];
-            $descripcion = $_POST['descripcion'];
-            $foto = $_POST['foto'];
-            $pais = $_POST['pais'];
-        if(!empty($nombre) && !empty($apellido) && !empty($posicion) && !empty($descripcion) && !empty($foto) && !empty($pais)){
-            return array("nombre"=>$nombre,
+
+    //Edita un jugador según id
+    function editarJugador($id){
+        $jugador = $this ->getDatosFormulario(); 
+        $this -> model ->editarJugador($jugador['nombre'], 
+                                       $jugador['apellido'], 
+                                       $jugador['descripcion'], 
+                                       $jugador['posicion'], 
+                                       $jugador['foto'], 
+                                       $jugador['pais'], 
+                                       $id);
+        header('Location:'.BASE_URL.'jugador/ver/'.$id);
+        die();
+    }
+
+    //función que obtiene los datos del formulario
+    private function getDatosFormulario(){
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $descripcion = $_POST['descripcion'];
+        $posicion = $_POST['posicion'];
+        $foto = $_POST['foto'];
+        $pais = $_POST['pais'];
+        if(!empty($nombre) && !empty($apellido) && !empty($descripcion) 
+            && !empty($posicion) && !empty($foto) && !empty($pais)){
+            $jugador = ["nombre"=>$nombre,
                         "apellido"=>$apellido,
-                        "posicion"=>$posicion,
                         "descripcion"=>$descripcion,
+                        "posicion"=>$posicion,
                         "foto"=>$foto,
-                        "pais"=>$pais); 
+                        "pais"=>$pais]; 
+            return $jugador;
+        }else{
+            $this->showError("Los campos no pueden estar vacíos");
         }        
     }
-    function addJugador(){
-        $jugador = $this->getDatosFormulario();
-        $id =$this->model->addJugador($jugador['nombre'], $jugador['apellido'], $jugador['descripcion'], $jugador['posicion'], $jugador['foto'], $jugador['pais']);
-        header("Location:".jugador."ver/".$id);
-    }
-    function editarJugador($id){
-        $jugador = $this->getDatosFormulario(); 
-        $jugador =$this->model->editarJugador($jugador['nombre'], $jugador['apellido'], $jugador['descripcion'], $jugador['posicion'], $jugador['foto'], $jugador['pais'], $id);
-        print_r($jugador);
+
+    //Muestra el template error
+    function showError($msg){
+        $this -> view -> showError($msg);
     }
 }
