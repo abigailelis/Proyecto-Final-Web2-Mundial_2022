@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-05 23:47:12
+/* Smarty version 4.3.0, created on 2023-06-06 19:37:21
   from 'C:\xampp\htdocs\TPE_WEB2\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_647e57e06860b5_75428175',
+  'unifunc' => 'content_647f6ed169f494_32510529',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '25e93fd6987ce14452828ccd24c1c51b70a6373e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE_WEB2\\templates\\login.tpl',
-      1 => 1686001627,
+      1 => 1686072675,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_647e57e06860b5_75428175 (Smarty_Internal_Template $_smarty_tpl) {
+function content_647f6ed169f494_32510529 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container">
@@ -34,8 +34,8 @@ $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_sm
           <span><?php echo (($tmp = $_smarty_tpl->tpl_vars['msg']->value ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </span>
 
-          <form action=<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
- method="post">
+          <form action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+verificar" method="post">
             <!-- Usuario input -->
             <div class="form-outline mb-4">
               <input type="text" class="form-control" name="usuario" placeholder="Ingrese su usuario" value="">
@@ -48,7 +48,7 @@ $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_sm
               <label class="form-label" for="password">Password</label>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+            <button type="submit" class="btn btn-block mb-4">Sign in</button>
           </form>
         </div>
       </div>
