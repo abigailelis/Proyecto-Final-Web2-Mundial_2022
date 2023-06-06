@@ -5,7 +5,7 @@
         <div class="col-sm-16 col-md-14 col-lg-10 mx-auto">
             <div class="card border-0 shadow rounded-3 my-5">
                 <div class="card-body p-4 p-sm-5">
-                    <h3 class="card-title text-center mb-2 fs-5">{$titulo}</h3>
+                    <h2 class="card-title text-center mb-2 fs-2">{$titulo}</h2>
                     <div class="card-body">
                         <form action="{$BASE_URL|cat:$action}" method="POST">
                             <div class="form-outline mb-4">
@@ -37,7 +37,7 @@
                                     {/foreach}
                                 </select>
                             </div>
-                            <button type="button" class="btn btn-primary btn-block mb-4">Enviar</button>
+                            <button type="submit" class="btn btn-block mb-4">Enviar</button>
                         </form>
                     </div>
                 </div>

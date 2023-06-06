@@ -8,9 +8,10 @@ Class paisesView{
         $this->smarty = new Smarty();
     }
     //función para mostrar todos los paises
-    function showPaises($paises){
+    function showPaises($paises, $logueado){
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
         $this -> smarty -> assign('titulo', 'Mundial 2022');
+        $this -> smarty -> assign ('logueado', $logueado);
         $this -> smarty -> assign ('paises', $paises);
         $this -> smarty -> display('./templates/paises.tpl');
     }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-05 21:54:49
+/* Smarty version 4.3.0, created on 2023-06-06 06:17:37
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\formularioJugador.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_647e3d89472480_38169361',
+  'unifunc' => 'content_647eb361a22886_67102797',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '75cdf3a69776c6df3d2b69f0151940ac9c50e9ee' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\formularioJugador.tpl',
-      1 => 1685994866,
+      1 => 1686024626,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_647e3d89472480_38169361 (Smarty_Internal_Template $_smarty_tpl) {
+function content_647eb361a22886_67102797 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -31,8 +31,8 @@ $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_sm
         <div class="col-sm-16 col-md-14 col-lg-10 mx-auto">
             <div class="card border-0 shadow rounded-3 my-5">
                 <div class="card-body p-4 p-sm-5">
-                    <h3 class="card-title text-center mb-2 fs-5"><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
-</h3>
+                    <h2 class="card-title text-center mb-2 fs-2"><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
+</h2>
                     <div class="card-body">
                         <form action="<?php echo ($_smarty_tpl->tpl_vars['BASE_URL']->value).($_smarty_tpl->tpl_vars['action']->value);?>
 " method="POST">
@@ -80,7 +80,7 @@ $_smarty_tpl->tpl_vars['pais']->do_else = false;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                 </select>
                             </div>
-                            <button type="button" class="btn btn-primary btn-block mb-4">Enviar</button>
+                            <button type="submit" class="btn btn-block mb-4">Enviar</button>
                         </form>
                     </div>
                 </div>

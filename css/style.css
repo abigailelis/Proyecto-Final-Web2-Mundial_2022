@@ -1,14 +1,76 @@
+body{
+    color: rgb(59, 59, 59);
+    margin-bottom: 100px;
+}
+header{
+    margin-bottom:40px;
+}
 .paises {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 25px;
 }
 
+/*Imágenes*/
 .card-img-top {
     max-height: 200px;
     object-fit: cover;
 }
+.img-home{
+    height: 400px;
+    width:auto;
+}
+.img-jugador{
+    height: 300px;
+    max-width:250px;
+    object-fit:cover;
+}
+.img-bandera-jugador{
+    max-height: 20px;
+    max-width: 30px;
+}
 
+/*Textos*/
 a{
     text-decoration: none;
+}
+.text-justify{
+    text-align: justify;
+}
+.card-text{
+    font-size: 18px;
+}
+
+/*Botones*/
+.btn-a{
+    color: rgb(53, 51, 51);   
+}
+.btn{
+    background-color: #b9b5b58b;
+    border: none;
+}
+.btn:hover{
+    background-color: #5b5b5c63;
+}
+.btn-a:hover{
+    color: white;
+}
+thead{
+    background-color: rgba(20, 20, 20, 0.481);
+    color: white;
+}
+/*Footer*/
+.footer{
+    display:flex;
+    text-align: center;
+    height: 50px;
+    align-items:center;
+    justify-content: center;
+}
+footer {
+    position:fixed;
+    height:40px;
+    width: 100%;
+    bottom: 0;
+    color: rgb(204, 197, 197);
 }

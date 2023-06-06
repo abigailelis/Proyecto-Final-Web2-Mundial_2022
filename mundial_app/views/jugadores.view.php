@@ -9,22 +9,25 @@ Class jugadoresView{
     }
 
     //función para mostrar el listado de jugadores de un solo pais($arreglo de jugadores)
-    function showJugadoresByPais($jugadores, $paisSelected){
+    function showJugadoresByPais($jugadores, $paisSelected,$logueado){
+        $titulo = 'Listado de jugadores de '.$paisSelected->nombre;
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
-        $this -> smarty -> assign ('titulo', $paisSelected->nombre);
+        $this -> smarty -> assign ('titulo', $titulo);
         $this -> smarty -> assign ('jugadores', $jugadores);
         $this -> smarty -> assign ('paisSelected', $paisSelected);
         $this -> smarty -> assign ('paises','null');
+        $this -> smarty -> assign ('logueado', $logueado);
         $this -> smarty -> display('./templates/jugadores.tpl');
     }
 
     //función para mostrar todos los jugadores
-    function showJugadores($jugadores, $paises){
+    function showJugadores($jugadores, $paises, $logueado){
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
-        $this -> smarty -> assign ('titulo', 'Jugadores');
+        $this -> smarty -> assign ('titulo', 'Listado completo de jugadores');
         $this -> smarty -> assign ('jugadores', $jugadores);
         $this -> smarty -> assign ('paisSelected', 'null');
         $this -> smarty -> assign ('paises', $paises);
+        $this -> smarty -> assign ('logueado', $logueado);
         $this -> smarty -> display('./templates/jugadores.tpl');
     }
 

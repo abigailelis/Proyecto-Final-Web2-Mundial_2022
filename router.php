@@ -110,6 +110,14 @@ switch($action){
         $usuariosController = new usuariosController();
         $usuariosController ->showLogin();
         break;
+    case 'verificar':
+        $usuariosController = new usuariosController();
+        $usuariosController ->verifyUsuario();
+        break;
+    case 'logout':
+        $usuariosController = new usuariosController();
+        $usuariosController ->logout();
+        break;
     default:
         $paisesController= new paisesController();
         $paisesController ->showError('Url not found');

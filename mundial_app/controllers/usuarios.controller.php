@@ -14,28 +14,33 @@ Class usuariosController{
         $this -> view = new usuariosView();
         $this -> usuariosHelper = new usuariosHelper();
     }
-
-    function logout(){
-        $this->usuariosHelper->logout();
-        header ('location: ' .BASE_URL.'login');
-    }
     //muestra el formulario del login
     function showLogin(){
         $this -> view -> showLogin('');
     }
 
+    //Cierra la sesión del usuario
+    function logout(){
+        $this->usuariosHelper->logout();
+        header ('location: ' .BASE_URL.'login');
+    }
+    
+   /*
+   *Verifica que el usuario exista en la base de datos, si es asi compara 
+   *la contraseña ingresada por formulario con el hash de la BBDD,
+   *sino, vuelve al login con el mensaje usuario/contraseña incorrectos
+   */
     function verifyUsuario() {
-        $usuario=$_POST['usuario'];
-        $password=$_POST['password'];
-        $usuariodb=$this->model -> getUsuario($usuario);
-        if(!empty($usuario) && password_verify($password, $usuariodb -> password)){
+        $usuario = $_POST['usuario'];
+        $password = $_POST['password'];
+        $usuario_db = $this -> model -> getUsuario($usuario);
+        if(!empty($usuario_db) && password_verify($password, $usuario_db->password)){
             $this -> usuariosHelper -> login($usuario);
-            echo 'usuario loggeado';
-            header('Location: '.BASE_URL); 
+            header('Location: '.BASE_URL.'paises/ver');
+            die();
         }
         else{
-
-            $this-> view -> showLogin('úsuario/contraseña incorrecto');
+            $this-> view -> showLogin('usuario o contraseña incorrectos');
         }
     }
 }

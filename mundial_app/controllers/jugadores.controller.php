@@ -1,4 +1,5 @@
 <?php
+require_once './helpers/usuarios.helper.php';
 require_once './mundial_app/models/paises.model.php';
 require_once './mundial_app/models/jugadores.model.php';
 require_once './mundial_app/views/jugadores.view.php';
@@ -7,24 +8,28 @@ Class jugadoresController{
     private $model;
     private $view;
     private $modelPaises;
+    private $usuariosHelper;
 
     public function __construct(){
         $this->model = new jugadoresModel();
         $this->view = new jugadoresView();
         $this->modelPaises = new paisesModel();
+        $this->usuariosHelper = new usuariosHelper();
     }
     //función para obtener todos los jugadores de un solo pais (listado de items x categoria)
     function showJugadoresByPais($paisSelected){ 
+        $logueado = $this->usuariosHelper->checkLoggedIn();
         $pais = $this -> modelPaises ->getPaisByName($paisSelected);
         $jugadores = $this -> model -> getJugadoresByPais($pais);
-        $this -> view -> showJugadoresByPais($jugadores, $pais);
+        $this -> view -> showJugadoresByPais($jugadores, $pais,$logueado);
     }
 
     //función para obtener todos los jugadores (listado de items)
     function showJugadores(){
+        $logueado = $this->usuariosHelper->checkLoggedIn();
         $paises = $this -> modelPaises -> getPaises();
         $jugadores = $this-> model -> getJugadores();
-        $this-> view -> showJugadores($jugadores, $paises);
+        $this-> view -> showJugadores($jugadores, $paises, $logueado);
     }
 
     //función para obtener detalle de un solo jugador (detalle de item)

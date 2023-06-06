@@ -1,20 +1,23 @@
 <?php
-
+require_once './helpers/usuarios.helper.php';
 require_once './mundial_app/models/paises.model.php';
 require_once './mundial_app/views/paises.view.php';
 
 Class paisesController{
     private $model;
     private $view;
+    private $usuariosHelper;
 
     public function __construct(){
         $this->model = new paisesModel();
         $this->view = new paisesView();
+        $this->usuariosHelper = new usuariosHelper();
     }
 
     function showPaises(){ //función para obtener todos los paises
         $paises= $this-> model -> getPaises();
-        $this-> view -> showPaises($paises);
+        $logueado = $this->usuariosHelper->checkLoggedIn();
+        $this-> view -> showPaises($paises, $logueado);
     }
 
     function showHome(){
@@ -76,7 +79,7 @@ Class paisesController{
             $msg="La clasificación ya existe.";
             $this->showError($msg);
         }else{
-            $id = $this -> model -> addPais($pais['nombre'], 
+            $this -> model -> addPais($pais['nombre'], 
             $pais['continente'], 
             $pais['clasificacion'], 
             $pais['bandera']);
