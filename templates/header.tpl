@@ -25,8 +25,8 @@
         </div>
         <div class="navbar-collapse justify-content-end">
           <ul class="navbar-nav">
-              <li class="nav-item nav-link"><button class="btn btn-sm btn-outline-secondary" type="button"{if isset($logueado) && $logueado==true} disabled {{/if}}><a class="nav-link" href="{$BASE_URL}login">Log in</a></button></li>
-              <li class="nav-item nav-link"><button class="btn btn-sm btn-outline-secondary" type="button"{if !isset($logueado) || $logueado==false} disabled {{/if}}><a class="nav-link" href="{$BASE_URL}logout">Log out</a></button></li>
+              <li class="nav-item nav-link"><button class="btn btn-sm btn-outline-secondary" type="button"{if isset($logueado) && $logueado==true} style="display:none;" {{/if}}><a class="nav-link" href="{$BASE_URL}login">Log in</a></button></li> 
+              <li class="nav-item nav-link"><button class="btn btn-sm btn-outline-secondary" type="button"{if !isset($logueado) || $logueado==false} style="display:none;" {{/if}}><a class="nav-link" href="{$BASE_URL}logout">Log out</a></button></li>
           </ul>
         </div>
       </div>
