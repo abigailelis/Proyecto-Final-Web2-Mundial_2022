@@ -1,6 +1,6 @@
 <?php
-
-$config=["db_port"=>4306];
+$config= [];
+$config=["db_port"=>':4306'];
 
 
 

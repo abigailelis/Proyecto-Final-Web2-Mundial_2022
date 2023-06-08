@@ -12,24 +12,23 @@ Class jugadoresController{
 
     public function __construct(){
         $this->model = new jugadoresModel();
-        $this->view = new jugadoresView();
         $this->modelPaises = new paisesModel();
         $this->usuariosHelper = new usuariosHelper();
-    }
+        $this->view = new jugadoresView($this->usuariosHelper->checkLoggedIn());
+    } 
     //función para obtener todos los jugadores de un solo pais (listado de items x categoria)
     function showJugadoresByPais($paisSelected){ 
-        $logueado = $this->usuariosHelper->checkLoggedIn();
+        
         $pais = $this -> modelPaises ->getPaisByName($paisSelected);
         $jugadores = $this -> model -> getJugadoresByPais($pais);
-        $this -> view -> showJugadoresByPais($jugadores, $pais,$logueado);
+        $this -> view -> showJugadoresByPais($jugadores, $pais);
     }
 
     //función para obtener todos los jugadores (listado de items)
     function showJugadores(){
-        $logueado = $this->usuariosHelper->checkLoggedIn();
         $paises = $this -> modelPaises -> getPaises();
         $jugadores = $this-> model -> getJugadores();
-        $this-> view -> showJugadores($jugadores, $paises, $logueado);
+        $this-> view -> showJugadores($jugadores, $paises);
     }
 
     //función para obtener detalle de un solo jugador (detalle de item)

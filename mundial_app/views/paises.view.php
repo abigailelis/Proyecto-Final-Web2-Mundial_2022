@@ -4,14 +4,15 @@ require_once './libs/smarty/Smarty.class.php';
 Class paisesView{
     private $smarty;
 
-    public function __construct(){
-        $this->smarty = new Smarty();
+    public function __construct($logueado){
+        $this-> smarty = new Smarty();
+        $this-> smarty -> assign('logueado', $logueado);//agregar en paises view y acomodar los if para mostrar los botones
+
     }
     //función para mostrar todos los paises
-    function showPaises($paises, $logueado){
+    function showPaises($paises){
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
         $this -> smarty -> assign('titulo', 'Mundial 2022');
-        $this -> smarty -> assign ('logueado', $logueado);
         $this -> smarty -> assign ('paises', $paises);
         $this -> smarty -> display('./templates/paises.tpl');
     }

@@ -18,15 +18,15 @@
       <div class="container-fluid justify-content-between">
         <div class="navbar-collapse">
           <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="{$BASE_URL}home">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="{$BASE_URL}paises/ver">Paises</a></li>
-            <li class="nav-item"><a class="nav-link" href="{$BASE_URL}jugadores">Jugadores</a></li>
+            <li class="nav-item nav-link"><a class="nav-link" href="{$BASE_URL}home">Home</a></li>
+            <li class="nav-item nav-link"><a class="nav-link" href="{$BASE_URL}paises/ver">Paises</a></li>
+            <li class="nav-item nav-link"><a class="nav-link" href="{$BASE_URL}jugadores">Jugadores</a></li>
           </ul>
         </div>
         <div class="navbar-collapse justify-content-end">
           <ul class="navbar-nav">
-              <li class="nav-item"><a class="nav-link" href="{$BASE_URL}login">Log in</a></li>
-              <li class="nav-item"><a class="nav-link" href="{$BASE_URL}logout">Log out</a></li>
+              <li class="nav-item nav-link"><button class="btn btn-sm btn-outline-secondary" type="button"{if isset($logueado) && $logueado==true} disabled {{/if}}><a class="nav-link" href="{$BASE_URL}login">Log in</a></button></li>
+              <li class="nav-item nav-link"><button class="btn btn-sm btn-outline-secondary" type="button"{if !isset($logueado) || $logueado==false} disabled {{/if}}><a class="nav-link" href="{$BASE_URL}logout">Log out</a></button></li>
           </ul>
         </div>
       </div>

@@ -10,14 +10,14 @@ Class paisesController{
 
     public function __construct(){
         $this->model = new paisesModel();
-        $this->view = new paisesView();
         $this->usuariosHelper = new usuariosHelper();
+        $this->view = new paisesView($this->usuariosHelper->checkLoggedIn());
+
     }
 
     function showPaises(){ //función para obtener todos los paises
         $paises= $this-> model -> getPaises();
-        $logueado = $this->usuariosHelper->checkLoggedIn();
-        $this-> view -> showPaises($paises, $logueado);
+        $this-> view -> showPaises($paises);
     }
 
     function showHome(){

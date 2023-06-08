@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-05 22:36:18
+/* Smarty version 4.3.0, created on 2023-06-08 02:06:01
   from 'C:\xampp\htdocs\TPE_WEB2\templates\jugador.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_647e47420c39a3_37781721',
+  'unifunc' => 'content_64811b69ab1f51_54130454',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c9ec8ee8df873907383a76f5fedeb154cb40db39' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE_WEB2\\templates\\jugador.tpl',
-      1 => 1685996196,
+      1 => 1686072675,
       2 => 'file',
     ),
   ),
@@ -22,31 +22,44 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_647e47420c39a3_37781721 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64811b69ab1f51_54130454 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-<section class="container mt-5">
-    <section class="card">
-        <img class="card-img-top" src="<?php echo $_smarty_tpl->tpl_vars['jugador']->value->foto;?>
+<section class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <img class="img-jugador" src="<?php echo $_smarty_tpl->tpl_vars['jugador']->value->foto;?>
 " alt="Foto del jugador <?php echo $_smarty_tpl->tpl_vars['jugador']->value->nombre;?>
 ">
-        <div class="card-body">
-            <h1 class="card-title"><?php echo $_smarty_tpl->tpl_vars['jugador']->value->nombre;?>
-</h1>
-            <h2 class="card-subtitle"><?php echo $_smarty_tpl->tpl_vars['jugador']->value->apellido;?>
-</h2>
-            <p class="card-text"><?php echo $_smarty_tpl->tpl_vars['jugador']->value->descripcion;?>
-</p>
-            <h3 class="card-subtitle">Posición: <?php echo $_smarty_tpl->tpl_vars['jugador']->value->posicion;?>
-</h3>
-            <p class="card-subtitle"><?php echo $_smarty_tpl->tpl_vars['pais']->value->nombre;?>
-</p>
-            <img src="<?php echo $_smarty_tpl->tpl_vars['pais']->value->bandera;?>
-" alt="Bandera del  pais del jugador <?php echo $_smarty_tpl->tpl_vars['jugador']->value->nombre;?>
-">
         </div>
-    </section>
+        <div class="col-6">
+            <h1><?php echo $_smarty_tpl->tpl_vars['jugador']->value->nombre;?>
+</h1>
+            <h2><?php echo $_smarty_tpl->tpl_vars['jugador']->value->apellido;?>
+</h2>
+            <p class="text-justify"><?php echo $_smarty_tpl->tpl_vars['jugador']->value->descripcion;?>
+</p>
+            <h3>Posición: <?php echo $_smarty_tpl->tpl_vars['jugador']->value->posicion;?>
+</h3>
+            <div class="row">
+                <div class="col-2">
+                    <p><?php echo $_smarty_tpl->tpl_vars['pais']->value->nombre;?>
+</p>
+                </div>
+                <div class="col-2">
+                    <img src="<?php echo $_smarty_tpl->tpl_vars['pais']->value->bandera;?>
+" alt="Bandera del  pais del jugador <?php echo $_smarty_tpl->tpl_vars['jugador']->value->nombre;?>
+"
+                        class="img-bandera-jugador">
+                </div>
+            </div>
+        </div>
+        <div class="col-1  align-self-end">
+                <button class="btn"><a class="btn-a" href=<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+jugadores>Volver</a></button>
+            </div>
+    </div>
 </section>
 
 <?php $_smarty_tpl->_subTemplateRender('file:footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
