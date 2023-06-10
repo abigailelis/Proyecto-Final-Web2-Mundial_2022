@@ -7,11 +7,13 @@ Class paisesController{
     private $model;
     private $view;
     private $usuariosHelper;
+    private $logueado;
 
     public function __construct(){
-        $this->model = new paisesModel();
         $this->usuariosHelper = new usuariosHelper();
-        $this->view = new paisesView($this->usuariosHelper->checkLoggedIn());
+        $this->model = new paisesModel();
+        $this->logueado = $this->usuariosHelper->checkLoggedIn();
+        $this->view = new paisesView($this->logueado);
 
     }
 
@@ -34,57 +36,80 @@ Class paisesController{
 
     //función para renderizar el formulario con los datos precargados para editar
     function showFormularioEdit($id){
-        $pais = $this -> model -> getPais($id);
-        $nombre = $pais->nombre;
-        $continente = $pais->continente;
-        $clasificacion = $pais->clasificacion;
-        $bandera = $pais->bandera;
-        $this -> view -> showFormularioEdit($id, $nombre, $continente, $clasificacion, $bandera);
+        if($this->logueado['loggueado'] == true){
+            $pais = $this -> model -> getPais($id);
+            $nombre = $pais->nombre;
+            $continente = $pais->continente;
+            $clasificacion = $pais->clasificacion;
+            $bandera = $pais->bandera;
+            $this -> view -> showFormularioEdit($id, $nombre, $continente, $clasificacion, $bandera);
+        }else{
+            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+        }
+        
     }
 
     //función para renderizar el formulario agregar nuevo pais
     function showFormularioAdd(){
-        $this -> view -> showFormularioAdd();
+        if ($this->logueado['loggueado'] == true){
+           $this -> view -> showFormularioAdd(); 
+        }else{
+            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+        }
+        
     } 
     function showMsgBorrar($id){
         $this ->view -> showMsgBorrar($id);
     }
     //Borrar pais según id
     function borrarPais($id){
-        $response = $_POST['borrarPais'];
-        if($response == 'si'){
-            $this-> model -> borrarPais($id);
-        }        
-        header("Location:".BASE_URL."paises/ver");
-        die();
+        if ($this->logueado['loggueado'] == true){
+            $response = $_POST['borrarPais'];
+            if($response == 'si'){
+                $this-> model -> borrarPais($id);
+            }        
+            header("Location:".BASE_URL."paises/ver");
+            die(); 
+        }else{
+            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+        }
+        
     }
 
     //Editar pais según id
     function editarPais($id){
-        $pais = $this ->getDatosFormulario(); 
-        $this -> model ->editarPais($pais['nombre'], 
-                                    $pais['continente'], 
-                                    $pais['clasificacion'], 
-                                    $pais['bandera'], 
-                                    $id);
-        header('Location:'.BASE_URL.'paises/ver');
-        die();
+        if ($this->logueado['loggueado'] == true){
+            $pais = $this ->getDatosFormulario(); 
+            $this -> model ->editarPais($pais['nombre'], 
+                                        $pais['continente'], 
+                                        $pais['clasificacion'], 
+                                        $pais['bandera'], 
+                                        $id);
+            header('Location:'.BASE_URL.'paises/ver');
+            die();
+        }else{
+            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+        }
     }
 
     //Agregar pais nuevo
     function addPais(){
-        $pais = $this -> getDatosFormulario(); 
-        $verifica = $this -> model -> getClasificacion($pais['clasificacion']);
-        if($verifica){
-            $msg="La clasificación ya existe.";
-            $this->showError($msg);
+        if ($this->logueado['loggueado'] == true){
+            $pais = $this -> getDatosFormulario(); 
+            $verifica = $this -> model -> getClasificacion($pais['clasificacion']);
+            if($verifica){
+                $msg="La clasificación ya existe.";
+                $this->showError($msg);
+            }else{
+                $this -> model -> addPais($pais['nombre'], 
+                $pais['continente'], 
+                $pais['clasificacion'], 
+                $pais['bandera']);
+                header('Location:'.BASE_URL.'paises/ver');
+                die();  
+            }
         }else{
-            $this -> model -> addPais($pais['nombre'], 
-            $pais['continente'], 
-            $pais['clasificacion'], 
-            $pais['bandera']);
-            header('Location:'.BASE_URL.'paises/ver');
-            die();  
+            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
     }
 

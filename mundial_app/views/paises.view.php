@@ -6,8 +6,8 @@ Class paisesView{
 
     public function __construct($logueado){
         $this-> smarty = new Smarty();
-        $this-> smarty -> assign('logueado', $logueado);//agregar en paises view y acomodar los if para mostrar los botones
-
+        $this-> smarty -> assign('logueado', $logueado['loggueado']);
+        $this-> smarty -> assign('usuario', $logueado['usuario']);
     }
     //función para mostrar todos los paises
     function showPaises($paises){

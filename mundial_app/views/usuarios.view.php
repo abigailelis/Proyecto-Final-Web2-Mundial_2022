@@ -4,9 +4,12 @@ require_once './libs/smarty/Smarty.class.php';
 Class usuariosView{
     public $smarty;
 
-    public function __construct(){
+    public function __construct($logueado){
         $this -> smarty = new Smarty();
-        //$smarty -> php_handling = Smarty::PHP_ALLOW;    
+        $this-> smarty -> assign('logueado', $logueado['loggueado']);
+        if($logueado['loggueado'] == true){
+            $this-> smarty -> assign('usuario', $logueado['usuario']);
+        }   
     }
 
     function showLogin($msg){

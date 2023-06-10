@@ -6,7 +6,10 @@ Class jugadoresView{
     
     public function __construct($logueado){
         $this->smarty = new Smarty();
-        $this-> smarty -> assign('logueado', $logueado);//agregar en paises view y acomodar los if para mostrar los botones
+        $this-> smarty -> assign('logueado', $logueado['loggueado']);
+        if($logueado['loggueado'] == true){
+            $this-> smarty -> assign('usuario', $logueado['usuario']);
+        }  
     }
 
     //función para mostrar el listado de jugadores de un solo pais($arreglo de jugadores)

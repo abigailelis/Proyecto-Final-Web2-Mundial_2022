@@ -1,7 +1,6 @@
 <?php
 
 Class usuariosHelper {
-
     /*Si verificó que el usuario existe y la contraseña es correcta 
     inicia la sesión y setea los datos en $_SESSION*/
     public function login($usuario) {
@@ -20,9 +19,12 @@ Class usuariosHelper {
     public function checkLoggedIn() {
         session_start();
         if (isset($_SESSION['loggueado']) && $_SESSION['loggueado'] == true){
-            return true;
+            return $_SESSION;
         }else{
-            return false;
-        }      
+            $_SESSION['loggueado'] = false;
+            $_SESSION['usuario'] = '';
+            return $_SESSION;
+        }
+        sesion_destroy();      
     }
 }

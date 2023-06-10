@@ -4,21 +4,23 @@ require_once './mundial_app/models/paises.model.php';
 require_once './mundial_app/models/jugadores.model.php';
 require_once './mundial_app/views/jugadores.view.php';
 
+
 Class jugadoresController{
     private $model;
     private $view;
     private $modelPaises;
     private $usuariosHelper;
+    private $logueado;
 
     public function __construct(){
+        $this->usuariosHelper = new usuariosHelper();
         $this->model = new jugadoresModel();
         $this->modelPaises = new paisesModel();
-        $this->usuariosHelper = new usuariosHelper();
-        $this->view = new jugadoresView($this->usuariosHelper->checkLoggedIn());
+        $this->logueado = $this->usuariosHelper->checkLoggedIn();
+        $this->view = new jugadoresView($this->logueado);
     } 
     //función para obtener todos los jugadores de un solo pais (listado de items x categoria)
     function showJugadoresByPais($paisSelected){ 
-        
         $pais = $this -> modelPaises ->getPaisByName($paisSelected);
         $jugadores = $this -> model -> getJugadoresByPais($pais);
         $this -> view -> showJugadoresByPais($jugadores, $pais);
@@ -40,54 +42,75 @@ Class jugadoresController{
 
     //función para renderizar el formulario con los datos precargados para editar
     function showFormularioEdit($id){
-        $paises = $this -> modelPaises -> getPaises();
-        $jugador = $this -> model -> getJugador($id);
-        $nombre = $jugador->nombre;
-        $apellido = $jugador->apellido;
-        $descripcion = $jugador->descripcion;
-        $posicion = $jugador->posicion;
-        $foto = $jugador->foto;
-        $this -> view -> showFormularioEdit($id,$nombre, $apellido, $descripcion,$posicion, $foto, $paises);
+        if ($this->logueado['loggueado'] == true){
+            $paises = $this -> modelPaises -> getPaises();
+            $jugador = $this -> model -> getJugador($id);
+            $nombre = $jugador->nombre;
+            $apellido = $jugador->apellido;
+            $descripcion = $jugador->descripcion;
+            $posicion = $jugador->posicion;
+            $foto = $jugador->foto;
+            $this -> view -> showFormularioEdit($id,$nombre, $apellido, $descripcion,$posicion, $foto, $paises);
+        }else{
+            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+        }
     }
 
     //función para renderizar el formulario agregar nuevo jugador
     function showFormularioAdd(){
-        $paises = $this -> modelPaises -> getPaises();
-        $this -> view -> showFormularioAdd($paises);
+        if($this->logueado['loggueado'] == true){
+            $paises = $this -> modelPaises -> getPaises();
+            $this -> view -> showFormularioAdd($paises);
+        }else{
+            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+        }
     } 
     
     //Borra un jugador según id
     function deleteJugador($id){
-        $this-> model -> deleteJugador($id);
-        header("Location:".BASE_URL."jugadores");
-        die();
+        $logueado = $this->logueado = $this->usuariosHelper->checkLoggedIn();
+        if($this->logueado['loggueado'] == true){
+            $this-> model -> deleteJugador($id);
+            header("Location:".BASE_URL."jugadores");
+            die();
+        }else{
+            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+        }
     }
 
     //Agrega un nuevo jugador
     function addJugador(){
-        $jugador = $this -> getDatosFormulario(); 
-        $id = $this -> model -> addJugador($jugador['nombre'], 
-                                           $jugador['apellido'], 
-                                           $jugador['descripcion'], 
-                                           $jugador['posicion'], 
-                                           $jugador['foto'], 
-                                           $jugador['pais']);
-        header('Location:'.BASE_URL.'jugador/ver/'.$id);
-        die();
+        if ($this->logueado['loggueado'] == true){
+            $jugador = $this -> getDatosFormulario(); 
+            $id = $this -> model -> addJugador($jugador['nombre'], 
+                                            $jugador['apellido'], 
+                                            $jugador['descripcion'], 
+                                            $jugador['posicion'], 
+                                            $jugador['foto'], 
+                                            $jugador['pais']);
+            header('Location:'.BASE_URL.'jugador/ver/'.$id);
+            die();
+        }else{
+            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+        }
     }
 
     //Edita un jugador según id
     function editarJugador($id){
-        $jugador = $this ->getDatosFormulario(); 
-        $this -> model ->editarJugador($jugador['nombre'], 
-                                       $jugador['apellido'], 
-                                       $jugador['descripcion'], 
-                                       $jugador['posicion'], 
-                                       $jugador['foto'], 
-                                       $jugador['pais'], 
-                                       $id);
-        header('Location:'.BASE_URL.'jugador/ver/'.$id);
-        die();
+        if ($this->logueado['loggueado'] == true){
+            $jugador = $this ->getDatosFormulario(); 
+            $this -> model ->editarJugador($jugador['nombre'], 
+                                        $jugador['apellido'], 
+                                        $jugador['descripcion'], 
+                                        $jugador['posicion'], 
+                                        $jugador['foto'], 
+                                        $jugador['pais'], 
+                                        $id);
+            header('Location:'.BASE_URL.'jugador/ver/'.$id);
+            die();
+        }else{
+            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+        }
     }
 
     //función que obtiene los datos del formulario

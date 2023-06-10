@@ -25,8 +25,23 @@
         </div>
         <div class="navbar-collapse justify-content-end">
           <ul class="navbar-nav">
-              <li class="nav-item nav-link"><button class="btn btn-sm btn-outline-secondary" type="button"{if isset($logueado) && $logueado==true} style="display:none;" {{/if}}><a class="nav-link" href="{$BASE_URL}login">Log in</a></button></li> 
-              <li class="nav-item nav-link"><button class="btn btn-sm btn-outline-secondary" type="button"{if !isset($logueado) || $logueado==false} style="display:none;" {{/if}}><a class="nav-link" href="{$BASE_URL}logout">Log out</a></button></li>
+            {if $logueado == false}
+              <li class="nav-item">
+                <button class="btn btn-sm btn-outline-secondary" type="button">
+                  <a class="nav-link" href="{$BASE_URL}login">Log in</a>
+                </button>
+              </li>
+            {else}
+              <li class="nav-item">
+                <div class="navbar-collapse justify-content-between">
+                  <span class="spinner-grow text-success spinner-grow-sm"></span>
+                  <span class="nav-link">En línea: {$usuario}</span>
+                  <button class="btn btn-sm btn-outline-secondary" type="button">
+                    <a class="nav-link" href="{$BASE_URL}logout">Log out</a>
+                  </button>
+                </div>
+              </li>
+            {/if}
           </ul>
         </div>
       </div>
