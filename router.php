@@ -37,7 +37,8 @@ switch($action){
                 $jugadorController ->showFormularioAdd();
                 break;
             default:
-                //hacer template de error;
+                $jugadorController= new jugadoresController();
+                $jugadorController ->showError("Url no encontrada.");
                 break;
             }
         break;
@@ -60,7 +61,8 @@ switch($action){
                 $jugadorController ->editarJugador($params[2]);
                 break;
             default:
-                //hacer template de error;
+                $jugadorController= new jugadoresController();
+                $jugadorController ->showError("Url no encontrada.");
                 break;
         }
         break;
@@ -87,7 +89,8 @@ switch($action){
                 $paisesController ->showPaises(); //listado de categorias
                 break;
             default:
-                //hacer template error;
+                $paisesController= new paisesController();
+                $paisesController ->showError("Url no encontrada.");
                 break;
         }
         break;
@@ -102,7 +105,8 @@ switch($action){
                 $paisesController ->showFormularioEdit($params[2]);
                 break;
             default:
-             //hacer template error;
+                $paisesController= new paisesController();
+                $paisesController ->showPaises();
              break;
         }
         break;

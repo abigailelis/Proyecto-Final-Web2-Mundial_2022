@@ -40,7 +40,7 @@ Class usuariosController{
             die();
         }
         else{
-            $this-> view -> showLogin('usuario o contraseña incorrectos');
+            $this-> view -> showLogin('Usuario o contraseña incorrectos');
         }
     }
 }
