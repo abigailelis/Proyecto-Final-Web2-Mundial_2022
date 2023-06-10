@@ -1,1 +1,2 @@
-/config/ 
+#Ignorar carpeta config (contiene los puertos ya que difieren en cada compañero).
+config
