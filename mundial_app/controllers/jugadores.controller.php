@@ -20,28 +20,28 @@ Class jugadoresController{
         $this->view = new jugadoresView($this->logueado);
     } 
     //función para obtener todos los jugadores de un solo pais (listado de items x categoria)
-    function showJugadoresByPais($paisSelected){ 
+    function mostrarJugadoresPorPais($paisSelected){ 
         $pais = $this -> modelPaises ->getPaisByName($paisSelected);
         $jugadores = $this -> model -> getJugadoresByPais($pais);
-        $this -> view -> showJugadoresByPais($jugadores, $pais);
+        $this -> view -> mostrarJugadoresPorPais($jugadores, $pais);
     }
 
     //función para obtener todos los jugadores (listado de items)
-    function showJugadores(){
+    function mostrarJugadores(){
         $paises = $this -> modelPaises -> getPaises();
         $jugadores = $this-> model -> getJugadores();
-        $this-> view -> showJugadores($jugadores, $paises);
+        $this-> view -> mostrarJugadores($jugadores, $paises);
     }
 
     //función para obtener detalle de un solo jugador (detalle de item)
-    function showDataJugador($id){ 
+    function verMasJugador($id){ 
         $jugador = $this -> model -> getJugador($id);
         $pais = $this -> modelPaises -> getPais($jugador->id_pais);
-        $this -> view -> showJugador($jugador, $pais);
+        $this -> view -> mostrarJugador($jugador, $pais);
     }
 
     //función para renderizar el formulario con los datos precargados para editar
-    function showFormularioEdit($id){
+    function mostrarFormularioEdit($id){
         if ($this->logueado['loggueado'] == true){
             $paises = $this -> modelPaises -> getPaises();
             $jugador = $this -> model -> getJugador($id);
@@ -50,38 +50,38 @@ Class jugadoresController{
             $descripcion = $jugador->descripcion;
             $posicion = $jugador->posicion;
             $foto = $jugador->foto;
-            $this -> view -> showFormularioEdit($id,$nombre, $apellido, $descripcion,$posicion, $foto, $paises);
+            $this -> view -> mostrarFormularioEdit($id,$nombre, $apellido, $descripcion,$posicion, $foto, $paises);
         }else{
-            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+            $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
     }
 
     //función para renderizar el formulario agregar nuevo jugador
-    function showFormularioAdd(){
+    function mostrarFormularioAgregarJugador(){
         if($this->logueado['loggueado'] == true){
             $paises = $this -> modelPaises -> getPaises();
-            $this -> view -> showFormularioAdd($paises);
+            $this -> view -> mostrarFormularioAgregarJugador($paises);
         }else{
-            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+            $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
     } 
     
     //Borra un jugador según id
-    function deleteJugador($id){
+    function borrarJugador($id){
         if($this->logueado['loggueado'] == true){
-            $this-> model -> deleteJugador($id);
+            $this-> model -> borrarJugador($id);
             header("Location:".BASE_URL."jugadores");
             die();
         }else{
-            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+            $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
     }
 
     //Agrega un nuevo jugador
-    function addJugador(){
+    function agregarJugador(){
         if ($this->logueado['loggueado'] == true){
             $jugador = $this -> getDatosFormulario(); 
-            $id = $this -> model -> addJugador($jugador['nombre'], 
+            $id = $this -> model -> agregarJugador($jugador['nombre'], 
                                             $jugador['apellido'], 
                                             $jugador['descripcion'], 
                                             $jugador['posicion'], 
@@ -90,7 +90,7 @@ Class jugadoresController{
             header('Location:'.BASE_URL.'jugador/ver/'.$id);
             die();
         }else{
-            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+            $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
     }
 
@@ -108,7 +108,7 @@ Class jugadoresController{
             header('Location:'.BASE_URL.'jugador/ver/'.$id);
             die();
         }else{
-            $this->showError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
+            $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
     }
 
@@ -130,12 +130,12 @@ Class jugadoresController{
                         "pais"=>$pais]; 
             return $jugador;
         }else{
-            $this->showError("Los campos no pueden estar vacíos");
+            $this->mostrarError("Los campos no pueden estar vacíos");
         }        
     }
 
     //Muestra el template error
-    function showError($msg){
-        $this -> view -> showError($msg);
+    function mostrarError($msg){
+        $this -> view -> mostrarError($msg);
     }
 }

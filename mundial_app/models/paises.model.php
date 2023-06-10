@@ -37,7 +37,7 @@ Class paisesModel{
         $sentencia -> execute([":id"=>$id]);
     }
 
-    function addPais($nombre, $continente, $clasificacion, $bandera){
+    function agregarPais($nombre, $continente, $clasificacion, $bandera){
         $sentencia = $this -> db ->prepare("INSERT INTO paises 
                                                   (nombre, continente, clasificacion, bandera) 
                                            VALUES (:nombre, :continente, :clasificacion, :bandera)");

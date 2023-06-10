@@ -19,10 +19,14 @@
                         class="img-bandera-jugador">
                 </div>
             </div>
+            {if $logueado == true}
+                <a href="{$BASE_URL}formulario/editar/{$jugador->id}">Editar</a>
+                <a href="{$BASE_URL}jugador/borrar/{$jugador->id}">Borrar</a>
+            {/if}
         </div>
-        <div class="col-1  align-self-end">
-                <button class="btn"><a class="btn-a" href={$BASE_URL}jugadores>Volver</a></button>
-            </div>
+        <div class="col-1 align-self-end">
+            <button class="btn"><a class="btn-a" href={$BASE_URL}jugadores>Volver</a></button>
+        </div>
     </div>
 </section>
 

@@ -7,15 +7,13 @@ Class jugadoresView{
     public function __construct($logueado){
         $this->smarty = new Smarty();
         $this-> smarty -> assign('logueado', $logueado['loggueado']);
-        if($logueado['loggueado'] == true){
-            $this-> smarty -> assign('usuario', $logueado['usuario']);
-        }  
+        $this-> smarty -> assign('usuario', $logueado['usuario']);
+        $this -> smarty -> assign ('BASE_URL', BASE_URL);
     }
 
     //función para mostrar el listado de jugadores de un solo pais($arreglo de jugadores)
-    function showJugadoresByPais($jugadores, $paisSelected){
+    function mostrarJugadoresPorPais($jugadores, $paisSelected){
         $titulo = 'Listado de jugadores de '.$paisSelected->nombre;
-        $this -> smarty -> assign ('BASE_URL', BASE_URL);
         $this -> smarty -> assign ('titulo', $titulo);
         $this -> smarty -> assign ('jugadores', $jugadores);
         $this -> smarty -> assign ('paisSelected', $paisSelected);
@@ -24,8 +22,7 @@ Class jugadoresView{
     }
 
     //función para mostrar todos los jugadores
-    function showJugadores($jugadores, $paises){
-        $this -> smarty -> assign ('BASE_URL', BASE_URL);
+    function mostrarJugadores($jugadores, $paises){
         $this -> smarty -> assign ('titulo', 'Listado completo de jugadores');
         $this -> smarty -> assign ('jugadores', $jugadores);
         $this -> smarty -> assign ('paisSelected', 'null');
@@ -34,8 +31,7 @@ Class jugadoresView{
     }
 
     //función para mostrar el detalle de un jugador($jugador->id)
-    function showJugador($jugador, $pais){
-        $this -> smarty -> assign ('BASE_URL', BASE_URL);
+    function mostrarJugador($jugador, $pais){
         $this -> smarty -> assign ('titulo', $jugador->nombre);
         $this -> smarty -> assign ('jugador', $jugador);
         $this -> smarty -> assign ('pais', $pais);
@@ -43,18 +39,16 @@ Class jugadoresView{
     }
     
     //renderiza el formulario agregar jugador
-    function showFormularioAdd($paises){
-        $this -> smarty -> assign ('BASE_URL', BASE_URL);
-        $this -> smarty -> assign ('action','jugador/add');
+    function mostrarFormularioAgregarJugador($paises){
+        $this -> smarty -> assign ('action','jugador/agregar');
         $this -> smarty -> assign ('titulo', 'Agregar jugador');
         $this -> smarty -> assign ('paises', $paises);
         $this -> smarty -> display('./templates/formularioJugador.tpl');
     }
 
     //renderiza el formulario editar con los datos del jugador seleccionado
-    function showFormularioEdit($id, $nombre, $apellido, $descripcion, $posicion, $foto, $paises){
+    function mostrarFormularioEdit($id, $nombre, $apellido, $descripcion, $posicion, $foto, $paises){
         $action = 'jugador/editar/'.$id;
-        $this -> smarty -> assign ('BASE_URL', BASE_URL);
         $this -> smarty -> assign ('action',$action);
         $this -> smarty -> assign ('titulo', 'Editar jugador');
         $this -> smarty -> assign ('nombre', $nombre);
@@ -67,10 +61,10 @@ Class jugadoresView{
     }
 
     //Muestra el template error
-    function showError($msg){
-        $this -> smarty -> assign ('BASE_URL', BASE_URL);
+    function mostrarError($msg){
         $this -> smarty -> assign ('titulo', 'Not found');
         $this -> smarty -> assign ('msg', $msg);
         $this -> smarty -> display('./templates/error.tpl');
     }
+    
 }

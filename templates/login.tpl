@@ -5,6 +5,7 @@
       <div class="card border-0 shadow rounded-3 my-5">
         <div class="card-body p-4 p-sm-5">
           <h5 class="card-title text-center mb-5 fw-light fs-5">Iniciar sesión</h5>
+          <!-- Mensaje de usuario o contraseña incorrectos -->
           <span class="text-danger">{$msg|default:""}</span>
 
           <form action="{$BASE_URL}verificar" method="post">

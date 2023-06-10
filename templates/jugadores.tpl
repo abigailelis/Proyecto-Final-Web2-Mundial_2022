@@ -5,20 +5,20 @@
     <table class="table table-hover table-bordered">
         <thead>
             <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Posición</th>
-                <th scope="col">Pais</th>
-                <th scope="col">Ver más</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Posición</th>
+                <th>Pais</th>
+                <th>Ver más</th>
                 {if $logueado ==true}
-                    <th scope="col">Editar</th>
-                    <th scope="col">Borrar</th>
+                    <th>Editar</th>
+                    <th>Borrar</th>
                 {/if}
             </tr>
         </thead>
         <tbody>
             {foreach from=$jugadores item=jugador}
-                <tr scope="row">
+                <tr>
                     <td>{$jugador->nombre}</td>
                     <td>{$jugador->apellido}</td>
                     <td>{$jugador->posicion}</td>
@@ -46,7 +46,7 @@
 {if $logueado == true}
     <section class="container-fluid justify-content-end display-flex">
         <button class="btn mb-4">
-            <a class="btn-a" href="{$BASE_URL}formulario/add">Agregar Nuevo</a>
+            <a class="btn-a" href="{$BASE_URL}formulario/agregar">Agregar Nuevo</a>
         </button>
     </section>
 {/if}

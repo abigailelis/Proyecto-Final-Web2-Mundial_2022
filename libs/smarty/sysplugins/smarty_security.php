@@ -557,7 +557,7 @@ class Smarty_Security
     }
 
     /**
-     * Remove old directories and its sub folders, add new directories
+     * Remove old directories and its sub folders, agregar new directories
      *
      * @param array $oldDir
      * @param array $newDir

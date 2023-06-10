@@ -5,7 +5,7 @@
         {if $logueado == true}
             <!--BOTÓN PARA REDIRIGIR AL FORMULARIO DE AGREGAR PAIS -->
             <button class="btn btn-block mb-4">
-                <a href="{$BASE_URL}formPais/add" class="btn-a">Agregar Nuevo</a>
+                <a href="{$BASE_URL}formularioPais/agregar" class="btn-a">Agregar Nuevo</a>
             </button>
         {/if}
     </section>
@@ -20,7 +20,7 @@
                     <button class="btn btn-block mb-4"><a href="{$BASE_URL}jugadores/{$pais->nombre}" class="btn-a">Ver
                             más</a></button>
                     {if $logueado ==true}
-                        <button class="btn btn-block mb-4"><a href="{$BASE_URL}formPais/editar/{$pais->id}"
+                        <button class="btn btn-block mb-4"><a href="{$BASE_URL}formularioPais/editar/{$pais->id}"
                                 class="btn-a">Editar</a>
                         </button>
                         <button class="btn btn-block mb-4"><a href="{$BASE_URL}paises/msgBorrar/{$pais->id}"

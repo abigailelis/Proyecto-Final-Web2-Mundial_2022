@@ -99,7 +99,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <section class="container-fluid justify-content-end display-flex">
         <button class="btn mb-4">
             <a class="btn-a" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-formulario/add">Agregar Nuevo</a>
+formulario/agregar">Agregar Nuevo</a>
         </button>
     </section>
 <?php }
