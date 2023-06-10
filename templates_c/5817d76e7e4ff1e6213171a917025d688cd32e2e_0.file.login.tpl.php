@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-06 06:16:50
+/* Smarty version 4.3.0, created on 2023-06-10 22:25:11
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_647eb33212e588_15682704',
+  'unifunc' => 'content_6484dc27627c88_55810366',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5817d76e7e4ff1e6213171a917025d688cd32e2e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\login.tpl',
-      1 => 1686023637,
+      1 => 1686428709,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_647eb33212e588_15682704 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6484dc27627c88_55810366 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container">
@@ -31,7 +31,7 @@ $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_sm
       <div class="card border-0 shadow rounded-3 my-5">
         <div class="card-body p-4 p-sm-5">
           <h5 class="card-title text-center mb-5 fw-light fs-5">Iniciar sesión</h5>
-          <span><?php echo (($tmp = $_smarty_tpl->tpl_vars['msg']->value ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+          <span class="text-danger"><?php echo (($tmp = $_smarty_tpl->tpl_vars['msg']->value ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </span>
 
           <form action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>

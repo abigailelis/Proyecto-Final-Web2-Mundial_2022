@@ -21,13 +21,16 @@
                             más</a></button>
                     {if $logueado ==true}
                         <button class="btn btn-block mb-4"><a href="{$BASE_URL}formPais/editar/{$pais->id}"
-                                class="btn-a">Editar</a></button>
+                                class="btn-a">Editar</a>
+                        </button>
                         <button class="btn btn-block mb-4"><a href="{$BASE_URL}paises/msgBorrar/{$pais->id}"
-                                class="btn-a">Borrar</a></button>
+                                class="btn-a">Borrar</a>
+                        </button>
                     {/if}
                 </div>
             </section>
         {/foreach}
     </section>
 </div>
+
 {include file='footer.tpl'}
