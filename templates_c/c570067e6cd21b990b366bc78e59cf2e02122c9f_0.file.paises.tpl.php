@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-06 19:36:56
+/* Smarty version 4.3.0, created on 2023-06-10 22:31:56
   from 'C:\xampp\htdocs\TPE_WEB2\templates\paises.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_647f6eb84c14a3_44788121',
+  'unifunc' => 'content_6484ddbc51af34_89343784',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c570067e6cd21b990b366bc78e59cf2e02122c9f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE_WEB2\\templates\\paises.tpl',
-      1 => 1686072675,
+      1 => 1686428962,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_647f6eb84c14a3_44788121 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6484ddbc51af34_89343784 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -62,11 +62,13 @@ jugadores/<?php echo $_smarty_tpl->tpl_vars['pais']->value->nombre;?>
                         <button class="btn btn-block mb-4"><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 formPais/editar/<?php echo $_smarty_tpl->tpl_vars['pais']->value->id;?>
 "
-                                class="btn-a">Editar</a></button>
+                                class="btn-a">Editar</a>
+                        </button>
                         <button class="btn btn-block mb-4"><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 paises/msgBorrar/<?php echo $_smarty_tpl->tpl_vars['pais']->value->id;?>
 "
-                                class="btn-a">Borrar</a></button>
+                                class="btn-a">Borrar</a>
+                        </button>
                     <?php }?>
                 </div>
             </section>
@@ -75,6 +77,7 @@ paises/msgBorrar/<?php echo $_smarty_tpl->tpl_vars['pais']->value->id;?>
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </section>
 </div>
+
 <?php $_smarty_tpl->_subTemplateRender('file:footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 }
 }

@@ -68,7 +68,6 @@ Class jugadoresController{
     
     //Borra un jugador según id
     function deleteJugador($id){
-        $logueado = $this->logueado = $this->usuariosHelper->checkLoggedIn();
         if($this->logueado['loggueado'] == true){
             $this-> model -> deleteJugador($id);
             header("Location:".BASE_URL."jugadores");
