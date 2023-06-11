@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-10 23:36:17
+/* Smarty version 4.3.0, created on 2023-06-11 01:15:10
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\msgBorrarPais.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_6484ecd18fe586_76408986',
+  'unifunc' => 'content_648503fedecd89_07936624',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7166dfcc6c1edcd2d8cb591c808f4c079b78c85d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\msgBorrarPais.tpl',
-      1 => 1686432975,
+      1 => 1686436459,
       2 => 'file',
     ),
   ),
@@ -22,12 +22,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6484ecd18fe586_76408986 (Smarty_Internal_Template $_smarty_tpl) {
+function content_648503fedecd89_07936624 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
 <section class="container-fluid justify-content-center">
-<h2>Estás seguro de qué desas borrar el pais?</h2>
+<h2>Estás seguro de que deseas borrar el país?</h2>
     <form action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 paises/borrar/<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 " method="POST">

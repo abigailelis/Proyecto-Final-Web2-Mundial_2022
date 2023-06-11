@@ -80,15 +80,17 @@ Class jugadoresController{
     //Agrega un nuevo jugador
     function agregarJugador(){
         if ($this->logueado['loggueado'] == true){
-            $jugador = $this -> getDatosFormulario(); 
-            $id = $this -> model -> agregarJugador($jugador['nombre'], 
+            $jugador = $this -> getDatosFormulario();
+            if($jugador != null){
+                $id = $this -> model -> agregarJugador($jugador['nombre'], 
                                             $jugador['apellido'], 
                                             $jugador['descripcion'], 
                                             $jugador['posicion'], 
                                             $jugador['foto'], 
                                             $jugador['pais']);
-            header('Location:'.BASE_URL.'jugador/ver/'.$id);
-            die();
+                header('Location:'.BASE_URL.'jugador/ver/'.$id);
+                die();
+            } 
         }else{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
@@ -97,16 +99,18 @@ Class jugadoresController{
     //Edita un jugador según id
     function editarJugador($id){
         if ($this->logueado['loggueado'] == true){
-            $jugador = $this ->getDatosFormulario(); 
-            $this -> model ->editarJugador($jugador['nombre'], 
+            $jugador = $this ->getDatosFormulario();
+            if($jugador != null){
+               $this -> model ->editarJugador($jugador['nombre'], 
                                         $jugador['apellido'], 
                                         $jugador['descripcion'], 
                                         $jugador['posicion'], 
                                         $jugador['foto'], 
                                         $jugador['pais'], 
                                         $id);
-            header('Location:'.BASE_URL.'jugador/ver/'.$id);
-            die();
+                header('Location:'.BASE_URL.'jugador/ver/'.$id);
+                die(); 
+            }      
         }else{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
@@ -114,23 +118,29 @@ Class jugadoresController{
 
     //función que obtiene los datos del formulario
     private function getDatosFormulario(){
-        $nombre = $_POST['nombre'];
-        $apellido = $_POST['apellido'];
-        $descripcion = $_POST['descripcion'];
-        $posicion = $_POST['posicion'];
-        $foto = $_POST['foto'];
-        $pais = $_POST['pais'];
-        if(!empty($nombre) && !empty($apellido) && !empty($descripcion) 
-            && !empty($posicion) && !empty($foto) && !empty($pais)){
-            $jugador = ["nombre"=>$nombre,
-                        "apellido"=>$apellido,
-                        "descripcion"=>$descripcion,
-                        "posicion"=>$posicion,
-                        "foto"=>$foto,
-                        "pais"=>$pais]; 
-            return $jugador;
+        if (!empty($_POST)){
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $descripcion = $_POST['descripcion'];
+            $posicion = $_POST['posicion'];
+            $foto = $_POST['foto'];
+            $pais = $_POST['pais'];
+            if(!empty($nombre) && !empty($apellido) && !empty($descripcion) 
+                && !empty($posicion) && !empty($foto) && !empty($pais)){
+                $jugador = ["nombre"=>$nombre,
+                            "apellido"=>$apellido,
+                            "descripcion"=>$descripcion,
+                            "posicion"=>$posicion,
+                            "foto"=>$foto,
+                            "pais"=>$pais]; 
+                return $jugador;
+            }else{
+                $this->mostrarError("Los campos no pueden estar vacíos");
+            } 
         }else{
-            $this->mostrarError("Los campos no pueden estar vacíos");
+            $msg="Verifique que el formulario se llenó correctamente";
+            $this->mostrarError($msg);
+            return null;
         }        
     }
 

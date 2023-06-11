@@ -83,19 +83,22 @@ Class paisesController{
     function editarPais($id){
         if ($this->logueado['loggueado'] == true){
             $pais = $this ->getDatosFormulario(); 
-            $verifica = $this -> model -> getClasificacion($pais['clasificacion']);
-            if($verifica){
-                $msg="La clasificación ya existe.";
-                $this->mostrarError($msg);
-            }else{
-                $this -> model ->editarPais($pais['nombre'], 
-                                            $pais['continente'], 
-                                            $pais['clasificacion'], 
-                                            $pais['bandera'], 
-                                            $id);
-                header('Location:'.BASE_URL.'paises/ver');
-                die();
+            if($pais != null){
+               $verifica = $this -> model -> getClasificacion($pais['clasificacion']);
+                if($verifica){
+                    $msg="La clasificación ya existe.";
+                    $this->mostrarError($msg);
+                }else{
+                    $this -> model ->editarPais($pais['nombre'], 
+                                                $pais['continente'], 
+                                                $pais['clasificacion'], 
+                                                $pais['bandera'], 
+                                                $id);
+                    header('Location:'.BASE_URL.'paises/ver');
+                    die();
+                } 
             }
+            
         }else{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
@@ -105,17 +108,19 @@ Class paisesController{
     function agregarPais(){
         if ($this->logueado['loggueado'] == true){
             $pais = $this -> getDatosFormulario(); 
-            $verifica = $this -> model -> getClasificacion($pais['clasificacion']);
-            if($verifica){
-                $msg="La clasificación ya existe.";
-                $this->mostrarError($msg);
-            }else{
-                $this -> model -> agregarPais($pais['nombre'], 
-                $pais['continente'], 
-                $pais['clasificacion'], 
-                $pais['bandera']);
-                header('Location:'.BASE_URL.'paises/ver');
-                die();  
+            if($pais != null){
+                $verifica = $this -> model -> getClasificacion($pais['clasificacion']);
+                if($verifica){
+                    $msg="La clasificación ya existe.";
+                    $this->mostrarError($msg);
+                }else{
+                    $this -> model -> agregarPais($pais['nombre'], 
+                    $pais['continente'], 
+                    $pais['clasificacion'], 
+                    $pais['bandera']);
+                    header('Location:'.BASE_URL.'paises/ver');
+                    die();  
+                }
             }
         }else{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
@@ -124,20 +129,30 @@ Class paisesController{
 
     //función que obtiene los datos del formulario
     private function getDatosFormulario(){
-        $nombre = $_POST['nombre'];
-        $continente = $_POST['continente'];
-        $clasificacion = $_POST['clasificacion'];
-        $bandera = $_POST['bandera'];
-        if(!empty($nombre) && !empty($continente) && !empty($clasificacion) && !empty($bandera)){
-            $pais = ["nombre"=>$nombre,
-                     "continente"=>$continente,
-                     "clasificacion"=>$clasificacion,
-                     "bandera"=>$bandera]; 
-            return $pais;
+        if (!empty($_POST)){ //verifica que se llenó el formulario previamente
+            $nombre = $_POST['nombre'];
+            $continente = $_POST['continente'];
+            $clasificacion = $_POST['clasificacion'];
+            $bandera = $_POST['bandera'];
+        
+            if(!empty($nombre) && !empty($continente) && !empty($clasificacion) && $clasificacion >0 && !empty($bandera)){
+                $pais = ["nombre"=>$nombre,
+                        "continente"=>$continente,
+                        "clasificacion"=>$clasificacion,
+                        "bandera"=>$bandera]; 
+                return $pais;
+            }else if ($clasificacion <= 0){
+                $msg="La clasificación es incorrecta.";
+                $this->mostrarError($msg);
+            }else{
+                $msg="Los campos no deben estar vacios";
+                $this->mostrarError($msg);
+            }
         }else{
-            $msg="Los campos no deben estar vacios";
+            $msg="Verifique que el formulario se llenó correctamente";
             $this->mostrarError($msg);
-        }        
+            return null;
+        }     
     }
 
     //Muestra el template error

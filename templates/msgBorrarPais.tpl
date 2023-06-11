@@ -1,7 +1,7 @@
 {include file='header.tpl'}
 
 <section class="container-fluid justify-content-center">
-<h2>Estás seguro de qué desas borrar el pais?</h2>
+<h2>Estás seguro de que deseas borrar el país?</h2>
     <form action="{$BASE_URL}paises/borrar/{$id}" method="POST">
         <label for="si">Si </label>
         <input type="radio" id="si" name="borrarPais" value="si">
