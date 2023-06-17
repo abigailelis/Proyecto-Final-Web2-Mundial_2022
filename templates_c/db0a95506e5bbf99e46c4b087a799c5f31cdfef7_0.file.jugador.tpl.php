@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-17 23:48:43
+/* Smarty version 4.3.0, created on 2023-06-18 00:06:06
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\jugador.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_648e2a3be17084_68771334',
+  'unifunc' => 'content_648e2e4e02e182_01018427',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'db0a95506e5bbf99e46c4b087a799c5f31cdfef7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\jugador.tpl',
-      1 => 1687037399,
+      1 => 1687039041,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_648e2a3be17084_68771334 (Smarty_Internal_Template $_smarty_tpl) {
+function content_648e2e4e02e182_01018427 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -59,7 +59,7 @@ $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_sm
 formularioJugador/editar/<?php echo $_smarty_tpl->tpl_vars['jugador']->value->id;?>
 ">Editar</a>
                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-jugador/borrar/<?php echo $_smarty_tpl->tpl_vars['jugador']->value->id;?>
+jugador/msgBorrar/<?php echo $_smarty_tpl->tpl_vars['jugador']->value->id;?>
 ">Borrar</a>
             <?php }?>
         </div>

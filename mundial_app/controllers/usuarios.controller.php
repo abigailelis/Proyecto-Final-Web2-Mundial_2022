@@ -47,4 +47,9 @@ Class usuariosController{
             $this-> view -> mostrarLogin('Usuario o contraseña incorrectos');
         }
     }
+    
+    //Muestra el template error
+    function mostrarError($msg){
+        $this -> view -> mostrarError($msg);
+    }
 }
