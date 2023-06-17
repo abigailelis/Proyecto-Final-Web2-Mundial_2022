@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-10 21:27:53
+/* Smarty version 4.3.0, created on 2023-06-17 21:14:04
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_6484ceb984dc80_35787309',
+  'unifunc' => 'content_648e05fcd3ea09_68669140',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5764e9bc9c3137de40df94854f2e7e1fcd85d4d2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\header.tpl',
-      1 => 1686425247,
+      1 => 1687029161,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6484ceb984dc80_35787309 (Smarty_Internal_Template $_smarty_tpl) {
+function content_648e05fcd3ea09_68669140 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +65,7 @@ login">Log in</a>
               <li class="nav-item">
                 <div class="navbar-collapse justify-content-between">
                   <span class="spinner-grow text-success spinner-grow-sm"></span>
-                  <span class="nav-link">En línea: <?php echo $_smarty_tpl->tpl_vars['usuario']->value;?>
+                  <span class="nav-link">En línea: <?php echo (($tmp = $_smarty_tpl->tpl_vars['usuario']->value ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </span>
                   <button class="btn btn-sm btn-outline-secondary" type="button">
                     <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-06 06:01:36
+/* Smarty version 4.3.0, created on 2023-06-11 00:30:42
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\formularioPais.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_647eafa0b18a07_08946252',
+  'unifunc' => 'content_6484f992765c02_42672206',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '89f6b77141d3aae8ffd28421dd528a32f9aaff36' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\formularioPais.tpl',
-      1 => 1686024082,
+      1 => 1686436241,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_647eafa0b18a07_08946252 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6484f992765c02_42672206 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -49,7 +49,7 @@ $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_sm
                             <div class="form-outline mb-4">    
                                 <label for="clasificacion">Clasificación</label>
                                 <input class="form-control" name="clasificacion" type="number" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['clasificacion']->value ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-">
+" min="1" max="32" placeholder="La clasificación solo puede ser entre 1 y 32">
                             </div>
                             <div class="form-outline mb-4">    
                                 <label for="bandera">Bandera (url)</label>

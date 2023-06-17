@@ -12,114 +12,101 @@ if (!empty($_GET['action'])){
     $action = 'home';
 }
 
+//Instanciamos los controladores
+$paisesController= new paisesController();
+$jugadoresController= new jugadoresController();
+$usuariosController = new usuariosController();
+
 switch($action){
     case 'home':
-        $paisesController= new paisesController();
-        $paisesController ->showHome();
+        $paisesController ->mostrarInicio();
         break;
     case 'jugadores':
-        if(!empty ($params[1])){
-            $jugadoresController= new jugadoresController();
-            $jugadoresController -> showJugadoresByPais($params[1]); //listado de items x categoria
+        if(!empty ($params[1]) && !array_key_exists($params[2], $_GET)){ //verifica que no vengan más parametros después del país
+            $jugadoresController -> mostrarJugadoresPorPais($params[1]); //listado de items x categoria
+        }else if (array_key_exists($params[2], $_GET)){
+            $jugadorController ->mostrarError("Url no encontrada.");
         }else{
-            $jugadoresController= new jugadoresController();
-            $jugadoresController -> showJugadores(); //listado de items
-        }    
-        break;//hacer template de error
+            $jugadoresController -> mostrarJugadores(); //listado de items
+        }   
+        break;
     case 'formulario':
         switch ($params[1]){
             case 'editar':
-                $jugadorController= new jugadoresController();
-                $jugadorController ->showFormularioEdit($params[2]);
+                $jugadorController ->mostrarFormularioEditarJugador($params[2]);
                 break;
-            case 'add':
-                $jugadorController= new jugadoresController();
-                $jugadorController ->showFormularioAdd();
+            case 'agregar':
+                $jugadorController ->mostrarFormularioAgregarJugador();
                 break;
             default:
-                //hacer template de error;
+                $jugadorController ->mostrarError("Url no encontrada.");
                 break;
             }
         break;
     case 'jugador':
         switch ($params[1]){ 
             case 'ver':
-                $jugadorController= new jugadoresController();
-                $jugadorController ->showDataJugador($params[2]);  //detalle de item
+                $jugadorController ->verMasJugador($params[2]);  //detalle de item
                 break;          
             case 'borrar':
-                $jugadorController= new jugadoresController();
-                $jugadorController ->deleteJugador($params[2]);
+                $jugadorController ->borrarJugador($params[2]);
                 break;
-            case 'add':
-                $jugadorController= new jugadoresController();
-                $jugadorController ->addJugador();
+            case 'agregar':
+                $jugadorController ->agregarJugador();
                 break;
             case 'editar':
-                $jugadorController= new jugadoresController();
                 $jugadorController ->editarJugador($params[2]);
                 break;
             default:
-                //hacer template de error;
+                $jugadorController ->mostrarError("Url no encontrada.");
                 break;
         }
         break;
     case 'paises': 
         switch ($params[1]){
             case 'msgBorrar':
-                $paisesController= new paisesController();
-                $paisesController ->showMsgBorrar($params[2]);
+                $paisesController ->mostrarMsgBorrar($params[2]);
                 break;
             case 'borrar':
-                $paisesController= new paisesController();
                 $paisesController ->borrarPais($params[2]);
                 break;
             case 'editar':
-                $paisesController= new paisesController();
                 $paisesController ->editarPais($params[2]);
                 break;
-            case 'add':
-                $paisesController= new paisesController();
-                $paisesController ->addPais();
+            case 'agregar':
+                $paisesController ->agregarPais();
                 break;
             case 'ver':
-                $paisesController= new paisesController();
-                $paisesController ->showPaises(); //listado de categorias
+                $paisesController ->mostrarPaises(); //listado de categorias
                 break;
             default:
-                //hacer template error;
+                $paisesController ->mostrarError("Url no encontrada.");
                 break;
         }
         break;
-    case 'formPais':
+    case 'formularioPais':
         switch ($params[1]){
-            case 'add':
-                $paisesController= new paisesController();
-                $paisesController ->showFormularioAdd();
+            case 'agregar':
+                $paisesController ->mostrarFormularioAgregarPais();
                 break;
             case 'editar':
-                $paisesController= new paisesController();
-                $paisesController ->showFormularioEdit($params[2]);
+                $paisesController ->mostrarFormularioEditarPais($params[2]);
                 break;
             default:
-             //hacer template error;
+                $paisesController ->mostrarPaises();
              break;
         }
         break;
     case 'login':
-        $usuariosController = new usuariosController();
-        $usuariosController ->showLogin();
+        $usuariosController ->mostrarLogin();
         break;
     case 'verificar':
-        $usuariosController = new usuariosController();
-        $usuariosController ->verifyUsuario();
+        $usuariosController ->verificarUsuario();
         break;
     case 'logout':
-        $usuariosController = new usuariosController();
         $usuariosController ->logout();
         break;
     default:
-        $paisesController= new paisesController();
-        $paisesController ->showError('Url not found');
+        $paisesController ->mostrarError('Url no encontrada');
         break;
 }

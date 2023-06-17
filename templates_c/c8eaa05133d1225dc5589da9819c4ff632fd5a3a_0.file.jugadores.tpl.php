@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-06 04:45:17
+/* Smarty version 4.3.0, created on 2023-06-10 23:39:51
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\jugadores.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_647e9dbd485d07_72925302',
+  'unifunc' => 'content_6484eda7ee8683_01107569',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c8eaa05133d1225dc5589da9819c4ff632fd5a3a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\jugadores.tpl',
-      1 => 1686019517,
+      1 => 1686433191,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_647e9dbd485d07_72925302 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6484eda7ee8683_01107569 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -32,14 +32,14 @@ $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_sm
     <table class="table table-hover table-bordered">
         <thead>
             <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Posición</th>
-                <th scope="col">Pais</th>
-                <th scope="col">Ver más</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Posición</th>
+                <th>Pais</th>
+                <th>Ver más</th>
                 <?php if ($_smarty_tpl->tpl_vars['logueado']->value == true) {?>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Borrar</th>
+                    <th>Editar</th>
+                    <th>Borrar</th>
                 <?php }?>
             </tr>
         </thead>
@@ -50,7 +50,7 @@ $_smarty_tpl->tpl_vars['jugador']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['jugador']->value) {
 $_smarty_tpl->tpl_vars['jugador']->do_else = false;
 ?>
-                <tr scope="row">
+                <tr>
                     <td><?php echo $_smarty_tpl->tpl_vars['jugador']->value->nombre;?>
 </td>
                     <td><?php echo $_smarty_tpl->tpl_vars['jugador']->value->apellido;?>
@@ -99,7 +99,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <section class="container-fluid justify-content-end display-flex">
         <button class="btn mb-4">
             <a class="btn-a" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-formulario/add">Agregar Nuevo</a>
+formulario/agregar">Agregar Nuevo</a>
         </button>
     </section>
 <?php }

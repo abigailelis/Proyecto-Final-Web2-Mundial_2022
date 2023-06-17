@@ -18,7 +18,7 @@
                             </div>
                             <div class="form-outline mb-4">    
                                 <label for="clasificacion">Clasificación</label>
-                                <input class="form-control" name="clasificacion" type="number" value="{$clasificacion|default: ""}">
+                                <input class="form-control" name="clasificacion" type="number" value="{$clasificacion|default: ""}" min="1" max="32" placeholder="La clasificación solo puede ser entre 1 y 32">
                             </div>
                             <div class="form-outline mb-4">    
                                 <label for="bandera">Bandera (url)</label>

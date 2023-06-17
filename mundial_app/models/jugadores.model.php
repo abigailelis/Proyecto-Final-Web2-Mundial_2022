@@ -33,12 +33,12 @@ Class jugadoresModel{
     }
 
     //Borrar jugador según id
-    function deleteJugador($id){
+    function borrarJugador($id){
         $sentencia = $this -> db ->prepare("DELETE FROM jugadores WHERE (id)=:id");
         $sentencia -> execute([":id"=>$id]);
     }
 
-    function addJugador($nombre, $apellido, $descripcion, $posicion, $foto, $pais){
+    function agregarJugador($nombre, $apellido, $descripcion, $posicion, $foto, $pais){
         $sentencia = $this -> db ->prepare("INSERT INTO jugadores 
                                                   (nombre, apellido, descripcion, posicion, foto, id_pais) 
                                            VALUES (:nombre, :apellido, :descripcion, :posicion, :foto, :id_pais)");

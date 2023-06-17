@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-06-2023 a las 21:00:44
+-- Tiempo de generación: 17-06-1995 a las 20:40:37
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -115,22 +115,23 @@ INSERT INTO `paises` (`id`, `nombre`, `continente`, `clasificacion`, `bandera`) 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuario` (
+CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `usuario` varchar(500) NOT NULL,
   `password` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuario` (`id`, `usuario`, `password`) VALUES
-(1, 'Mariano', '12345'),
-(2, 'Martin', '12345');
+INSERT INTO `usuarios` (`id`, `usuario`, `password`) VALUES
+(1, 'Mariano', '$2a$12$nm7f7Qh51jf/8R9GAuqHr.79v/YLSqteK3KlYZJavWHcJDmQBe3AC'),
+(2, 'Martin', '$2a$12$HoXUJIxcV1EdJfQxjv8uP.t9IszgfFA/embAqgGTdA.GQooYJ6.qa'),
+(3, 'Creadores', '$2a$12$ePFGXnnINlHTuvCowuy9qe1/K51sp3BtRRAGnAv17Rg7rCGJYMbzO');
 
 --
 -- Índices para tablas volcadas
@@ -151,9 +152,9 @@ ALTER TABLE `paises`
   ADD UNIQUE KEY `clasificacion` (`clasificacion`);
 
 --
--- Indices de la tabla `usuario`
+-- Indices de la tabla `usuarios`
 --
-ALTER TABLE `usuario`
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `usuario` (`usuario`);
 
@@ -171,13 +172,13 @@ ALTER TABLE `jugadores`
 -- AUTO_INCREMENT de la tabla `paises`
 --
 ALTER TABLE `paises`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
-ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

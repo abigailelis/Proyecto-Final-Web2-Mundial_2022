@@ -15,8 +15,8 @@ Class usuariosController{
         $this -> view = new usuariosView($this->usuariosHelper->checkLoggedIn());
     }
     //muestra el formulario del login
-    function showLogin(){
-        $this -> view -> showLogin('');
+    function mostrarLogin(){
+        $this -> view -> mostrarLogin('');
     }
 
     //Cierra la sesión del usuario
@@ -30,7 +30,7 @@ Class usuariosController{
    *la contraseña ingresada por formulario con el hash de la BBDD,
    *sino, vuelve al login con el mensaje usuario/contraseña incorrectos
    */
-    function verifyUsuario() {
+    function verificarUsuario() {
         $usuario = $_POST['usuario'];
         $password = $_POST['password'];
         $usuario_db = $this -> model -> getUsuario($usuario);
@@ -40,7 +40,7 @@ Class usuariosController{
             die();
         }
         else{
-            $this-> view -> showLogin('usuario o contraseña incorrectos');
+            $this-> view -> mostrarLogin('Usuario o contraseña incorrectos');
         }
     }
 }

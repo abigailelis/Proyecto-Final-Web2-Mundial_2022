@@ -32,7 +32,7 @@ $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_sm
             <!--BOTÓN PARA REDIRIGIR AL FORMULARIO DE AGREGAR PAIS -->
             <button class="btn btn-block mb-4">
                 <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-formPais/add" class="btn-a">Agregar Nuevo</a>
+formularioPais/agregar" class="btn-a">Agregar Nuevo</a>
             </button>
         <?php }?>
     </section>
@@ -60,7 +60,7 @@ jugadores/<?php echo $_smarty_tpl->tpl_vars['pais']->value->nombre;?>
                             más</a></button>
                     <?php if ($_smarty_tpl->tpl_vars['logueado']->value == true) {?>
                         <button class="btn btn-block mb-4"><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-formPais/editar/<?php echo $_smarty_tpl->tpl_vars['pais']->value->id;?>
+formularioPais/editar/<?php echo $_smarty_tpl->tpl_vars['pais']->value->id;?>
 "
                                 class="btn-a">Editar</a>
                         </button>
