@@ -51,16 +51,16 @@ Class jugadoresView{
     }
 
     //renderiza el formulario editar con los datos del jugador seleccionado
-    function mostrarFormularioEditarJugador($id, $nombre, $apellido, $descripcion, $posicion, $foto, $paises){
-        $action = 'jugador/editar/'.$id;
+    function mostrarFormularioEditarJugador($jugador, $paises){
+        $action = 'jugador/editar/'.$jugador->id;
         $this -> smarty -> assign ('action',$action);
         $this -> smarty -> assign ('titulo', 'Editar jugador');
-        $this -> smarty -> assign ('nombre', $nombre);
-        $this -> smarty -> assign ('apellido', $apellido);
-        $this -> smarty -> assign ('descripcion', $descripcion);
-        $this -> smarty -> assign ('posicion', $posicion);
-        $this -> smarty -> assign ('foto', $foto);
-        $this -> smarty -> assign ('paises', $paises);
+        $this -> smarty -> assign ('nombre', $jugador->nombre);
+        $this -> smarty -> assign ('apellido', $jugador->apellido);
+        $this -> smarty -> assign ('descripcion', $jugador->descripcion);
+        $this -> smarty -> assign ('posicion', $jugador->posicion);
+        $this -> smarty -> assign ('foto', $jugador->foto);
+        $this -> smarty -> assign ('paises',$paises);
         $this -> smarty -> display('./templates/formularioJugador.tpl');
     }
 
