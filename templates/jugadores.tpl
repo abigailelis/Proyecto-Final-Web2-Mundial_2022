@@ -33,7 +33,7 @@
                     {/if}
                     <td><a href="{$BASE_URL}jugador/ver/{$jugador->id}">Ver más</a></td>
                     {if $logueado == true}
-                        <td><a href="{$BASE_URL}formulario/editar/{$jugador->id}">Editar</a></td>
+                        <td><a href="{$BASE_URL}formularioJugador/editar/{$jugador->id}">Editar</a></td>
                         <td><a href="{$BASE_URL}jugador/borrar/{$jugador->id}">Borrar</a></td>
                     {/if}
                 </tr>
@@ -46,7 +46,7 @@
 {if $logueado == true}
     <section class="container-fluid justify-content-end display-flex">
         <button class="btn mb-4">
-            <a class="btn-a" href="{$BASE_URL}formulario/agregar">Agregar Nuevo</a>
+            <a class="btn-a" href="{$BASE_URL}formularioJugador/agregar">Agregar Nuevo</a>
         </button>
     </section>
 {/if}
