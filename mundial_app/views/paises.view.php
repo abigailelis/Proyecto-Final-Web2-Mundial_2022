@@ -42,8 +42,10 @@ Class paisesView{
 
     //Consulta si estas seguro de borrar el pais.
     function mostrarMsgBorrar($id){
+        $action = 'paises/borrar/'.$id;
         $this -> smarty -> assign ('titulo', 'Borrar pais');
-        $this -> smarty -> assign ('id', $id);
+        $this -> smarty -> assign ('action', $action);
+        $this -> smarty -> assign ('elemento', 'Pais');
         $this -> smarty -> display('./templates/msgBorrarPais.tpl');
     }
 

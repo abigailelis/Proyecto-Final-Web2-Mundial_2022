@@ -51,12 +51,11 @@ Class paisesController{
         }else{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
-        
     }
 
     //función para renderizar el formulario agregar nuevo pais
     function mostrarFormularioAgregarPais(){
-        if ($this->logueado['loggueado'] == true){
+        if ($this->logueado == true){
            $this -> view -> mostrarFormularioAgregarPais(); 
         }else{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
@@ -70,7 +69,7 @@ Class paisesController{
 
     //Borrar pais según id
     function borrarPais($id){
-        if ($this->logueado['loggueado'] == true){
+        if ($this->logueado == true){
             $response = $_POST['borrarPais'];
             if($response == 'si'){
                 $this-> model -> borrarPais($id);
@@ -84,7 +83,7 @@ Class paisesController{
 
     //Editar pais según id
     function editarPais($id){
-        if ($this->logueado['loggueado'] == true){
+        if ($this->logueado == true){
             $pais = $this ->getDatosFormulario(); 
             if($pais != null){
                $verifica = $this -> model -> getClasificacion($pais['clasificacion']);
@@ -109,7 +108,7 @@ Class paisesController{
 
     //Agregar pais nuevo
     function agregarPais(){
-        if ($this->logueado['loggueado'] == true){
+        if ($this->logueado == true){
             $pais = $this -> getDatosFormulario(); 
             if($pais != null){
                 $verifica = $this -> model -> getClasificacion($pais['clasificacion']);

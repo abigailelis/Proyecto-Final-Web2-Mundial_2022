@@ -76,17 +76,25 @@ Class jugadoresController{
         }
     } 
     
+     //Mostrar mensaje de borrar jugador si/no
+     function mostrarMsgBorrar($id){
+        $this ->view -> mostrarMsgBorrar($id);
+    }
+
     //Borra un jugador según id
     function borrarJugador($id){
         if($this->logueado == true){
-            $this-> model -> borrarJugador($id);
+            $response = $_POST['borrarJugador'];
+            if($response == 'si'){
+                $this-> model -> borrarJugador($id);
+            }
             header("Location:".BASE_URL."jugadores");
             die();
         }else{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
     }
-
+   
     //Agrega un nuevo jugador
     function agregarJugador(){
         if ($this->logueado == true){
