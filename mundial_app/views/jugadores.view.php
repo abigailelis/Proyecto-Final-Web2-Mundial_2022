@@ -58,13 +58,13 @@ Class jugadoresView{
         $this -> smarty -> assign ('paises',$paises);
         $this -> smarty -> display('./templates/formularioJugador.tpl');
     }
-    //Consulta si estas seguro de borrar el pais.
+    //Consulta si estas seguro de borrar el jugador.
     function mostrarMsgBorrar($id){
         $action = 'jugador/borrar/'.$id;
         $this -> smarty -> assign ('titulo', 'Borrar jugador');
         $this -> smarty -> assign ('action', $action);
         $this -> smarty -> assign ('elemento', 'Jugador');
-        $this -> smarty -> display('./templates/msgBorrarPais.tpl');
+        $this -> smarty -> display('./templates/msgBorrar.tpl');
     }
     //Muestra el template error
     function mostrarError($msg){

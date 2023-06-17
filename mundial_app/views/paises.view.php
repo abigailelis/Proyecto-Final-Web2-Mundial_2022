@@ -46,7 +46,7 @@ Class paisesView{
         $this -> smarty -> assign ('titulo', 'Borrar pais');
         $this -> smarty -> assign ('action', $action);
         $this -> smarty -> assign ('elemento', 'Pais');
-        $this -> smarty -> display('./templates/msgBorrarPais.tpl');
+        $this -> smarty -> display('./templates/msgBorrar.tpl');
     }
 
     //Muestra la pagina de error.

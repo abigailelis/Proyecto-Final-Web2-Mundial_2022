@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-10 23:39:51
+/* Smarty version 4.3.0, created on 2023-06-17 23:57:24
   from 'C:\xampp\htdocs\mundial_2022\mundial_2022\templates\jugadores.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_6484eda7ee8683_01107569',
+  'unifunc' => 'content_648e2c44358400_46968288',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c8eaa05133d1225dc5589da9819c4ff632fd5a3a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mundial_2022\\mundial_2022\\templates\\jugadores.tpl',
-      1 => 1686433191,
+      1 => 1687039038,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6484eda7ee8683_01107569 (Smarty_Internal_Template $_smarty_tpl) {
+function content_648e2c44358400_46968288 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -80,10 +80,10 @@ jugador/ver/<?php echo $_smarty_tpl->tpl_vars['jugador']->value->id;?>
 ">Ver más</a></td>
                     <?php if ($_smarty_tpl->tpl_vars['logueado']->value == true) {?>
                         <td><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-formulario/editar/<?php echo $_smarty_tpl->tpl_vars['jugador']->value->id;?>
+formularioJugador/editar/<?php echo $_smarty_tpl->tpl_vars['jugador']->value->id;?>
 ">Editar</a></td>
                         <td><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-jugador/borrar/<?php echo $_smarty_tpl->tpl_vars['jugador']->value->id;?>
+jugador/msgBorrar/<?php echo $_smarty_tpl->tpl_vars['jugador']->value->id;?>
 ">Borrar</a></td>
                     <?php }?>
                 </tr>
@@ -99,7 +99,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <section class="container-fluid justify-content-end display-flex">
         <button class="btn mb-4">
             <a class="btn-a" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-formulario/agregar">Agregar Nuevo</a>
+formularioJugador/agregar">Agregar Nuevo</a>
         </button>
     </section>
 <?php }
