@@ -21,7 +21,7 @@
             </div>
             {if $logueado == true}
                 <a href="{$BASE_URL}formularioJugador/editar/{$jugador->id}">Editar</a>
-                <a href="{$BASE_URL}jugador/borrar/{$jugador->id}">Borrar</a>
+                <a href="{$BASE_URL}jugador/msgBorrar/{$jugador->id}">Borrar</a>
             {/if}
         </div>
         <div class="col-1 align-self-end">

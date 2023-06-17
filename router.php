@@ -62,7 +62,10 @@ switch($action){
                     }
                     else
                         $jugadoresController ->mostrarError("Jugador no encontrado.");
-                    break;          
+                    break; 
+                case 'msgBorrar':
+                    $jugadoresController ->mostrarMsgBorrar($params[2]);
+                    break;         
                 case 'borrar':
                     if(!empty($params[2])){
                         $jugadoresController ->mostrarMsgBorrar($params[2]);

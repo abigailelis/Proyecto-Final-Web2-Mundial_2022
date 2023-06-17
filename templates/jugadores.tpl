@@ -34,7 +34,7 @@
                     <td><a href="{$BASE_URL}jugador/ver/{$jugador->id}">Ver más</a></td>
                     {if $logueado == true}
                         <td><a href="{$BASE_URL}formularioJugador/editar/{$jugador->id}">Editar</a></td>
-                        <td><a href="{$BASE_URL}jugador/borrar/{$jugador->id}">Borrar</a></td>
+                        <td><a href="{$BASE_URL}jugador/msgBorrar/{$jugador->id}">Borrar</a></td>
                     {/if}
                 </tr>
             {/foreach}
