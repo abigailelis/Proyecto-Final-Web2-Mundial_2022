@@ -10,13 +10,16 @@ Class jugadoresController{
     private $modelPaises;
     private $usuariosHelper;
     private $logueado;
+    private $usuario;
 
     public function __construct(){
         $this->usuariosHelper = new usuariosHelper();
         $this->logueado = $this->usuariosHelper->checkLoggedIn();
+        if($this->logueado)
+            $this->usuario = $this->usuariosHelper->obtenerUsuario();
         $this->modelPaises = new paisesModel();
         $this->model = new jugadoresModel();       
-        $this->view = new jugadoresView($this->logueado);
+        $this->view = new jugadoresView($this->logueado, $this->usuario);
     }
 
     //función para obtener todos los jugadores (listado de items)
@@ -50,7 +53,7 @@ Class jugadoresController{
 
     //función para renderizar el formulario con los datos precargados para editar
     function mostrarFormularioEditarJugador($id){
-        if ($this->logueado['loggueado'] == true){
+        if ($this->logueado == true){
             $paises = $this -> modelPaises -> getPaises();
             $jugador = $this -> model -> getJugador($id);
             if($jugador){
@@ -65,7 +68,7 @@ Class jugadoresController{
 
     //función para renderizar el formulario agregar nuevo jugador
     function mostrarFormularioAgregarJugador(){
-        if($this->logueado['loggueado'] == true){
+        if($this->logueado == true){
             $paises = $this -> modelPaises -> getPaises();
             $this -> view -> mostrarFormularioAgregarJugador($paises);
         }else{
@@ -75,7 +78,7 @@ Class jugadoresController{
     
     //Borra un jugador según id
     function borrarJugador($id){
-        if($this->logueado['loggueado'] == true){
+        if($this->logueado == true){
             $this-> model -> borrarJugador($id);
             header("Location:".BASE_URL."jugadores");
             die();
@@ -86,7 +89,7 @@ Class jugadoresController{
 
     //Agrega un nuevo jugador
     function agregarJugador(){
-        if ($this->logueado['loggueado'] == true){
+        if ($this->logueado == true){
             $jugador = $this -> getDatosFormulario();
             if($jugador != null){
                 $id = $this -> model -> agregarJugador($jugador['nombre'], 
@@ -105,7 +108,7 @@ Class jugadoresController{
 
     //Edita un jugador según id
     function editarJugador($id){
-        if ($this->logueado['loggueado'] == true){
+        if ($this->logueado == true){
             $jugador = $this ->getDatosFormulario();
             if($jugador != null){
                $this -> model ->editarJugador($jugador['nombre'], 

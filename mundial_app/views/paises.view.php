@@ -4,15 +4,11 @@ require_once './libs/smarty/Smarty.class.php';
 Class paisesView{
     private $smarty;
 
-    public function __construct($logueado = null){
+    public function __construct($logueado, $usuario){
         $this-> smarty = new Smarty();
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
-        if($logueado != false){
-            $this-> smarty -> assign('logueado', $logueado['loggueado']);
-            $this-> smarty -> assign('usuario', $logueado['usuario']);  
-        }else{
-            $this-> smarty -> assign('logueado', $logueado);
-        }
+        $this-> smarty -> assign('logueado', $logueado);
+        $this-> smarty -> assign('usuario', $usuario);
     }
     //función para mostrar todos los paises
     function mostrarPaises($paises){

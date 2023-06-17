@@ -8,11 +8,15 @@ Class usuariosController{
     private $model;
     private $view;
     private $usuariosHelper;
-
+    private $logueado;
+    private $usuario;
     public function __construct(){
         $this -> usuariosHelper = new usuariosHelper();
+        $this->logueado = $this->usuariosHelper->checkLoggedIn();
+        if($this->logueado)
+            $this->usuario = $this->usuariosHelper->obtenerUsuario();
         $this -> model = new usuariosModel();
-        $this -> view = new usuariosView($this->usuariosHelper->checkLoggedIn());
+        $this -> view = new usuariosView($this->logueado, $this->usuario);
     }
     //muestra el formulario del login
     function mostrarLogin(){

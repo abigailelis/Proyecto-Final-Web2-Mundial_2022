@@ -11,7 +11,11 @@ Class usuariosHelper {
     public function login($usuario) {
         $this->startSession();
         $_SESSION['usuario'] = $usuario;
-        $_SESSION['loggueado'] = true;
+    }
+    public function obtenerUsuario(){
+        $this->startSession();
+        if(isset($_SESSION['usuario']))
+            return $_SESSION['usuario'];
     }
 
     //Inicia la sesión, borra los datos seteados, destruye la sesión por completo.
@@ -23,8 +27,8 @@ Class usuariosHelper {
 
     public function checkLoggedIn() {
         $this->startSession();
-        if (isset($_SESSION['loggueado']) && $_SESSION['loggueado'] == true){
-            return $_SESSION;
+        if (isset($_SESSION['usuario'])){
+            return true;
         }else{
             return false;
         }   

@@ -8,12 +8,15 @@ Class paisesController{
     private $view;
     private $usuariosHelper;
     private $logueado;
+    private $usuario;
 
     public function __construct(){
         $this->usuariosHelper = new usuariosHelper();
         $this->model = new paisesModel();
         $this->logueado = $this->usuariosHelper->checkLoggedIn();
-        $this->view = new paisesView($this->logueado);
+        if($this->logueado)
+            $this->usuario = $this->usuariosHelper->obtenerUsuario();
+        $this->view = new paisesView($this->logueado, $this->usuario);
 
     }
 
@@ -38,7 +41,7 @@ Class paisesController{
 
     //función para renderizar el formulario con los datos precargados para editar
     function mostrarFormularioEditarPais($id){
-        if($this->logueado['loggueado'] == true){
+        if($this->logueado == true){
             $pais = $this -> model -> getPais($id);
             $nombre = $pais->nombre;
             $continente = $pais->continente;
