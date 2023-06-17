@@ -22,10 +22,10 @@ switch($action){
         $paisesController ->mostrarInicio();
         break;
     case 'jugadores':
-        if(!empty ($params[1]) && !array_key_exists($params[2], $_GET)){ //verifica que no vengan más parametros después del país
+        if(!empty ($params[1]) && !isset($params[2])){ //verifica que no vengan más parametros después del país
             $jugadoresController -> mostrarJugadoresPorPais($params[1]); //listado de items x categoria
-        }else if (array_key_exists($params[2], $_GET)){
-            $jugadorController ->mostrarError("Url no encontrada.");
+        }else if (isset($params[2])){
+            $jugadoresController ->mostrarError("Url no encontrada.");
         }else{
             $jugadoresController -> mostrarJugadores(); //listado de items
         }   
