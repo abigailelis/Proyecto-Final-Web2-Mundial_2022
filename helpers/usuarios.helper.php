@@ -24,7 +24,6 @@ Class usuariosHelper {
             $_SESSION['loggueado'] = false;
             $_SESSION['usuario'] = '';
             return $_SESSION;
-        }
-        sesion_destroy();      
+        }     
     }
 }

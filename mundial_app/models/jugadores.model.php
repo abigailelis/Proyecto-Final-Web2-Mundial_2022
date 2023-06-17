@@ -5,7 +5,7 @@ Class jugadoresModel{
 
     public function __construct(){
        // $port= $config["db_port"];
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=db_mundial;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost:4306;'.'dbname=db_mundial;charset=utf8', 'root', '');
     }
 
     //función para obtener los jugadores segun pais (items x categoria)
@@ -26,7 +26,7 @@ Class jugadoresModel{
 
     //función para obtener un jugador ($jugador->id)
     function getJugador ($id) {
-        $sentencia = $this -> db ->prepare("SELECT * FROM jugadores WHERE (id)=:id");
+        $sentencia = $this -> db ->prepare("SELECT  * FROM jugadores WHERE (id)=:id");
         $sentencia -> execute([":id"=>$id]);
         $jugador = $sentencia -> fetch(PDO::FETCH_OBJ);
         return $jugador;

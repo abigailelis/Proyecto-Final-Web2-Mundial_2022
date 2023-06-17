@@ -128,7 +128,7 @@ Class jugadoresController{
                         "descripcion"=>$descripcion,
                         "posicion"=>$posicion,
                         "foto"=>$foto,
-                        "pais"=>$pais]; 
+                        "pais"=>$pais]; //no falta el id?
             return $jugador;
         }else{
             $this->showError("Los campos no pueden estar vacíos");

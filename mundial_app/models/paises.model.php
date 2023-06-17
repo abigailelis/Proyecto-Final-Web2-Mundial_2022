@@ -6,7 +6,7 @@ Class paisesModel{
 
     public function __construct(){
         //$port= $config["db_port"];
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=db_mundial;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost:4306;'.'dbname=db_mundial;charset=utf8', 'root', '');
         //Creó un grupo de BBDD y lo guardo en ese mismo grupo.
     }
 
