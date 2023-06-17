@@ -40,8 +40,12 @@ Class jugadoresController{
     //función para obtener detalle de un solo jugador (detalle de item)
     function verMasJugador($id){ 
         $jugador = $this -> model -> getJugador($id);
-        $pais = $this -> modelPaises -> getPais($jugador->id_pais);
-        $this -> view -> mostrarJugador($jugador, $pais);
+        if($jugador){
+            $pais = $this -> modelPaises -> getPais($jugador->id_pais);
+            $this -> view -> mostrarJugador($jugador, $pais);  
+        }else{
+            $this->mostrarError("El jugador ingresado no es válido");
+        }
     }
 
     //función para renderizar el formulario con los datos precargados para editar
@@ -50,12 +54,7 @@ Class jugadoresController{
             $paises = $this -> modelPaises -> getPaises();
             $jugador = $this -> model -> getJugador($id);
             if($jugador){
-                $nombre = $jugador->nombre;
-                $apellido = $jugador->apellido;
-                $descripcion = $jugador->descripcion;
-                $posicion = $jugador->posicion;
-                $foto = $jugador->foto;
-                $this -> view -> mostrarFormularioEditarJugador($id,$nombre, $apellido, $descripcion,$posicion, $foto, $paises);
+                $this -> view -> mostrarFormularioEditarJugador($jugador, $paises);
             }else{
                 $this->mostrarError("No se encontró el jugador seleccionado.");
             }
