@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-06-10 22:32:03
+/* Smarty version 4.3.0, created on 2023-06-18 00:11:58
   from 'C:\xampp\htdocs\TPE_WEB2\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_6484ddc3216628_03112439',
+  'unifunc' => 'content_648e2fae265f64_49842456',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '25e93fd6987ce14452828ccd24c1c51b70a6373e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE_WEB2\\templates\\login.tpl',
-      1 => 1686428962,
+      1 => 1687031051,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6484ddc3216628_03112439 (Smarty_Internal_Template $_smarty_tpl) {
+function content_648e2fae265f64_49842456 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container">
@@ -31,6 +31,7 @@ $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_sm
       <div class="card border-0 shadow rounded-3 my-5">
         <div class="card-body p-4 p-sm-5">
           <h5 class="card-title text-center mb-5 fw-light fs-5">Iniciar sesión</h5>
+          <!-- Mensaje de usuario o contraseña incorrectos -->
           <span class="text-danger"><?php echo (($tmp = $_smarty_tpl->tpl_vars['msg']->value ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </span>
 
