@@ -5,10 +5,14 @@ Class jugadoresView{
     private $smarty;
     
     public function __construct($logueado){
-        $this->smarty = new Smarty();
-        $this-> smarty -> assign('logueado', $logueado['loggueado']);
-        $this-> smarty -> assign('usuario', $logueado['usuario']);
+        $this-> smarty = new Smarty();
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
+        if($logueado != false){
+            $this-> smarty -> assign('logueado', $logueado['loggueado']);
+            $this-> smarty -> assign('usuario', $logueado['usuario']);  
+        }else{
+            $this-> smarty -> assign('logueado', $logueado);
+        }
     }
 
     //función para mostrar el listado de jugadores de un solo pais($arreglo de jugadores)
@@ -47,7 +51,7 @@ Class jugadoresView{
     }
 
     //renderiza el formulario editar con los datos del jugador seleccionado
-    function mostrarFormularioEdit($id, $nombre, $apellido, $descripcion, $posicion, $foto, $paises){
+    function mostrarFormularioEditarJugador($id, $nombre, $apellido, $descripcion, $posicion, $foto, $paises){
         $action = 'jugador/editar/'.$id;
         $this -> smarty -> assign ('action',$action);
         $this -> smarty -> assign ('titulo', 'Editar jugador');

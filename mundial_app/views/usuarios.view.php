@@ -5,10 +5,14 @@ Class usuariosView{
     public $smarty;
 
     public function __construct($logueado){
-        $this -> smarty = new Smarty();
+        $this-> smarty = new Smarty();
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
-        $this-> smarty -> assign('logueado', $logueado['loggueado']);
-        $this-> smarty -> assign('usuario', $logueado['usuario']);
+        if($logueado != false){
+            $this-> smarty -> assign('logueado', $logueado['loggueado']);
+            $this-> smarty -> assign('usuario', $logueado['usuario']);  
+        }else{
+            $this-> smarty -> assign('logueado', $logueado);
+        }
     }
 
     function mostrarLogin($msg){

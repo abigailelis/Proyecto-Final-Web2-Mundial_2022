@@ -35,7 +35,7 @@
               <li class="nav-item">
                 <div class="navbar-collapse justify-content-between">
                   <span class="spinner-grow text-success spinner-grow-sm"></span>
-                  <span class="nav-link">En línea: {$usuario}</span>
+                  <span class="nav-link">En línea: {$usuario|default: ''}</span>
                   <button class="btn btn-sm btn-outline-secondary" type="button">
                     <a class="nav-link" href="{$BASE_URL}logout">Log out</a>
                   </button>

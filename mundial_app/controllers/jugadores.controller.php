@@ -4,7 +4,6 @@ require_once './mundial_app/models/paises.model.php';
 require_once './mundial_app/models/jugadores.model.php';
 require_once './mundial_app/views/jugadores.view.php';
 
-
 Class jugadoresController{
     private $model;
     private $view;
@@ -14,24 +13,29 @@ Class jugadoresController{
 
     public function __construct(){
         $this->usuariosHelper = new usuariosHelper();
-        $this->model = new jugadoresModel();
-        $this->modelPaises = new paisesModel();
         $this->logueado = $this->usuariosHelper->checkLoggedIn();
+        $this->modelPaises = new paisesModel();
+        $this->model = new jugadoresModel();       
         $this->view = new jugadoresView($this->logueado);
-    } 
-    //función para obtener todos los jugadores de un solo pais (listado de items x categoria)
-    function mostrarJugadoresPorPais($paisSelected){ 
-        $pais = $this -> modelPaises ->getPaisByName($paisSelected);
-        $jugadores = $this -> model -> getJugadoresByPais($pais);
-        $this -> view -> mostrarJugadoresPorPais($jugadores, $pais);
     }
 
     //función para obtener todos los jugadores (listado de items)
     function mostrarJugadores(){
-        $paises = $this -> modelPaises -> getPaises();
+        $paises = $this->modelPaises -> getPaises();
         $jugadores = $this-> model -> getJugadores();
         $this-> view -> mostrarJugadores($jugadores, $paises);
     }
+
+    //función para obtener todos los jugadores de un solo pais (listado de items x categoria)
+    function mostrarJugadoresPorPais($paisSelected){ 
+        $pais = $this -> modelPaises ->getPaisByName($paisSelected);
+        if($pais){
+            $jugadores = $this -> model -> getJugadoresByPais($pais);
+            $this -> view -> mostrarJugadoresPorPais($jugadores, $pais);
+        }else{
+            $this->mostrarError("El país ingresado no es válido");
+        }
+    }    
 
     //función para obtener detalle de un solo jugador (detalle de item)
     function verMasJugador($id){ 
@@ -41,16 +45,20 @@ Class jugadoresController{
     }
 
     //función para renderizar el formulario con los datos precargados para editar
-    function mostrarFormularioEdit($id){
+    function mostrarFormularioEditarJugador($id){
         if ($this->logueado['loggueado'] == true){
             $paises = $this -> modelPaises -> getPaises();
             $jugador = $this -> model -> getJugador($id);
-            $nombre = $jugador->nombre;
-            $apellido = $jugador->apellido;
-            $descripcion = $jugador->descripcion;
-            $posicion = $jugador->posicion;
-            $foto = $jugador->foto;
-            $this -> view -> mostrarFormularioEdit($id,$nombre, $apellido, $descripcion,$posicion, $foto, $paises);
+            if($jugador){
+                $nombre = $jugador->nombre;
+                $apellido = $jugador->apellido;
+                $descripcion = $jugador->descripcion;
+                $posicion = $jugador->posicion;
+                $foto = $jugador->foto;
+                $this -> view -> mostrarFormularioEditarJugador($id,$nombre, $apellido, $descripcion,$posicion, $foto, $paises);
+            }else{
+                $this->mostrarError("No se encontró el jugador seleccionado.");
+            }
         }else{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
