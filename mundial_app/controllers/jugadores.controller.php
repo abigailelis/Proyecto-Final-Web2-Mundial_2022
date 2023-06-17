@@ -90,14 +90,16 @@ Class jugadoresController{
     //Agrega un nuevo jugador
     function agregarJugador(){
         if ($this->logueado == true){
-            $jugador = $this -> getDatosFormulario();
-            if($jugador != null){
-                $id = $this -> model -> agregarJugador($jugador['nombre'], 
-                                            $jugador['apellido'], 
-                                            $jugador['descripcion'], 
-                                            $jugador['posicion'], 
-                                            $jugador['foto'], 
-                                            $jugador['pais']);
+            $jugadorFormulario = $this -> getDatosFormulario();
+            if($jugadorFormulario != null){
+                $jugador = new stdClass();
+                $jugador -> nombre = $jugadorFormulario['nombre'];
+                $jugador -> apellido = $jugadorFormulario['apellido'];
+                $jugador -> descripcion = $jugadorFormulario['descripcion'];
+                $jugador -> posicion = $jugadorFormulario['posicion'];
+                $jugador -> foto = $jugadorFormulario['foto'];
+                $jugador -> pais =  $jugadorFormulario['pais'];
+                $id = $this -> model -> agregarJugador($jugador);
                 header('Location:'.BASE_URL.'jugador/ver/'.$id);
                 die();
             } 

@@ -25,7 +25,6 @@ Class jugadoresView{
     function mostrarJugadores($jugadores, $paises){
         $this -> smarty -> assign ('titulo', 'Listado completo de jugadores');
         $this -> smarty -> assign ('jugadores', $jugadores);
-        $this -> smarty -> assign ('paisSelected', 'null');
         $this -> smarty -> assign ('paises', $paises);
         $this -> smarty -> display('./templates/jugadores.tpl');
     }

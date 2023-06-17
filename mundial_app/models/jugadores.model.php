@@ -39,16 +39,16 @@ Class jugadoresModel{
         $sentencia -> execute([":id"=>$id]);
     }
 
-    function agregarJugador($nombre, $apellido, $descripcion, $posicion, $foto, $pais){
+    function agregarJugador($jugador){
         $sentencia = $this -> db ->prepare("INSERT INTO jugadores 
                                                   (nombre, apellido, descripcion, posicion, foto, id_pais) 
                                            VALUES (:nombre, :apellido, :descripcion, :posicion, :foto, :id_pais)");
-        $sentencia->execute([":nombre"=>$nombre,
-                             ":apellido"=>$apellido,
-                             ":descripcion"=>$descripcion,
-                             ":posicion"=>$posicion,
-                             ":foto"=>$foto,
-                             ":id_pais"=>$pais]);
+        $sentencia->execute([":nombre"=>$jugador->nombre,
+                             ":apellido"=>$jugador->apellido,
+                             ":descripcion"=>$jugador->descripcion,
+                             ":posicion"=>$jugador->posicion,
+                             ":foto"=>$jugador->foto,
+                             ":id_pais"=>$jugador->pais]);
         $last_id = $this -> db ->lastInsertId();
         return $last_id;
     }
