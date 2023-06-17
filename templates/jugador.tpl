@@ -20,7 +20,7 @@
                 </div>
             </div>
             {if $logueado == true}
-                <a href="{$BASE_URL}formulario/editar/{$jugador->id}">Editar</a>
+                <a href="{$BASE_URL}formularioJugador/editar/{$jugador->id}">Editar</a>
                 <a href="{$BASE_URL}jugador/borrar/{$jugador->id}">Borrar</a>
             {/if}
         </div>

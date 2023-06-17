@@ -30,37 +30,67 @@ switch($action){
             $jugadoresController -> mostrarJugadores(); //listado de items
         }   
         break;
-    case 'formulario':
-        switch ($params[1]){
-            case 'editar':
-                $jugadoresController ->mostrarFormularioEditarJugador($params[2]);
-                break;
-            case 'agregar':
-                $jugadoresController ->mostrarFormularioAgregarJugador();
-                break;
-            default:
-                $jugadoresController ->mostrarError("Url no encontrada.");
-                break;
+    case 'formularioJugador':
+        if(!empty ($params[1]) && !isset($params[3])){ 
+            switch ($params[1]){
+                case 'editar':
+                    if (isset($params[2]))
+                        $jugadoresController ->mostrarFormularioEditarJugador($params[2]);
+                    else
+                        $jugadoresController ->mostrarError("Jugador no encontrado.");
+                    break;
+                case 'agregar':
+                    if(!isset($params[2]))
+                        $jugadoresController ->mostrarFormularioAgregarJugador();
+                    else
+                        $jugadoresController ->mostrarError("Url no encontrada.");
+                    break;
+                default:
+                    $jugadoresController ->mostrarError("Url no encontrada.");
+                    break;
             }
+        }
+        else
+            $jugadoresController ->mostrarError("Url no encontrada.");
         break;
     case 'jugador':
-        switch ($params[1]){ 
-            case 'ver':
-                $jugadoresController ->verMasJugador($params[2]);  //detalle de item
-                break;          
-            case 'borrar':
-                $jugadoresController ->borrarJugador($params[2]);
-                break;
-            case 'agregar':
-                $jugadoresController ->agregarJugador();
-                break;
-            case 'editar':
-                $jugadoresController ->editarJugador($params[2]);
-                break;
-            default:
-                $jugadoresController ->mostrarError("Url no encontrada.");
-                break;
+        if(!empty($params[1]) && !isset($params[3]) ){
+            switch ($params[1]){ 
+                case 'ver':
+                    if(!empty($params[2])){
+                    $jugadoresController ->verMasJugador($params[2]);  //detalle de item
+                    }
+                    else
+                        $jugadoresController ->mostrarError("Jugador no encontrado.");
+                    break;          
+                case 'borrar':
+                    if(!empty($params[2])){
+                        $jugadoresController ->borrarJugador($params[2]);
+                    }
+                    else
+                        $jugadoresController ->mostrarError("Jugador no encontrado.");
+                    break;
+                case 'agregar':
+                    if(!isset($params[2])){
+                        $jugadoresController ->agregarJugador();
+                    }
+                    else
+                        $jugadoresController ->mostrarError("Url no encontrada.");    
+                    break;
+                case 'editar':
+                    if(!empty($params[2])){
+                        $jugadoresController ->editarJugador($params[2]);
+                    }
+                    else
+                        $jugadoresController ->mostrarError("Jugador no encontrado.");
+                    break;
+                default:
+                    $jugadoresController ->mostrarError("Url no encontrada.");
+                    break;
+            }
         }
+        else
+            $jugadoresController ->mostrarError("Url no encontrada.");
         break;
     case 'paises': 
         switch ($params[1]){
