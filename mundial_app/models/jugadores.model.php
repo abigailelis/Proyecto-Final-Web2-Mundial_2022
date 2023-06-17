@@ -19,7 +19,7 @@ Class jugadoresModel{
 
     //función para obtener todos los jugadores
     function getJugadores(){
-        $sentencia = $this -> db -> prepare("SELECT * FROM jugadores");
+        $sentencia = $this -> db -> prepare("SELECT * FROM jugadores ORDER BY id_pais");
         $sentencia -> execute();
         $jugadores = $sentencia -> fetchAll(PDO::FETCH_OBJ);
         return $jugadores;

@@ -16,5 +16,12 @@ Class usuariosView{
         $this -> smarty -> assign ('titulo', 'Login');
         $this -> smarty -> display ('./templates/login.tpl');
     }
+    
+    //Muestra el template error
+    function mostrarError($msg){
+        $this -> smarty -> assign ('titulo', 'Not found');
+        $this -> smarty -> assign ('msg', $msg);
+        $this -> smarty -> display('./templates/error.tpl');
+    }
 
 }
