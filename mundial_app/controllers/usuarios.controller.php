@@ -21,7 +21,10 @@ Class usuariosController{
 
     /*--muestra el formulario del login--*/
     function mostrarLogin(){
-        $this -> view -> mostrarLogin('');
+        if($this->logueado != true)
+            $this -> view -> mostrarLogin('');
+        else
+            $this -> view -> mostrarLogin('Ya se encuentra logueado.');
     }
 
     /*--Cierra la sesión del usuario--*/

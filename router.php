@@ -17,177 +17,105 @@ $paisesController= new paisesController();
 $jugadoresController= new jugadoresController();
 $usuariosController = new usuariosController();
 
-switch($action){
-    case 'home':
-        $paisesController ->mostrarInicio();
+$maxParametros = 3;
+if(isset($params[$maxParametros])){
+    $jugadoresController ->mostrarError("Url no encontrada.");
+}else{
+    switch($action){
+        case 'home':
+            if(!isset($params[1]))
+                $paisesController ->mostrarInicio();
+            else
+                $paisesController->mostrarError('Url no encontrada.');
         break;
-    case 'jugadores':
-        if(!empty ($params[1]) && !isset($params[2])){ //verifica que no vengan más parametros después del país
-            $jugadoresController -> mostrarJugadoresPorPais($params[1]); //listado de items x categoria
-        }else if (isset($params[2])){
-            $jugadoresController ->mostrarError("Url no encontrada.");
-        }else{
-            $jugadoresController -> mostrarJugadores(); //listado de items
-        }   
+        case 'jugadores':
+            if(isset($params[2]))
+                $jugadoresController ->mostrarError("Url no encontrada.");
+            else if(!empty ($params[1]) && !isset($params[2]))
+                $jugadoresController -> mostrarJugadoresPorPais($params[1]); /*--listado de items por categoria--*/
+            else
+                $jugadoresController -> mostrarJugadores(); /*--listado de items--*/
         break;
-    case 'formularioJugador':
-        if(isset ($params[1]) && !isset($params[3])){ 
-            switch ($params[1]){
-                case 'editar':
-                    if (!empty($params[2]))
-                        $jugadoresController ->mostrarFormularioEditarJugador($params[2]);
-                    else
-                        $jugadoresController ->mostrarError("Jugador no encontrado.");
-                    break;
-                case 'agregar':
-                    if(!isset($params[2]))
-                        $jugadoresController ->mostrarFormularioAgregarJugador();
-                    else
-                        $jugadoresController ->mostrarError("Url no encontrada.");
-                    break;
-                default:
-                    $jugadoresController ->mostrarError("Url no encontrada.");
-                    break;
-            }
-        }
-        else
-            $jugadoresController ->mostrarError("Url no encontrada.");
-        break;
-    case 'jugador':
-        if(isset($params[1]) && !isset($params[3]) ){
-            switch ($params[1]){ 
-                case 'ver':
-                    if(!empty($params[2])){
+        case 'jugador':
+            if(isset($params[1])){
+                if($params[1] == 'ver' && !empty($params[2]))
                     $jugadoresController ->verMasJugador($params[2]);  //detalle de item
-                    }
-                    else
-                        $jugadoresController ->mostrarError("Jugador no encontrado.");
-                    break; 
-                case 'msgBorrar':
+                else if($params[1] == 'borrar' && !empty($params[2]))
+                    $jugadoresController ->borrarJugador($params[2]);
+                else if($params[1] == 'agregar' && !isset($params[2]))    
+                    $jugadoresController ->agregarJugador(); 
+                else if($params[1] == 'editar' && !empty($params[2]))
+                    $jugadoresController ->editarJugador($params[2]);
+                else if($params[1] == 'msgBorrar' && !empty($params[2]))
                     $jugadoresController ->mostrarMsgBorrar($params[2]);
-                    break;         
-                case 'borrar':
-                    if(!empty($params[2])){
-                        $jugadoresController ->mostrarMsgBorrar($params[2]);
-                    }
-                    else
-                        $jugadoresController ->mostrarError("Jugador no encontrado.");
-                    break;
-                case 'agregar':
-                    if(!isset($params[2])){
-                        $jugadoresController ->agregarJugador();
-                    }
-                    else
-                        $jugadoresController ->mostrarError("Url no encontrada.");    
-                    break;
-                case 'editar':
-                    if(!empty($params[2])){
-                        $jugadoresController ->editarJugador($params[2]);
-                    }
-                    else
-                        $jugadoresController ->mostrarError("Jugador no encontrado.");
-                    break;
-                default:
+                else
                     $jugadoresController ->mostrarError("Url no encontrada.");
-                    break;
             }
-        }
-        else
-            $jugadoresController ->mostrarError("Url no encontrada.");
+            else
+                $jugadoresController ->mostrarError("Url no encontrada.");
         break;
-    case 'paises':
-        if(isset($params[1]) && !isset($params[3]) ){ 
-            switch ($params[1]){
-                case 'msgBorrar':
-                    if(!empty($params[2])){
-                        $paisesController ->mostrarMsgBorrar($params[2]);
-                    }
-                    else
-                        $paisesController ->mostrarError("Url no encontrada.");
-                    break;
-                case 'borrar':
-                    if(!empty($params[2])){
+        case 'paises':
+            if(isset($params[1])){ 
+                if($params[1] == 'borrar' && !empty($params[2]))
                     $paisesController ->borrarPais($params[2]);
-                    }
-                    else
-                        $paisesController ->mostrarError("pais no encontrado.");
-                    break;
-                case 'editar':
-                    if(!empty($params[2])){
-                        $paisesController ->editarPais($params[2]);
-                    }
-                    else
-                        $paisesController ->mostrarError("pais no encontrado.");
-                    break;
-                case 'agregar':
-                    if(!isset($params[2])){
-                        $paisesController ->agregarPais();
-                    }
-                    else
-                        $paisesController ->mostrarError("Url no encontrada.");
-                    break;
-                case 'ver':
-                    if(!isset($params[2])){
-                    $paisesController ->mostrarPaises(); //listado de categorias
-                    }
-                    else
-                        $paisesController ->mostrarError("Url no encontrada.");
-                    break;
-                default:
-                    $paisesController ->mostrarError("Url no encontrada");//Si se quiere ver la lista de paises, debe ir a paises/ver.
-                    break;
-            }
-        }
-        else
-            $paisesController ->mostrarError("Url no encontrada.");
-        break;
-    case 'formularioPais':
-        if(isset($params[1]) && !isset($params[3])){
-            switch ($params[1]){
-                case 'agregar':
-                    if(!isset($params[2])){
-                        $paisesController ->mostrarFormularioAgregarPais();
-                    }
-                    else
-                        $paisesController ->mostrarError("Url no encontrada.");
-                    break;
-                case 'editar':
-                    if(!empty($params[2])){
-                        $paisesController ->mostrarFormularioEditarPais($params[2]);
-                    }
-                    else
-                        $paisesController ->mostrarError("pais no encontrado.");
-                    break;
-                default:
+                else if($params[1] == 'editar' && !empty($params[2]))
+                    $paisesController ->editarPais($params[2]);
+                else if($params[1] == 'agregar' && !isset($params[2]))
+                    $paisesController ->agregarPais();
+                else if($params[1] == 'msgBorrar' && !empty($params[2]))
+                    $paisesController ->mostrarMsgBorrar($params[2]);
+                else
                     $paisesController ->mostrarError("Url no encontrada.");
-                break;
             }
-        }
-        else
-            $paisesController ->mostrarError("Url no encontrada.");
+            else
+                $paisesController ->mostrarPaises(); //listado de categorias
         break;
-    case 'login':
-        if(!isset($params[1])){
-            $usuariosController ->mostrarLogin();
-        }
-        else
-            $usuariosController ->mostrarError("Url no encontrada.");
+        case 'formularioPais':
+            if(isset($params[1])){
+                if($params[1] == 'agregar' && !isset($params[2]))
+                    $paisesController ->mostrarFormularioAgregarPais();
+                else if ($params[1] == 'editar' && !empty($params[2]))
+                    $paisesController ->mostrarFormularioEditarPais($params[2]);
+                else
+                    $paisesController ->mostrarError("Url no encontrada.");
+            }
+            else
+                $paisesController ->mostrarError("Url no encontrada.");
         break;
-    case 'verificar':
-        if(!isset($params[1])){
-            $usuariosController ->verificarUsuario();
-        }
-        else
-            $usuariosController ->mostrarError("Url no encontrada.");
+        case 'formularioJugador':
+            if(isset ($params[1])){ 
+                if ($params[1] == 'editar' && !empty($params[2]))
+                    $jugadoresController ->mostrarFormularioEditarJugador($params[2]);
+                else if ($params[1] == 'agregar' && !isset($params[2]))
+                    $jugadoresController ->mostrarFormularioAgregarJugador();
+                else
+                    $jugadoresController ->mostrarError("Url no encontrada.");
+            }
+            else
+                $jugadoresController ->mostrarError("Url no encontrada.");
         break;
-    case 'logout':
-        if(!isset($params[1])){
-            $usuariosController ->logout();
-        }
-        else
-            $usuariosController ->mostrarError("Url no encontrada.");
+        case 'login':
+            if(!isset($params[1]))
+                $usuariosController ->mostrarLogin();
+            else
+                $usuariosController ->mostrarError("Url no encontrada.");
         break;
-    default:
-        $paisesController ->mostrarError('Url no encontrada');
+        case 'verificar':
+            if(!isset($params[1]))
+                $usuariosController ->verificarUsuario();
+            else
+                $usuariosController ->mostrarError("Url no encontrada.");
         break;
+        case 'logout':
+            if(!isset($params[1]))
+                $usuariosController ->logout();
+            else
+                $usuariosController ->mostrarError("Url no encontrada.");
+        break;
+        default:
+            $paisesController ->mostrarError('Url no encontrada');
+        break;
+    }
 }
+
+

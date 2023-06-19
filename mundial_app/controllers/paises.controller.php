@@ -18,9 +18,9 @@ Class paisesController{
         $this->view = new paisesView($this->logueado, $this->usuario);
     }
 
-    function mostrarPaises(){
+    function mostrarPaises($msg = null){
         $paises= $this-> model -> getPaises();
-        $this-> view -> mostrarPaises($paises);
+        $this-> view -> mostrarPaises($paises, $msg);
     }
 
     function mostrarInicio(){
@@ -32,9 +32,8 @@ Class paisesController{
         if($this->logueado == true){
             $pais = $this -> model -> getPais($id);
             $this -> view -> mostrarFormularioEditarPais($id, $pais);
-        }else{
+        }else
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
-        }
     }
 
     /*--Si está logueado manda a la vista a renderizar el formulario de agregar país, sino muestra error--*/
@@ -49,13 +48,18 @@ Class paisesController{
     function borrarPais($id){
         if ($this->logueado == true){
             $response = $_POST['borrarPais'];
-            if($response == 'si')
-                $this-> model -> borrarPais($id);
-            header("Location:".BASE_URL."paises/ver");
-            die(); 
-        }else{
-            $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
-        }   
+            if($response == 'si'){
+                $eliminado = $this-> model -> borrarPais($id);
+                if($eliminado>0)
+                    header("Location:".BASE_URL."paises");
+                else    
+                    $this->mostrarError("El país que desea borrar no existe.");
+            }
+            else
+                header("Location:".BASE_URL."paises");
+        }
+        else
+            $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción."); 
     }
 
     /*--Obtiene los datos del formulario, verifica que no se repitan los datos y si están bien lo edita--*/
@@ -71,15 +75,14 @@ Class paisesController{
                     $paisNuevo->clasificacion = $pais['clasificacion'];
                     $paisNuevo->bandera = $pais['bandera'];
                     $this -> model ->editarPais($paisNuevo, $id);
-                    header('Location:'.BASE_URL.'paises/ver');
+                    header('Location:'.BASE_URL.'paises');
                     die(); 
                 }else{
                     $this->mostrarError("El nombre o la clasificación ingresados ya existen.");
                 } 
             } 
-        }else{
+        }else
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
-        }
     }
 
     /*--Si está logueado verifica en el modelo que no se repitan los datos únicos y si están bien agrega el pais--*/
@@ -97,13 +100,12 @@ Class paisesController{
                     $paisNuevo->clasificacion = $pais['clasificacion'];
                     $paisNuevo->bandera = $pais['bandera'];
                     $this -> model -> agregarPais($paisNuevo);
-                    header('Location:'.BASE_URL.'paises/ver');
+                    header('Location:'.BASE_URL.'paises');
                     die();  
                 }
             }
-        }else{
+        }else
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
-        }
     }
 
     /*--Verifica que el país a editar no repita el nombre o una clasificación existentes */

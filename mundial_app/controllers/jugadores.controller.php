@@ -35,7 +35,7 @@ Class jugadoresController{
             $jugadores = $this -> model -> getJugadoresByPais($pais);
             $this -> view -> mostrarJugadoresPorPais($jugadores, $pais);
         }else{
-            $this->mostrarError("El país ingresado no es válido");
+            $this->mostrarError("Url no encontrada");
         }
     }    
 
@@ -77,11 +77,17 @@ Class jugadoresController{
     /*--Si está logueado y se confirmó que se desea borra el jugador, se le pide al modelo borrarlo--*/
     function borrarJugador($id){
         if($this->logueado == true){
-            $response = $_POST['borrarJugador'];
-            if($response == 'si')
-                $this-> model -> borrarJugador($id);
-            header("Location:".BASE_URL."jugadores");
-            die();
+            if(!empty($_POST['borrarJugador'])){
+                $response = $_POST['borrarJugador'];
+                if($response == 'si')
+                    $eliminado = $this-> model -> borrarJugador($id);
+                    if ($eliminado > 0)
+                        header("Location:".BASE_URL."jugadores");
+                    else    
+                        $this -> mostrarError("El jugador no pudo ser eliminado con éxito.");
+            }
+            else 
+                $this -> mostrarError("Por favor, primero verifique si desea borrar el jugador");
         }else{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
@@ -120,9 +126,8 @@ Class jugadoresController{
                 $jugadorEditado->posicion = $jugador['posicion'];
                 $jugadorEditado->foto = $jugador['foto'];
                 $jugadorEditado->pais = $jugador['pais'];
-                $this -> model ->editarJugador($jugadorEditado, $id);
+                $editado = $this -> model ->editarJugador($jugadorEditado, $id);
                 header('Location:'.BASE_URL.'jugador/ver/'.$id);
-                die(); 
             }      
         }else{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
@@ -142,9 +147,9 @@ Class jugadoresController{
                             "pais"=>$_POST['pais']
                            ]; 
                 return $jugador;
-            }else{
+            }
+            else
                 $this->mostrarError("Los campos no pueden estar vacíos");
-            } 
         }else{
             $this->mostrarError("Verifique que el formulario se llenó correctamente");
             return null;

@@ -31,6 +31,7 @@ Class jugadoresModel{
     function borrarJugador($id){
         $sentencia = $this -> db ->prepare("DELETE FROM jugadores WHERE (id)=:id");
         $sentencia -> execute([":id"=>$id]);
+        return $sentencia->rowCount();
     }
 
     /*--Agrega un jugador nuevo en la BBDD--*/

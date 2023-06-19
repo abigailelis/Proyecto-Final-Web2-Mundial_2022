@@ -19,7 +19,7 @@
         <div class="navbar-collapse">
           <ul class="navbar-nav">
             <li class="nav-item nav-link"><a class="nav-link" href="{$BASE_URL}home">Home</a></li>
-            <li class="nav-item nav-link"><a class="nav-link" href="{$BASE_URL}paises/ver">Paises</a></li>
+            <li class="nav-item nav-link"><a class="nav-link" href="{$BASE_URL}paises">Paises</a></li>
             <li class="nav-item nav-link"><a class="nav-link" href="{$BASE_URL}jugadores">Jugadores</a></li>
           </ul>
         </div>

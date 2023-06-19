@@ -31,6 +31,7 @@ Class paisesModel{
     function  borrarPais($id){
         $sentencia = $this -> db ->prepare("DELETE FROM paises WHERE (id)=:id");
         $sentencia -> execute([":id"=>$id]);
+        return $sentencia->rowCount();
     }
 
     /*--Agrega un nuevo pais y retorna el último id ingresado--*/
