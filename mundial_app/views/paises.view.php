@@ -17,14 +17,14 @@ Class paisesView{
         $this -> smarty -> display('./templates/paises.tpl');
     }
 
-    function mostrarFormularioEditarPais($id, $nombre, $continente, $clasificacion, $bandera){
+    function mostrarFormularioEditarPais($id, $pais){
         $action = "paises/editar/".$id;
         $this -> smarty -> assign ('action', $action);
         $this -> smarty -> assign ('titulo', 'Editar pais');
-        $this -> smarty -> assign ('nombre', $nombre);
-        $this -> smarty -> assign ('continente', $continente);
-        $this -> smarty -> assign ('clasificacion', $clasificacion);
-        $this -> smarty -> assign ('bandera', $bandera);
+        $this -> smarty -> assign ('nombre', $pais->nombre);
+        $this -> smarty -> assign ('continente', $pais->continente);
+        $this -> smarty -> assign ('clasificacion', $pais->clasificacion);
+        $this -> smarty -> assign ('bandera', $pais->bandera);
         $this -> smarty -> display('./templates/formularioPais.tpl');
     }
 

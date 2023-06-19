@@ -24,7 +24,7 @@ Class jugadoresController{
 
     //función para obtener todos los jugadores (listado de items)
     function mostrarJugadores(){
-        $paises = $this->modelPaises -> getPaises();
+        $paises = $this-> modelPaises -> getPaises();
         $jugadores = $this-> model -> getJugadores();
         $this-> view -> mostrarJugadores($jugadores, $paises);
     }

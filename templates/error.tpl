@@ -8,7 +8,7 @@
             <h3>{$msg}</h3>
         </div>
         <div class="col align-self-end">
-            <button class="btn"><a class="btn-a" href="{$BASE_URL}">Volver al Inicio</a></button>
+            <button class="btn"><a class="btn-a" href="{$BASE_URL}">Volver a Inicio</a></button>
         </div>
     </div>
 </section>

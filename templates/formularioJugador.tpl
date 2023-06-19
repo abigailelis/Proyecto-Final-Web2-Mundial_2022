@@ -33,7 +33,7 @@
                                 <label for="pais">Pais</label>
                                 <select name="pais">
                                     {foreach from=$paises item=pais}
-                                        <option value={$pais->id}>{$pais->nombre}</option>
+                                        <option value="{$pais->id}">{$pais->nombre}</option>
                                     {/foreach}
                                 </select>
                             </div>

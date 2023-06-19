@@ -19,7 +19,7 @@
                     <p class="card-text"> Clasificación: {$pais->clasificacion}</p>
                     <button class="btn btn-block mb-4"><a href="{$BASE_URL}jugadores/{$pais->nombre}" class="btn-a">Ver
                             más</a></button>
-                    {if $logueado ==true}
+                    {if $logueado == true}
                         <button class="btn btn-block mb-4"><a href="{$BASE_URL}formularioPais/editar/{$pais->id}"
                                 class="btn-a">Editar</a>
                         </button>

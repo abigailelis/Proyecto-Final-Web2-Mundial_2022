@@ -17,10 +17,9 @@ Class paisesController{
         if($this->logueado)
             $this->usuario = $this->usuariosHelper->obtenerUsuario();
         $this->view = new paisesView($this->logueado, $this->usuario);
-
     }
 
-    function mostrarPaises(){ //función para obtener todos los paises
+    function mostrarPaises(){
         $paises= $this-> model -> getPaises();
         $this-> view -> mostrarPaises($paises);
     }
@@ -29,51 +28,30 @@ Class paisesController{
         $this->view->mostrarInicio();
     }
 
-    function getPaises(){
-        $paises= $this-> model -> getPaises();
-        return $paises;
-    }
-
-    function getPaisByName($nombre_pais){
-        $pais= $this-> model -> getPaisByName($nombre_pais);
-        return $pais;
-    }
-
-    //función para renderizar el formulario con los datos precargados para editar
+    /*--Renderiza el formulario con los datos precargados para editar pais--*/
     function mostrarFormularioEditarPais($id){
         if($this->logueado == true){
             $pais = $this -> model -> getPais($id);
-            $nombre = $pais->nombre;
-            $continente = $pais->continente;
-            $clasificacion = $pais->clasificacion;
-            $bandera = $pais->bandera;
-            $this -> view -> mostrarFormularioEditarPais($id, $nombre, $continente, $clasificacion, $bandera);
+            $this -> view -> mostrarFormularioEditarPais($id, $pais);
         }else{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
     }
 
-    //función para renderizar el formulario agregar nuevo pais
+    /*--Renderiza el formulario agregar nuevo pais--*/
     function mostrarFormularioAgregarPais(){
-        if ($this->logueado == true){
+        if ($this->logueado == true)
            $this -> view -> mostrarFormularioAgregarPais(); 
-        }else{
+        else
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
-        }   
     } 
 
-    //Mostrar mensaje de borrar pais si/no
-    function mostrarMsgBorrar($id){
-        $this ->view -> mostrarMsgBorrar($id);
-    }
-
-    //Borrar pais según id
+    /*--Borrar pais según id--*/
     function borrarPais($id){
         if ($this->logueado == true){
             $response = $_POST['borrarPais'];
-            if($response == 'si'){
+            if($response == 'si')
                 $this-> model -> borrarPais($id);
-            }        
             header("Location:".BASE_URL."paises/ver");
             die(); 
         }else{
@@ -81,45 +59,45 @@ Class paisesController{
         }   
     }
 
-    //Editar pais según id
+    /*--Editar pais según id--*/
     function editarPais($id){
         if ($this->logueado == true){
             $pais = $this ->getDatosFormulario(); 
             if($pais != null){
-               $verifica = $this -> model -> getClasificacion($pais['clasificacion']);
-                if($verifica){
-                    $msg="La clasificación ya existe.";
-                    $this->mostrarError($msg);
-                }else{
-                    $this -> model ->editarPais($pais['nombre'], 
-                                                $pais['continente'], 
-                                                $pais['clasificacion'], 
-                                                $pais['bandera'], 
-                                                $id);
+                $verifica = $this->verificarPaisExistente($pais['clasificacion'], $pais['nombre'], $id);
+                if($verifica ==null || $verifica == false){
+                    $paisNuevo = new stdClass();
+                    $paisNuevo->nombre = $pais['nombre'];
+                    $paisNuevo->continente = $pais['continente'];
+                    $paisNuevo->clasificacion = $pais['clasificacion'];
+                    $paisNuevo->bandera = $pais['bandera'];
+                    $this -> model ->editarPais($paisNuevo, $id);
                     header('Location:'.BASE_URL.'paises/ver');
-                    die();
+                    die(); 
+                }else{
+                    $this->mostrarError("El nombre o la clasificación ingresados ya existen.");
                 } 
-            }
-            
+            } 
         }else{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
         }
     }
 
-    //Agregar pais nuevo
+    /*--Agregar pais nuevo--*/
     function agregarPais(){
         if ($this->logueado == true){
             $pais = $this -> getDatosFormulario(); 
             if($pais != null){
-                $verifica = $this -> model -> getClasificacion($pais['clasificacion']);
-                if($verifica){
-                    $msg="La clasificación ya existe.";
-                    $this->mostrarError($msg);
+                $verificaPaisExistente = $this -> model -> verificarPaisExistente($pais['clasificacion'], $pais['nombre']);
+                if($verificaPaisExistente){
+                    $this->mostrarError("La clasificación o el nombre ingresado ya existen.");
                 }else{
-                    $this -> model -> agregarPais($pais['nombre'], 
-                    $pais['continente'], 
-                    $pais['clasificacion'], 
-                    $pais['bandera']);
+                    $paisNuevo = new stdClass();
+                    $paisNuevo->nombre = $pais['nombre'];
+                    $paisNuevo->continente = $pais['continente'];
+                    $paisNuevo->clasificacion = $pais['clasificacion'];
+                    $paisNuevo->bandera = $pais['bandera'];
+                    $this -> model -> agregarPais($paisNuevo);
                     header('Location:'.BASE_URL.'paises/ver');
                     die();  
                 }
@@ -129,36 +107,51 @@ Class paisesController{
         }
     }
 
-    //función que obtiene los datos del formulario
+    /*--Verifica que el pais a editar no repita país o clasificación existentes */
+    public function verificarPaisExistente($clasificacion, $nombre, $id){
+        $paisEditado = $this -> model -> getPais($id);
+        if($paisEditado->nombre == $nombre){
+            if($paisEditado->clasificacion == $clasificacion)
+                return false;
+            else
+                return $this -> model -> verificarPaisExistente($clasificacion, null);   
+        }else{
+            if($paisEditado->clasificacion == $clasificacion)
+                return $this -> model -> verificarPaisExistente(null, $nombre);
+            else
+                return $this -> model -> verificarPaisExistente($clasificacion, $nombre);
+        }
+    }
+
+    /*--Obtiene los datos del formulario y retorna null si estan vacíos--*/
     private function getDatosFormulario(){
-        if (!empty($_POST)){ //verifica que se llenó el formulario previamente
-            $nombre = $_POST['nombre'];
-            $continente = $_POST['continente'];
-            $clasificacion = $_POST['clasificacion'];
-            $bandera = $_POST['bandera'];
-        
-            if(!empty($nombre) && !empty($continente) && !empty($clasificacion) && $clasificacion >0 && !empty($bandera)){
-                $pais = ["nombre"=>$nombre,
-                        "continente"=>$continente,
-                        "clasificacion"=>$clasificacion,
-                        "bandera"=>$bandera]; 
+        if (!empty($_POST)){ //verifica que se llenó el formulario previamente        
+            if(!empty($_POST['nombre']) && !empty($_POST['continente']) && !empty($_POST['clasificacion']) && !empty($_POST['bandera'])){
+                $pais = ["nombre"=>$_POST['nombre'],
+                        "continente"=>$_POST['continente'],
+                        "clasificacion"=>$_POST['clasificacion'],
+                        "bandera"=>$_POST['bandera']
+                        ]; 
                 return $pais;
-            }else if ($clasificacion <= 0){
-                $msg="La clasificación es incorrecta.";
-                $this->mostrarError($msg);
             }else{
-                $msg="Los campos no deben estar vacios";
-                $this->mostrarError($msg);
+                $this->mostrarError("Los campos no deben estar vacios");
             }
         }else{
-            $msg="Verifique que el formulario se llenó correctamente";
-            $this->mostrarError($msg);
+            $this->mostrarError("Verifique que el formulario se llenó correctamente");
             return null;
         }     
     }
 
-    //Muestra el template error
+    /*--Muestra el template error con el mensaje correspondiente--*/
     function mostrarError($msg){
         $this -> view -> mostrarError($msg);
+    }
+
+    /*--Mostrar mensaje de borrar pais si/no--*/
+    function mostrarMsgBorrar($id){
+        if($logueado == true)
+            $this ->view -> mostrarMsgBorrar($id);
+        else
+            $this-> mostrarError("Se necesitan permisos para acceder a esta sección.");
     }
 }
