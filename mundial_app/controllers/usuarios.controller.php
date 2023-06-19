@@ -13,7 +13,7 @@ Class usuariosController{
 
     public function __construct(){
         $this-> usuariosHelper = new usuariosHelper();
-        $this-> logueado = $this->usuariosHelper->checkLoggedIn();
+        $this-> logueado = $this->usuariosHelper->verificarLogin();
         $this-> usuario = $this->usuariosHelper->obtenerUsuario();
         $this-> model = new usuariosModel();
         $this-> view = new usuariosView($this->logueado, $this->usuario);
@@ -39,16 +39,20 @@ Class usuariosController{
    *sino, vuelve al login con el mensaje usuario/contraseña incorrectos
    */
     function verificarUsuario() {
-        $usuario = $_POST['usuario'];
-        $password = $_POST['password'];
-        $usuario_db = $this -> model -> getUsuario($usuario);
-        if(!empty($usuario_db) && password_verify($password, $usuario_db->password)){
-            $this -> usuariosHelper -> login($usuario);
-            header('Location: '.BASE_URL);
-            die();
-        }
-        else{
-            $this-> view -> mostrarLogin('Usuario o contraseña incorrectos');
+        if(!empty($_POST)){
+            $usuario = $_POST['usuario'];
+            $password = $_POST['password'];
+            $usuario_db = $this -> model -> getUsuario($usuario);
+            if(!empty($usuario_db) && password_verify($password, $usuario_db->password)){
+                $this -> usuariosHelper -> login($usuario);
+                header('Location: '.BASE_URL);
+                die();
+            }
+            else{
+                $this-> view -> mostrarLogin('Usuario o contraseña incorrectos');
+            }
+        }else{
+            $this-> view -> mostrarLogin('Verifique que los campos usuario y password no se encuentren vacíos y vuelva a intentarlo.');
         }
     }
     

@@ -7,21 +7,21 @@ Class jugadoresModel{
     }
 
     /*--Obtiene todos los jugadores (listado de ítems)--*/
-    function getJugadores(){
+    function obtenerJugadores(){
         $sentencia = $this -> db -> prepare("SELECT * FROM jugadores ORDER BY id_pais");
         $sentencia -> execute();
         return $sentencia -> fetchAll(PDO::FETCH_OBJ);
     }
 
     /*--Obtiene los jugadores según el país seleccionado (items por categoria)--*/
-    function getJugadoresByPais($pais){
+    function obtenerJugadoresPorPaisByPais($pais){
         $sentencia = $this -> db ->prepare("SELECT * FROM jugadores WHERE (id_pais)=:id_pais");
         $sentencia -> execute([":id_pais" => $pais->id]);
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
     /*--Obtiene un jugador (detalle de ítem)--*/
-    function getJugador($id){
+    function obtenerJugador($id){
         $sentencia = $this -> db ->prepare("SELECT * FROM jugadores WHERE (id)=:id");
         $sentencia -> execute([":id"=>$id]);
         return $sentencia -> fetch(PDO::FETCH_OBJ);

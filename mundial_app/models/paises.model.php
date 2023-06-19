@@ -7,21 +7,21 @@ Class paisesModel{
     }
 
     /*--Obtiene todos los paises (Listado de categorias)--*/
-    function getPaises(){
+    function obtenerPaises(){
         $sentencia = $this -> db -> prepare("SELECT * FROM paises ORDER BY clasificacion");
         $sentencia -> execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
     /*--Obtiene el pais según el nombre (items por categoria)--*/
-    function getPaisByName($nombre_pais){
+    function obtenerPaisPorNombre($nombre_pais){
         $sentencia = $this -> db ->prepare("SELECT * FROM paises WHERE (nombre) = :nombre");
         $sentencia -> execute([":nombre"=>$nombre_pais]);
         return $sentencia -> fetch(PDO::FETCH_OBJ);
     }
 
     /*--Obtiene el pais segun id--*/
-    function getPais($id){
+    function obtenerPais($id){
         $sentencia = $this -> db -> prepare("SELECT * FROM paises WHERE (id) = :id");
         $sentencia -> execute([":id"=>$id]);
         return $sentencia -> fetch(PDO::FETCH_OBJ);

@@ -29,7 +29,7 @@ Class usuariosHelper {
             return $_SESSION['usuario'];
     }
 
-    public function checkLoggedIn() {
+    public function verificarLogin() {
         $this->startSession();
         if (isset($_SESSION['usuario']))
             return true;

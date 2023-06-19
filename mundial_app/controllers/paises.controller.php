@@ -13,13 +13,13 @@ Class paisesController{
     public function __construct(){
         $this->usuariosHelper = new usuariosHelper();
         $this->model = new paisesModel();
-        $this->logueado = $this->usuariosHelper->checkLoggedIn();
+        $this->logueado = $this->usuariosHelper->verificarLogin();
         $this->usuario = $this->usuariosHelper->obtenerUsuario();
         $this->view = new paisesView($this->logueado, $this->usuario);
     }
 
     function mostrarPaises($msg = null){
-        $paises= $this-> model -> getPaises();
+        $paises= $this-> model -> obtenerPaises();
         $this-> view -> mostrarPaises($paises, $msg);
     }
 
@@ -30,7 +30,7 @@ Class paisesController{
     /*--Si está logueado pide los datos para renderizar el formulario de editar país, sino muestra error--*/
     function mostrarFormularioEditarPais($id){
         if($this->logueado == true){
-            $pais = $this -> model -> getPais($id);
+            $pais = $this -> model -> obtenerPais($id);
             $this -> view -> mostrarFormularioEditarPais($id, $pais);
         }else
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
@@ -65,7 +65,7 @@ Class paisesController{
     /*--Obtiene los datos del formulario, verifica que no se repitan los datos y si están bien lo edita--*/
     function editarPais($id){
         if ($this->logueado == true){
-            $pais = $this ->getDatosFormulario(); 
+            $pais = $this ->obtenerDatosFormulario(); 
             if($pais != null){
                 $verifica = $this->verificarPaisExistente($pais['clasificacion'], $pais['nombre'], $id);
                 if($verifica == null || $verifica == false){
@@ -88,7 +88,7 @@ Class paisesController{
     /*--Si está logueado verifica en el modelo que no se repitan los datos únicos y si están bien agrega el pais--*/
     function agregarPais(){
         if ($this->logueado == true){
-            $pais = $this -> getDatosFormulario(); 
+            $pais = $this -> obtenerDatosFormulario(); 
             if($pais != null){
                 $verificaPaisExistente = $this -> model -> verificarPaisExistente($pais['clasificacion'], $pais['nombre']);
                 if($verificaPaisExistente){
@@ -110,7 +110,7 @@ Class paisesController{
 
     /*--Verifica que el país a editar no repita el nombre o una clasificación existentes */
     public function verificarPaisExistente($clasificacion, $nombre, $id){
-        $paisEditado = $this -> model -> getPais($id);
+        $paisEditado = $this -> model -> obtenerPais($id);
         if($paisEditado->nombre == $nombre){
             if($paisEditado->clasificacion == $clasificacion)
                 return false;
@@ -125,7 +125,7 @@ Class paisesController{
     }
 
     /*--Obtiene los datos del formulario y retorna null si estan vacíos--*/
-    private function getDatosFormulario(){
+    private function obtenerDatosFormulario(){
         if (!empty($_POST)){ //verifica que se llenó el formulario previamente        
             if(!empty($_POST['nombre']) && !empty($_POST['continente']) && !empty($_POST['clasificacion']) && !empty($_POST['bandera'])){
                 $pais = ["nombre"=>$_POST['nombre'],

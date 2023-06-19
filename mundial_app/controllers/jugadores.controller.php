@@ -14,7 +14,7 @@ Class jugadoresController{
 
     public function __construct(){
         $this->usuariosHelper = new usuariosHelper();
-        $this->logueado = $this->usuariosHelper->checkLoggedIn();
+        $this->logueado = $this->usuariosHelper->verificarLogin();
         $this->usuario = $this->usuariosHelper->obtenerUsuario();
         $this->modelPaises = new paisesModel();
         $this->model = new jugadoresModel();       
@@ -23,16 +23,16 @@ Class jugadoresController{
 
     /*--Pide los datos de todos los jugadores y los paises para renderizarlos en la vista (listado de ítems)--*/
     function mostrarJugadores(){
-        $paises = $this-> modelPaises -> getPaises();
-        $jugadores = $this-> model -> getJugadores();
+        $paises = $this-> modelPaises -> obtenerPaises();
+        $jugadores = $this-> model -> obtenerJugadores();
         $this-> view -> mostrarJugadores($jugadores, $paises);
     }
 
     /*--Pide todos los jugadores del país seleccionado para renderizarlos en la vista (listado de ítems por categoría)--*/
     function mostrarJugadoresPorPais($paisSeleccionado){ 
-        $pais = $this -> modelPaises ->getPaisByName($paisSeleccionado);
+        $pais = $this -> modelPaises ->obtenerPaisPorNombre($paisSeleccionado);
         if($pais){
-            $jugadores = $this -> model -> getJugadoresByPais($pais);
+            $jugadores = $this -> model -> obtenerJugadoresPorPaisByPais($pais);
             $this -> view -> mostrarJugadoresPorPais($jugadores, $pais);
         }else{
             $this->mostrarError("Url no encontrada");
@@ -41,9 +41,9 @@ Class jugadoresController{
 
     /*--Pide los datos del jugador seleccionado para renderizarlo en la vista (detalle de ítem)--*/
     function verMasJugador($id){ 
-        $jugador = $this -> model -> getJugador($id);
+        $jugador = $this -> model -> obtenerJugador($id);
         if($jugador){
-            $pais = $this -> modelPaises -> getPais($jugador->id_pais);
+            $pais = $this -> modelPaises -> obtenerPais($jugador->id_pais);
             $this -> view -> mostrarJugador($jugador, $pais);  
         }else{
             $this->mostrarError("El jugador ingresado no es válido");
@@ -53,8 +53,8 @@ Class jugadoresController{
     /*--Si está logueado pide los datos del jugador para precargar el formulario con los mismos en la vista--*/
     function mostrarFormularioEditarJugador($id){
         if ($this->logueado == true){
-            $paises = $this -> modelPaises -> getPaises();
-            $jugador = $this -> model -> getJugador($id);
+            $paises = $this -> modelPaises -> obtenerPaises();
+            $jugador = $this -> model -> obtenerJugador($id);
             if($jugador)
                 $this -> view -> mostrarFormularioEditarJugador($jugador, $paises);
             else
@@ -67,7 +67,7 @@ Class jugadoresController{
     /*--Si está logueado pide a la vista renderizar el formulario para agregar un jugador--*/
     function mostrarFormularioAgregarJugador(){
         if($this->logueado == true){
-            $paises = $this -> modelPaises -> getPaises();
+            $paises = $this -> modelPaises -> obtenerPaises();
             $this -> view -> mostrarFormularioAgregarJugador($paises);
         }else{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
@@ -96,7 +96,7 @@ Class jugadoresController{
     /*--Si está logueado obtiene los datos del formulario y si están bien pide al modelo que agregue al jugador--*/
     function agregarJugador(){
         if ($this->logueado == true){
-            $jugadorFormulario = $this -> getDatosFormulario();
+            $jugadorFormulario = $this -> obtenerDatosFormulario();
             if($jugadorFormulario != null){
                 $jugador = new stdClass();
                 $jugador -> nombre = $jugadorFormulario['nombre'];
@@ -117,7 +117,7 @@ Class jugadoresController{
     /*--Si está logueado obtiene los datos del formulario y si están bien pide al modelo actualizar a dicho jugador--*/
     function editarJugador($id){
         if ($this->logueado == true){
-            $jugador = $this ->getDatosFormulario();
+            $jugador = $this ->obtenerDatosFormulario();
             if($jugador != null){
                 $jugadorEditado = new stdClass();
                 $jugadorEditado->nombre = $jugador['nombre'];
@@ -135,7 +135,7 @@ Class jugadoresController{
     }
 
     /*--Obtiene los datos del formulario editar/agregar jugador--*/
-    private function getDatosFormulario(){
+    private function obtenerDatosFormulario(){
         if (!empty($_POST)){
             if(!empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['descripcion']) 
                 && !empty($_POST['posicion']) && !empty($_POST['foto']) && !empty($_POST['pais'])){
