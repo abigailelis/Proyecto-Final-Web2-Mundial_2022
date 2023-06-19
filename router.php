@@ -12,7 +12,7 @@ if (!empty($_GET['action'])){
     $action = 'home';
 }
 
-//Instanciamos los controladores
+/*--Se instancian los controladores--*/
 $paisesController= new paisesController();
 $jugadoresController= new jugadoresController();
 $usuariosController = new usuariosController();

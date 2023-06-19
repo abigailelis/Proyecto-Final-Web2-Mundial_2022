@@ -4,7 +4,7 @@ require_once './libs/smarty/Smarty.class.php';
 Class usuariosView{
     public $smarty;
 
-    public function __construct($logueado, $usuario){
+    public function __construct($logueado, $usuario = null){
         $this-> smarty = new Smarty();
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
         $this-> smarty -> assign('logueado', $logueado);
@@ -17,7 +17,7 @@ Class usuariosView{
         $this -> smarty -> display ('./templates/login.tpl');
     }
     
-    //Muestra el template error
+    /*--Muestra el template error--*/
     function mostrarError($msg){
         $this -> smarty -> assign ('titulo', 'Not found');
         $this -> smarty -> assign ('msg', $msg);

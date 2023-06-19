@@ -45,22 +45,23 @@ Class paisesModel{
         return $this -> db ->lastInsertId();
     }
 
-
+    /*--Edita el pais según el id--*/
     function editarPais($pais, $id){
         $sentencia = $this -> db ->prepare("UPDATE paises 
                                             SET nombre = :nombre,
                                                 continente = :continente,
                                                 clasificacion = :clasificacion,
                                                 bandera = :bandera
-                                                WHERE id = :id");
+                                            WHERE id = :id");
         $sentencia -> execute([":nombre" => $pais->nombre, 
                                ":continente"=> $pais->continente, 
                                ":clasificacion"=>$pais->clasificacion,
                                ":bandera"=>$pais->bandera,
-                               ":id" => $id]);
+                               ":id" => $id]
+                            );
     }
 
-    /*--Verifica si existe algún pais con el mismo nombre o clasificación--*/
+    /*--Verifica si existe algún pais con el mismo nombre o clasificación en la BBDD--*/
     function verificarPaisExistente($clasificacion = null, $nombre = null){
         $sentencia = $this -> db -> prepare("SELECT * FROM paises WHERE (clasificacion) = :clasificacion OR (nombre) = :nombre");
         $sentencia -> execute([":clasificacion" => $clasificacion,

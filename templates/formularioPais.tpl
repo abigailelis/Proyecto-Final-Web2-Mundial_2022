@@ -10,19 +10,19 @@
                         <form action="{$BASE_URL|cat:$action}" method="POST">
                             <div class="form-outline mb-4">
                                 <label for="nombre">Nombre</label>
-                                <input class="form-control" type="text" name="nombre" value="{$nombre|default: ""}">
+                                <input class="form-control" type="text" name="nombre" value="{$pais->nombre|default: ""}">
                             </div>    
                             <div class="form-outline mb-4">
                                 <label for="continente">Continente</label>
-                                <input class="form-control" type="text" name="continente" value="{$continente|default: ""}">
+                                <input class="form-control" type="text" name="continente" value="{$pais->continente|default: ""}">
                             </div>
                             <div class="form-outline mb-4">    
                                 <label for="clasificacion">Clasificación</label>
-                                <input class="form-control" name="clasificacion" type="number" value="{$clasificacion|default: ""}" min="1" max="32" placeholder="La clasificación solo puede ser entre 1 y 32">
+                                <input class="form-control" name="clasificacion" type="number" value="{$pais->clasificacion|default: ""}" min="1" max="32" placeholder="La clasificación solo puede ser entre 1 y 32">
                             </div>
                             <div class="form-outline mb-4">    
                                 <label for="bandera">Bandera (url)</label>
-                                <input class="form-control" type="text" name="bandera" value="{$bandera|default: ""}" placeholder="Ingrese la url de la imágen">
+                                <input class="form-control" type="text" name="bandera" value="{$pais->bandera|default: ""}" placeholder="Ingrese la url de la imágen">
                             </div>        
                                 <button type="submit" class="btn btn-primary btn-block mb-4">Enviar</button>
                         </form>

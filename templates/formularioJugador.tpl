@@ -10,24 +10,24 @@
                         <form action="{$BASE_URL|cat:$action}" method="POST">
                             <div class="form-outline mb-4">
                                 <label for="nombre">Nombre</label>
-                                <input class="form-control" type="text" name="nombre" value="{$nombre|default:""}">
+                                <input class="form-control" type="text" name="nombre" value="{$jugador->nombre|default:""}">
                             </div>
                             <div class="form-outline mb-4">
                                 <label for="apellido">Apellido</label>
-                                <input class="form-control" type="text" name="apellido" value="{$apellido|default:""}">
+                                <input class="form-control" type="text" name="apellido" value="{$jugador->apellido|default:""}">
                             </div>
                             <div class="form-outline mb-4">
                                 <label for="descripcion">Descripción</label>
                                 <textarea class="form-control" name="descripcion"
-                                    value="{$descripcion|default:""}">{$descripcion|default:""}</textarea>
+                                    value="{$descripcion|default:""}">{$jugador->descripcion|default:""}</textarea>
                             </div>
                             <div class="form-outline mb-4">
                                 <label for="posicion">Posición</label>
-                                <input class="form-control" type="text" name="posicion" value="{$posicion|default:""}">
+                                <input class="form-control" type="text" name="posicion" value="{$jugador->posicion|default:""}">
                             </div>
                             <div class="form-outline mb-4">
                                 <label for="foto">Foto</label>
-                                <input class="form-control" type="text" name="foto" value="{$foto|default:""}">
+                                <input class="form-control" type="text" name="foto" value="{$jugador->foto|default:""}">
                             </div>
                             <div class="form-outline mb-4">
                                 <label for="pais">Pais</label>

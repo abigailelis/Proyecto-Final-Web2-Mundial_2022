@@ -14,8 +14,7 @@ Class paisesController{
         $this->usuariosHelper = new usuariosHelper();
         $this->model = new paisesModel();
         $this->logueado = $this->usuariosHelper->checkLoggedIn();
-        if($this->logueado)
-            $this->usuario = $this->usuariosHelper->obtenerUsuario();
+        $this->usuario = $this->usuariosHelper->obtenerUsuario();
         $this->view = new paisesView($this->logueado, $this->usuario);
     }
 
@@ -28,7 +27,7 @@ Class paisesController{
         $this->view->mostrarInicio();
     }
 
-    /*--Renderiza el formulario con los datos precargados para editar pais--*/
+    /*--Si está logueado pide los datos para renderizar el formulario de editar país, sino muestra error--*/
     function mostrarFormularioEditarPais($id){
         if($this->logueado == true){
             $pais = $this -> model -> getPais($id);
@@ -38,7 +37,7 @@ Class paisesController{
         }
     }
 
-    /*--Renderiza el formulario agregar nuevo pais--*/
+    /*--Si está logueado manda a la vista a renderizar el formulario de agregar país, sino muestra error--*/
     function mostrarFormularioAgregarPais(){
         if ($this->logueado == true)
            $this -> view -> mostrarFormularioAgregarPais(); 
@@ -46,7 +45,7 @@ Class paisesController{
             $this->mostrarError("Acceso denegado. Por favor inicia sesión para realizar esta acción.");
     } 
 
-    /*--Borrar pais según id--*/
+    /*--Si está logueado y se confirmó el borrado del pais, lo elimina--*/
     function borrarPais($id){
         if ($this->logueado == true){
             $response = $_POST['borrarPais'];
@@ -59,13 +58,13 @@ Class paisesController{
         }   
     }
 
-    /*--Editar pais según id--*/
+    /*--Obtiene los datos del formulario, verifica que no se repitan los datos y si están bien lo edita--*/
     function editarPais($id){
         if ($this->logueado == true){
             $pais = $this ->getDatosFormulario(); 
             if($pais != null){
                 $verifica = $this->verificarPaisExistente($pais['clasificacion'], $pais['nombre'], $id);
-                if($verifica ==null || $verifica == false){
+                if($verifica == null || $verifica == false){
                     $paisNuevo = new stdClass();
                     $paisNuevo->nombre = $pais['nombre'];
                     $paisNuevo->continente = $pais['continente'];
@@ -83,7 +82,7 @@ Class paisesController{
         }
     }
 
-    /*--Agregar pais nuevo--*/
+    /*--Si está logueado verifica en el modelo que no se repitan los datos únicos y si están bien agrega el pais--*/
     function agregarPais(){
         if ($this->logueado == true){
             $pais = $this -> getDatosFormulario(); 
@@ -107,7 +106,7 @@ Class paisesController{
         }
     }
 
-    /*--Verifica que el pais a editar no repita país o clasificación existentes */
+    /*--Verifica que el país a editar no repita el nombre o una clasificación existentes */
     public function verificarPaisExistente($clasificacion, $nombre, $id){
         $paisEditado = $this -> model -> getPais($id);
         if($paisEditado->nombre == $nombre){
@@ -147,9 +146,9 @@ Class paisesController{
         $this -> view -> mostrarError($msg);
     }
 
-    /*--Mostrar mensaje de borrar pais si/no--*/
+    /*--Mostrar mensaje de consulta solo si está logueado: ¿Seguro que desea borrar el país?--*/
     function mostrarMsgBorrar($id){
-        if($logueado == true)
+        if($this->logueado == true)
             $this ->view -> mostrarMsgBorrar($id);
         else
             $this-> mostrarError("Se necesitan permisos para acceder a esta sección.");

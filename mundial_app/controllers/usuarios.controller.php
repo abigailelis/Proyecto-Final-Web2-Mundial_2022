@@ -10,20 +10,21 @@ Class usuariosController{
     private $usuariosHelper;
     private $logueado;
     private $usuario;
+
     public function __construct(){
-        $this -> usuariosHelper = new usuariosHelper();
-        $this->logueado = $this->usuariosHelper->checkLoggedIn();
-        if($this->logueado)
-            $this->usuario = $this->usuariosHelper->obtenerUsuario();
-        $this -> model = new usuariosModel();
-        $this -> view = new usuariosView($this->logueado, $this->usuario);
+        $this-> usuariosHelper = new usuariosHelper();
+        $this-> logueado = $this->usuariosHelper->checkLoggedIn();
+        $this-> usuario = $this->usuariosHelper->obtenerUsuario();
+        $this-> model = new usuariosModel();
+        $this-> view = new usuariosView($this->logueado, $this->usuario);
     }
-    //muestra el formulario del login
+
+    /*--muestra el formulario del login--*/
     function mostrarLogin(){
         $this -> view -> mostrarLogin('');
     }
 
-    //Cierra la sesión del usuario
+    /*--Cierra la sesión del usuario--*/
     function logout(){
         $this->usuariosHelper->logout();
         header ('location: ' .BASE_URL.'login');
@@ -40,7 +41,7 @@ Class usuariosController{
         $usuario_db = $this -> model -> getUsuario($usuario);
         if(!empty($usuario_db) && password_verify($password, $usuario_db->password)){
             $this -> usuariosHelper -> login($usuario);
-            header('Location: '.BASE_URL.'paises/ver');
+            header('Location: '.BASE_URL);
             die();
         }
         else{
@@ -48,7 +49,7 @@ Class usuariosController{
         }
     }
     
-    //Muestra el template error
+    /*--Muestra el template error--*/
     function mostrarError($msg){
         $this -> view -> mostrarError($msg);
     }

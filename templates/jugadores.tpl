@@ -29,7 +29,7 @@
                             {/if}
                         {/foreach}
                     {else}
-                        <td>{$paisSelected->nombre}</td>
+                        <td>{$paisSeleccionado->nombre}</td>
                     {/if}
                     <td><a href="{$BASE_URL}jugador/ver/{$jugador->id}">Ver más</a></td>
                     {if $logueado == true}
