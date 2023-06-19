@@ -17,8 +17,9 @@ $paisesController= new paisesController();
 $jugadoresController= new jugadoresController();
 $usuariosController = new usuariosController();
 
-$maxParametros = 3;
-if(isset($params[$maxParametros])){
+/*--Verifica al principio que no existan parámetros de más--*/
+$cantidadMaxParametros = 3;
+if(isset($params[$cantidadMaxParametros])){
     $jugadoresController ->mostrarError("Url no encontrada.");
 }else{
     switch($action){
