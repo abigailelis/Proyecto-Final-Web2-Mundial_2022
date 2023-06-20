@@ -3,7 +3,13 @@ Class paisesModel{
     private $db;
 
     public function __construct(){
+<<<<<<< HEAD
         $this->db = new PDO('mysql:host=localhost:4306;'.'dbname=db_mundial;charset=utf8', 'root', '');
+=======
+        //$port= $config["db_port"];
+        $this->db = new PDO('mysql:host=localhost:4306;'.'dbname=db_mundial;charset=utf8', 'root', '');
+        //Creó un grupo de BBDD y lo guardo en ese mismo grupo.
+>>>>>>> 90f97ff1ed1fef949ac6ab028c24b778d2636be5
     }
 
     /*--Obtiene todos los paises (Listado de categorias)--*/

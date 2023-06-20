@@ -3,6 +3,10 @@ Class jugadoresModel{
     private $db; 
 
     public function __construct(){
+<<<<<<< HEAD
+=======
+       // $port= $config["db_port"];
+>>>>>>> 90f97ff1ed1fef949ac6ab028c24b778d2636be5
         $this->db = new PDO('mysql:host=localhost:4306;'.'dbname=db_mundial;charset=utf8', 'root', '');
     }
 
@@ -20,9 +24,23 @@ Class jugadoresModel{
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
+<<<<<<< HEAD
     /*--Obtiene un jugador (detalle de ítem)--*/
     function obtenerJugador($id){
         $sentencia = $this -> db ->prepare("SELECT * FROM jugadores WHERE (id)=:id");
+=======
+    //función para obtener todos los jugadores
+    function getJugadores(){
+        $sentencia = $this -> db -> prepare("SELECT * FROM jugadores");
+        $sentencia -> execute();
+        $jugadores = $sentencia -> fetchAll(PDO::FETCH_OBJ);
+        return $jugadores;
+    }
+
+    //función para obtener un jugador ($jugador->id)
+    function getJugador ($id) {
+        $sentencia = $this -> db ->prepare("SELECT  * FROM jugadores WHERE (id)=:id");
+>>>>>>> 90f97ff1ed1fef949ac6ab028c24b778d2636be5
         $sentencia -> execute([":id"=>$id]);
         return $sentencia -> fetch(PDO::FETCH_OBJ);
     }
