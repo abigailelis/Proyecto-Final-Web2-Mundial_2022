@@ -50,7 +50,11 @@ Class paisesController{
             $response = $_POST['borrarPais'];
             if($response == 'si'){
                 $eliminado = $this-> model -> borrarPais($id);
+<<<<<<< HEAD
                 if($eliminado != 0)
+=======
+                if($eliminado!=0)
+>>>>>>> ae5a6d7de37dd995ec5165568b3b15d2ffa5309c
                     header("Location:".BASE_URL."paises");
                 else    
                     $this->mostrarError("El país que desea borrar no existe.");

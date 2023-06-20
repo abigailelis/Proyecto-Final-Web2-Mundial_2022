@@ -49,6 +49,9 @@
         </tbody>
     </table>
 </section>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ae5a6d7de37dd995ec5165568b3b15d2ffa5309c
 {include file='footer.tpl'}

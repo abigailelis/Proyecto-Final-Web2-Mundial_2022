@@ -3,7 +3,7 @@ Class jugadoresModel{
     private $db; 
 
     public function __construct(){
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=db_mundial;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost:4306;'.'dbname=db_mundial;charset=utf8', 'root', '');
     }
 
     /*--Obtiene todos los jugadores (listado de ítems)--*/
