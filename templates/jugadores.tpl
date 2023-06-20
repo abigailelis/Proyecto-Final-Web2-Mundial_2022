@@ -1,7 +1,15 @@
 {include file='header.tpl'}
 
 <section class="container-fluid">
-<h1>{$titulo}</h1>
+    <h1>{$titulo}</h1>
+    <!--BOTÓN PARA REDIRIGIR AL FORMULARIO DE AGREGAR JUGADOR -->
+    {if $logueado == true}
+        <section class="container-fluid justify-content-end display-flex">
+            <button class="btn mb-4">
+                <a class="btn-a" href="{$BASE_URL}formularioJugador/agregar">Agregar Nuevo</a>
+            </button>
+        </section>
+    {/if}
     <table class="table table-hover table-bordered">
         <thead>
             <tr>
@@ -41,13 +49,4 @@
         </tbody>
     </table>
 </section>
-
-<!--BOTÓN PARA REDIRIGIR AL FORMULARIO DE AGREGAR JUGADOR -->
-{if $logueado == true}
-    <section class="container-fluid justify-content-end display-flex">
-        <button class="btn mb-4">
-            <a class="btn-a" href="{$BASE_URL}formularioJugador/agregar">Agregar Nuevo</a>
-        </button>
-    </section>
-{/if}
 {include file='footer.tpl'}

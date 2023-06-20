@@ -18,9 +18,9 @@ Class paisesController{
         $this->view = new paisesView($this->logueado, $this->usuario);
     }
 
-    function mostrarPaises($msg = null){
+    function mostrarPaises(){
         $paises= $this-> model -> obtenerPaises();
-        $this-> view -> mostrarPaises($paises, $msg);
+        $this-> view -> mostrarPaises($paises);
     }
 
     function mostrarInicio(){
@@ -50,7 +50,7 @@ Class paisesController{
             $response = $_POST['borrarPais'];
             if($response == 'si'){
                 $eliminado = $this-> model -> borrarPais($id);
-                if($eliminado>0)
+                if($eliminado!=0)
                     header("Location:".BASE_URL."paises");
                 else    
                     $this->mostrarError("El país que desea borrar no existe.");

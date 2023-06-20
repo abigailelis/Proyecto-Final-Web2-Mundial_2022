@@ -32,7 +32,7 @@ Class jugadoresController{
     function mostrarJugadoresPorPais($paisSeleccionado){ 
         $pais = $this -> modelPaises ->obtenerPaisPorNombre($paisSeleccionado);
         if($pais){
-            $jugadores = $this -> model -> obtenerJugadoresPorPaisByPais($pais);
+            $jugadores = $this -> model -> obtenerJugadoresPorPais($pais);
             $this -> view -> mostrarJugadoresPorPais($jugadores, $pais);
         }else{
             $this->mostrarError("Url no encontrada");
@@ -81,7 +81,7 @@ Class jugadoresController{
                 $response = $_POST['borrarJugador'];
                 if($response == 'si')
                     $eliminado = $this-> model -> borrarJugador($id);
-                    if ($eliminado > 0)
+                    if ($eliminado != 0)
                         header("Location:".BASE_URL."jugadores");
                     else    
                         $this -> mostrarError("El jugador no pudo ser eliminado con éxito.");
@@ -126,7 +126,7 @@ Class jugadoresController{
                 $jugadorEditado->posicion = $jugador['posicion'];
                 $jugadorEditado->foto = $jugador['foto'];
                 $jugadorEditado->pais = $jugador['pais'];
-                $editado = $this -> model ->editarJugador($jugadorEditado, $id);
+                $this -> model ->editarJugador($jugadorEditado, $id);
                 header('Location:'.BASE_URL.'jugador/ver/'.$id);
             }      
         }else{
