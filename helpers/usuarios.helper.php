@@ -22,7 +22,6 @@ Class usuariosHelper {
         session_destroy();
     }
 
-<<<<<<< HEAD
     /*--Obtiene el usuario para mostrar en el header--*/
     public function obtenerUsuario(){
         $this->startSession();
@@ -36,16 +35,5 @@ Class usuariosHelper {
             return true;
         else
             return false;  
-=======
-    public function checkLoggedIn() {
-        session_start();
-        if (isset($_SESSION['loggueado']) && $_SESSION['loggueado'] == true){
-            return $_SESSION;
-        }else{
-            $_SESSION['loggueado'] = false;
-            $_SESSION['usuario'] = '';
-            return $_SESSION;
-        }     
->>>>>>> 90f97ff1ed1fef949ac6ab028c24b778d2636be5
     }
 }

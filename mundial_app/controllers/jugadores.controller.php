@@ -134,7 +134,6 @@ Class jugadoresController{
         }
     }
 
-<<<<<<< HEAD
     /*--Obtiene los datos del formulario editar/agregar jugador--*/
     private function obtenerDatosFormulario(){
         if (!empty($_POST)){
@@ -151,25 +150,6 @@ Class jugadoresController{
             }
             else
                 $this->mostrarError("Los campos no pueden estar vacíos");
-=======
-    //función que obtiene los datos del formulario
-    private function getDatosFormulario(){
-        $nombre = $_POST['nombre'];
-        $apellido = $_POST['apellido'];
-        $descripcion = $_POST['descripcion'];
-        $posicion = $_POST['posicion'];
-        $foto = $_POST['foto'];
-        $pais = $_POST['pais'];
-        if(!empty($nombre) && !empty($apellido) && !empty($descripcion) 
-            && !empty($posicion) && !empty($foto) && !empty($pais)){
-            $jugador = ["nombre"=>$nombre,
-                        "apellido"=>$apellido,
-                        "descripcion"=>$descripcion,
-                        "posicion"=>$posicion,
-                        "foto"=>$foto,
-                        "pais"=>$pais]; //no falta el id?
-            return $jugador;
->>>>>>> 90f97ff1ed1fef949ac6ab028c24b778d2636be5
         }else{
             $this->mostrarError("Verifique que el formulario se llenó correctamente");
             return null;
