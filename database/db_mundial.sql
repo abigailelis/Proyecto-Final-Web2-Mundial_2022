@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-1995 a las 20:40:37
+-- Tiempo de generación: 20-06-2023 a las 03:26:41
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -43,8 +43,8 @@ CREATE TABLE `jugadores` (
 
 INSERT INTO `jugadores` (`id`, `nombre`, `apellido`, `descripcion`, `posicion`, `foto`, `id_pais`) VALUES
 (1, 'Damian Emiliano', 'Martinez', 'Damián Emiliano Martínez, conocido comúnmente como «Dibu» Martínez, es un futbolista argentino que se desempeña como arquero en el Aston Villa de la Premier League de Inglaterra. Es internacional absoluto con la selección argentina desde 2021', 'Arquero', 'https://s.hs-data.com/bilder/spieler/gross/192464.jpg', 1),
-(2, 'Gonzalo Ariel \r\n\r\n', 'Montiel', 'Gonzalo Ariel Montiel es un futbolista argentino que juega como defensa en el Sevilla F.C de la Primera División de España', 'Defensa', 'https://images.pagina12.com.ar/styles/focal_content_1200x1050/public/2023-02/698649-whatsapp-20image-202023-02-17-20at-2018-26-25.jpeg?h=34bbd072&itok=lcNOmQJi', 1),
-(3, 'Nicolás Hernán Gonzalo ', 'Otamendi ', 'Nicolás Hernán Gonzalo Otamendi es un futbolista argentino que juega como defensory su actual equipo es el S. L. Benfica de la Primeira Liga', 'Defensa', 'https://red92com.nyc3.cdn.digitaloceanspaces.com/adjuntos/galerias/000/124/0000124209.jpg', 1),
+(2, 'Gonzalo Ariel \r\n\r\n', 'Montiel', 'Gonzalo Ariel Montiel es un futbolista argentino que juega como defensa en el Sevilla F.C de la Primera División de España', 'defensor', 'https://images.pagina12.com.ar/styles/focal_content_1200x1050/public/2023-02/698649-whatsapp-20image-202023-02-17-20at-2018-26-25.jpeg?h=34bbd072&itok=lcNOmQJi', 1),
+(3, 'Nicolás Hernán Gonzalo ', 'Otamendi ', 'Nicolás Hernán Gonzalo Otamendi es un futbolista argentino que juega como defensory su actual equipo es el S. L. Benfica de la Primeira Liga', 'defensor', 'https://red92com.nyc3.cdn.digitaloceanspaces.com/adjuntos/galerias/000/124/0000124209.jpg', 1),
 (4, 'Nicolás Alejandro ', 'Tagliafico', 'Nicolás Alejandro Tagliafico es un futbolista argentino que juega como defensor en el Olympique de Lyon de la Ligue 1', 'Defensor', 'https://media.tycsports.com/files/2022/12/13/515791/nicolas-tagliafico_862x485.webp', 1),
 (5, 'Rodrigo Javier ', 'De Paul', 'Rodrigo Javier de Paul es un futbolista argentino que juega como centrocampista en el Atlético de Madrid, de la Primera División de España. Su carrera profesional comenzó en Racing Club en el año 2013', 'Medio campista', 'https://depor.com/resizer/woIrIls3EyUFydnHuxDBLIV7_Bk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/NZ3NTYXRVFBRLINNMDYS4HD75Q.jfif', 1),
 (6, 'Enzo Jeremías ', 'Ferndandez', 'Enzo Jeremías Fernández es un futbolista argentino que juega como centrocampista en el Chelsea F. C. de la Premier League. Su carrera como futbolista profesional comenzó en el 2020, en Club Atlético River Plate.', 'Medio campista', 'https://elcomercio.pe/resizer/_4rFUT07r-ONDCJJ40MyuFbrrhg=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/DOIITTYODVCL5MQQ3VKM6EL5TI.jpg', 1),
@@ -69,7 +69,7 @@ INSERT INTO `jugadores` (`id`, `nombre`, `apellido`, `descripcion`, `posicion`, 
 (29, 'Dominik', ' Livaković ', ' Dominik Livaković es un futbolista croata que juega como portero en el G. N. K. Dinamo de Zagreb de la Primera Liga de Croacia.', 'Arquero', ' https://media.tycsports.com/files/2022/12/08/514100/dominik-livakovic-croacia_862x485.webp?v=1', 3),
 (30, 'Ivo', ' Grbić', ' Ivo Grbić es un futbolista croata. Juega de portero y su equipo es el Atlético de Madrid de la Primera División de España.', 'Arquero', ' https://assets.laliga.com/squad/2022/t175/p173268/2048x2225/p173268_t175_2022_1_001_000.png', 3),
 (31, ' Domagoj', 'Vida', ' Domagoj Vida es un futbolista croata que juega como defensa en el AEK Atenas F. C. de la Superliga de Grecia y en la selección de su país.', 'Defensor', 'https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(webp):focal(1273x280:1275x278)/origin-imgresizer.eurosport.com/2020/11/12/2935471-60265388-2560-1440.jpg ', 3),
-(32, ' Dejan', 'Lovren', ' Dejan Lovren es un futbolista croata. Juega de defensa en el Olympique de Lyon de la Ligue 1 de Francia. Lovren comenzó su carrera como futbolista profesional en 2006, jugando en el club de fútbol Dinamo Zagreb, de la Primera Liga de Croacia.', 'Defensa', ' https://e.rpp-noticias.io/xlarge/2020/09/08/541354_993633.jpg ', 3),
+(32, ' Dejan', 'Lovren', ' Dejan Lovren es un futbolista croata. Juega de defensa en el Olympique de Lyon de la Ligue 1 de Francia. Lovren comenzó su carrera como futbolista profesional en 2006, jugando en el club de fútbol Dinamo Zagreb, de la Primera Liga de Croacia.', 'defensor', ' https://e.rpp-noticias.io/xlarge/2020/09/08/541354_993633.jpg ', 3),
 (33, ' Joško', 'Gvardiol', ' Joško Gvardiol es un futbolista croata que juega como defensa en el R. B. Leipzig de la 1. Bundesliga de Alemania.', 'Defensor', ' https://phantom-elmundo.unidadeditorial.es/3c08fe9a02cc18f3aca1e01d6f926622/resize/473/f/webp/assets/multimedia/imagenes/2022/12/11/16707748664993.jpg', 3),
 (34, ' Marcelo', 'Brozović ', ' Marcelo Brozović es un futbolista croata que juega en la demarcación de centrocampista para el Inter de Milán de la Serie A.', 'Medio campista', ' https://assets-es.imgfoot.com/media/cache/1200x675/marcelo-brozovic-2223-1.jpg', 3),
 (35, ' Luka', 'Modrić', ' Luka Modrić es un futbolista croata que desde 2012 juega como centrocampista en el Real Madrid C. F. de la Primera División de España. Fue ganador del Balón de Oro y obtuvo el Premio The Best al mejor jugador del mundo según la FIFA en 2018.', 'Medio campista', ' https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt2e6d86e4095385bb/642ad47b2808106ce90befb2/Modricc.jpg?auto=webp&format=pjpg&width=3840&quality=60 ', 3),
@@ -77,8 +77,8 @@ INSERT INTO `jugadores` (`id`, `nombre`, `apellido`, `descripcion`, `posicion`, 
 (38, ' Andrej', 'Kramarić', ' Andrej Kramarić es un futbolista croata que juega como delantero en el TSG 1899 Hoffenheim de la Bundesliga de Alemania.', 'Delantero', 'https://digitalhub.fifa.com/transform/e2305cef-0f63-4c4d-b3f5-a516888a337a/Andrej-Kramaric', 3),
 (39, ' Ivan', 'Perišić', ' Ivan Perišić es un futbolista croata que juega de delantero o centrocampista en el Tottenham Hotspur F. C. de la Premier League de Inglaterra.', 'Delantero', ' https://img.bundesliga.com/tachyon/sites/2/2019/08/ivan-perisic-inter-fcb.jpg?crop=0px,0px,1920px,1080px', 3),
 (40, ' Yassine', ' Bounou', ' Yassine Bounou, mejor conocido como Bono por la fonética de su apellido, es un futbolista marroquí. Juega como guardameta y su equipo es el Sevilla F. C. de la Primera División de España.', 'Arquero', ' https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2022/12/07/16703994577404.jpg', 4),
-(41, ' Nayef', 'Aguerd', ' Nayef Aguerd es un futbolista marroquí que juega en la demarcación de defensa para el West Ham United F. C. de la Premier League', 'Defensa', ' https://i2-prod.football.london/west-ham-united-fc/article25328100.ece/ALTERNATES/s1200c/0_GettyImages-1412678361.jpg', 4),
-(42, ' Achraf', 'Dari', ' Achraf Dari es un futbolista marroquí que juega como defensa en el Stade Brest 29 de la Ligue 1.', 'Defensa', ' https://assets-fr.imgfoot.com/media/cache/1200x900/modele-photo-centre-2-610c0d11d98e9.jpg', 4),
+(41, ' Nayef', 'Aguerd', ' Nayef Aguerd es un futbolista marroquí que juega en la demarcación de defensa para el West Ham United F. C. de la Premier League', 'defensor', ' https://i2-prod.football.london/west-ham-united-fc/article25328100.ece/ALTERNATES/s1200c/0_GettyImages-1412678361.jpg', 4),
+(42, ' Achraf', 'Dari', ' Achraf Dari es un futbolista marroquí que juega como defensa en el Stade Brest 29 de la Ligue 1.', 'defensor', ' https://assets-fr.imgfoot.com/media/cache/1200x900/modele-photo-centre-2-610c0d11d98e9.jpg', 4),
 (43, ' Jawad', 'El Yamiq', ' Jawad El Yamiq es un futbolista marroquí que juega en la demarcación de defensa para el Real Valladolid C. F. de la Primera División de España.', 'Defensor', ' https://assets.laliga.com/squad/2022/t192/p241276/2048x2225/p241276_t192_2022_1_001_000.png', 4),
 (44, ' Achraf', 'Hakimi Mouh ', ' Achraf Hakimi Mouh es un futbolista marroquí que juega como defensa en el Paris Saint-Germain F. C. de la Ligue 1 de Francia.', 'Defensor', ' https://a.espncdn.com/photo/2023/0303/r1138914_1296x729_16-9.jpg ', 4),
 (45, ' Noureddine', 'Amrabat ', ' Noureddine Amrabat, conocido como Nordin Amrabat, es un futbolista marroquí que también posee la nacionalidad neerlandesa. Juega como delantero, es internacional con la selección nacional de Marruecos y su equipo es el AEK Atenas F. C. de la Superliga de Grecia.', 'Delantero', ' https://scontent.fmdq6-1.fna.fbcdn.net/v/t39.30808-6/315831126_664545185037820_1702818921955546545_n.jpg?stp=cp6_dst-jpg&_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=-Lp2Ipwqv6cAX_0hvNS&_nc_ht=scontent.fmdq6-1.fna&oh=00_AfDFHo_EDEY7pMz6p35ucVdOlqEZ_kBkPYwW8M4Pry6AaA&oe=647C7310', 4),
@@ -149,7 +149,8 @@ ALTER TABLE `jugadores`
 --
 ALTER TABLE `paises`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `clasificacion` (`clasificacion`);
+  ADD UNIQUE KEY `clasificacion` (`clasificacion`),
+  ADD UNIQUE KEY `nombre` (`nombre`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -166,13 +167,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `jugadores`
 --
 ALTER TABLE `jugadores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `paises`
 --
 ALTER TABLE `paises`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

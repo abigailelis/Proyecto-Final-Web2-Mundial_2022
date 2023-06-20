@@ -42,7 +42,7 @@ Class usuariosController{
         if(!empty($_POST)){
             $usuario = $_POST['usuario'];
             $password = $_POST['password'];
-            $usuario_db = $this -> model -> getUsuario($usuario);
+            $usuario_db = $this -> model -> obtenerUsuario($usuario);
             if(!empty($usuario_db) && password_verify($password, $usuario_db->password)){
                 $this -> usuariosHelper -> login($usuario);
                 header('Location: '.BASE_URL);

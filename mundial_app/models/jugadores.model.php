@@ -14,7 +14,7 @@ Class jugadoresModel{
     }
 
     /*--Obtiene los jugadores según el país seleccionado (items por categoria)--*/
-    function obtenerJugadoresPorPaisByPais($pais){
+    function obtenerJugadoresPorPais($pais){
         $sentencia = $this -> db ->prepare("SELECT * FROM jugadores WHERE (id_pais)=:id_pais");
         $sentencia -> execute([":id_pais" => $pais->id]);
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
